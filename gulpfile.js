@@ -1,0 +1,64 @@
+var gulp = require("gulp");
+var plumber = require("gulp-plumber");
+var gulpSequence = require('gulp-sequence')
+var browserSync = require("browser-sync").create();
+var clean = require("del");
+
+var posthtml = require("gulp-posthtml");
+var posthtmlInclude = require("posthtml-include");
+
+var sass = require("gulp-sass");
+var postcss = require("gulp-postcss");
+var autoprefixer = require("autoprefixer");
+var sourcemaps = require('gulp-sourcemaps');
+
+
+gulp.task("html",function() {
+  gulp.src("source/*.html")
+  .pipe(plumber({
+    handleError: function (err) {
+        console.log(err);
+        this.emit("end");
+    }
+  }))
+  .pipe(posthtml([
+    posthtmlInclude()
+  ]))
+  .pipe(gulp.dest("build/"))
+  .pipe(browserSync.reload({stream:true}))
+});
+
+gulp.task("style", function() {
+  gulp.src("source/scss/style.scss")
+  .pipe(plumber({
+    handleError: function (err) {
+        console.log(err);
+        this.emit("end");
+    }
+  }))
+  .pipe(sourcemaps.init())
+  .pipe(sass())
+  .pipe(postcss([
+    autoprefixer()
+  ]))
+  .pipe(sourcemaps.write())
+  .pipe(gulp.dest("build/css/"))
+  .pipe(browserSync.stream());
+})
+
+gulp.task("clean", function() {
+  clean("build");
+})
+
+gulp.task("serve", ["html", "style"], function() {
+    browserSync.init({
+        server: {
+            baseDir: "build"
+        }
+    });
+
+    gulp.watch(["source/scss/*.scss", "source/blocks/**/*.scss"], ["style"]);
+    gulp.watch(["source/*.html","source/blocks/**/*.html"],["html"]);
+});
+
+gulp.task("default", gulpSequence("clean", "serve"));
