@@ -65,7 +65,7 @@ gulp.task('serve', ['html', 'style', 'img'], function() {
 
     gulp.watch(['source/scss/*.scss', 'source/blocks/**/*.scss'], ['style']);
     gulp.watch(['source/*.html','source/blocks/**/*.html'],['html']);
-    gulp.watch('source/img/*','img');
+    gulp.watch('source/img/*',['img']);
 });
 
 gulp.task('default', gulpSequence('clean', 'serve'));
