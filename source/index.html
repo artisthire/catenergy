@@ -6,10 +6,72 @@
 </head>
 <body>
   <div class="main-header">
-    <a class="main-header__logo">
-      <img src="img/logo-mobile.svg" alt="Логотип сайта" height="30px">
-    </a>
+    <nav class="main-menu">
+      <a class="main-menu__logo">
+        <img src="img/logo-mobile.svg" alt="Логотип сайта" height="30px">
+      </a>
+      <button class="main-menu__toggle-btn main-menu__toggle-btn--close" type="button" name="menu-button">
+        <span class="visually-hidden">Открыть меню</span>
+      </button>
+      <ul class="main-menu__list">
+        <li class="main-menu__item main-menu__item--current">
+          <a>Главная</a>
+        </li>
+        <li class="main-menu__item">
+          <a href="catalog.html">Каталог продукции</a>
+        </li>
+        <li class="main-menu__item">
+          <a href="form.html">Подбор программы</a>
+        </li>
+      </ul>
+    </nav>
+    <section class="main-header__promo">
+      <h1 class="main-header__header">Функциональное питание для котов</h1>
+      <p class="main-header__slogan">Занялся собой? Займись котом!</p>
+      <a href="form.html" class="main-header__catalog-link">Подобрать программу</a>
+    </section>
   </div>
+
+  <section class="popular-production">
+    <h2 class="visually-hidden">Популярная продукция</h2>
+    <section class="popular-production__card">
+      <h3 class="popular-production__title">Похудение</h3>
+      <p class="popular-production__text">
+        Ваш кот весит больше собаки и почти утратил способность лазить под деревьям?
+        Пора на диету! Cat Energi Slim поможет вашем питомцу сбросить лишний вес</p>
+      <a class="popular-production__catalog-link" href="catalog.html?product='cat-energi-slim'">Каталог Slim</a>
+    </section>
+    <section class="popular-production__card">
+      <h3 class="popular-production__title">Набор массы</h3>
+      <p class="popular-production__text">
+        Заработать авторитет среди дворовых кошек и даже собак? Серия Cat Energi Pro
+        поможет вашему коту нарастить необходимые мышцы!</p>
+      <a class="popular-production__catalog-link" href="catalog.html?product='cat-energi-pro'">Каталог Pro</a>
+    </section>
+  </section>
+
+  <section class="product-application">
+    <h2 class="product-application__title">Как это работает</h2>
+    <ol class="product-application__list">
+      <li class="product-application__item product-application__item--functional">
+        Функциональное питание содержит только полезные вещества.</li>
+      <li class="product-application__item product-application__item--state">
+        Выпускается в виде порошка, который лишь надо залить кипятком.</li>
+      <li class="product-application__item product-application__item--food">
+        Замените один-два приема обычной пищи на наше функциональное питание</li>
+      <li class="product-application__item product-application__item--time">
+        Уже через месяц наблюдайте изменения к лучшему вашего питомца.</li>
+    </ol>
+  </section>
+
+  <secti class="client-exapmle">
+    <h2 class="client-example__title">Живой пример</h2>
+    <p class="client-example__desc">
+      Борис сбросил 5 км за 2 месяца, просто заменив свой обычный корм на Cat Energi Slim.
+      Отличный результат без изнуряющих тренировок! При этом он не менял своих привычек
+      и по-прежнему спит до 16 часов в день.
+    </p>
+  </secti>
 
 </body>
 </html>
