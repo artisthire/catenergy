@@ -19,7 +19,6 @@
     "gulp-sass": "^4.0.2",
     "gulp-sequence": "^1.0.0",
     "gulp-sourcemaps": "^2.6.4",
-    "posthtml-include": "^1.2.0",
-    "run-sequence": "^2.2.1"
+    "posthtml-include": "^1.2.0"
   }
 }
