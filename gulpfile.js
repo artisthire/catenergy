@@ -46,11 +46,16 @@ gulp.task('style', function() {
   .pipe(browserSync.stream());
 })
 
+gulp.task('img', function() {
+  gulp.src('source/img/*')
+  .pipe(gulp.dest('build/img/'))
+})
+
 gulp.task('clean', function() {
   clean.sync('build');
 })
 
-gulp.task('serve', ['html', 'style'], function() {
+gulp.task('serve', ['html', 'style', 'img'], function() {
     browserSync.init({
         server: 'build/',
         open: false,
@@ -60,6 +65,7 @@ gulp.task('serve', ['html', 'style'], function() {
 
     gulp.watch(['source/scss/*.scss', 'source/blocks/**/*.scss'], ['style']);
     gulp.watch(['source/*.html','source/blocks/**/*.html'],['html']);
+    gulp.watch('source/img/*','img');
 });
 
 gulp.task('default', gulpSequence('clean', 'serve'));
