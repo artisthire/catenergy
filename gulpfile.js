@@ -4,6 +4,7 @@ var gulpSequence = require('gulp-sequence');
 var browserSync = require('browser-sync').create();
 var clean = require('del');
 
+var htmlhint = require("gulp-htmlhint");
 var posthtml = require('gulp-posthtml');
 var posthtmlInclude = require('posthtml-include');
 
@@ -27,6 +28,14 @@ gulp.task('html',function() {
   .pipe(gulp.dest('build/'))
   .pipe(browserSync.reload({stream:true}))
 });
+
+//проверка стиля файла HTML
+//источник берется из паки build, поскольку в файлах source используется posthtml
+gulp.task('html-lint', function() {
+  gulp.src("build/*.html")
+    .pipe(htmlhint('.htmlhintrc'))
+    .pipe(htmlhint.reporter())
+})
 
 gulp.task('style', function() {
   gulp.src('source/scss/style.scss')
