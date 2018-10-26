@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
   <include src="source/blocks/page-head/page-head.html"></include>
   <title>Магазин продуктов для котов</title>
 </head>
+
 <body>
-  <div class="main-header">
+  <header class="main-header">
     <nav class="main-menu">
       <a class="main-menu__logo">
         <img src="img/logo-mobile.svg" alt="Логотип сайта" height="30px">
       </a>
-      <button class="main-menu__toggle-btn main-menu__toggle-btn--close" type="button" name="menu-button">
+      <button class="main-menu__toggle-navigation main-menu__toggle-navigation--close" type="button" name="menu-button">
         <span class="visually-hidden">Открыть меню</span>
       </button>
-      <ul class="main-menu__list">
+      <ul class="main-menu__navigation">
         <li class="main-menu__item main-menu__item--current">
           <a>Главная</a>
         </li>
@@ -30,7 +32,7 @@
       <p class="main-header__slogan">Занялся собой? Займись котом!</p>
       <a href="form.html" class="main-header__catalog-link">Подобрать программу</a>
     </section>
-  </div>
+  </header>
 
   <section class="popular-production">
     <h2 class="visually-hidden">Популярная продукция</h2>
@@ -64,14 +66,15 @@
     </ol>
   </section>
 
-  <secti class="client-exapmle">
+  <section class="client-exapmle">
     <h2 class="client-example__title">Живой пример</h2>
     <p class="client-example__desc">
       Борис сбросил 5 км за 2 месяца, просто заменив свой обычный корм на Cat Energi Slim.
       Отличный результат без изнуряющих тренировок! При этом он не менял своих привычек
       и по-прежнему спит до 16 часов в день.
     </p>
-  </secti>
+  </section>
 
 </body>
+
 </html>
