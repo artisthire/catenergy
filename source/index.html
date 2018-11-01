@@ -3,31 +3,13 @@
 
 <head>
   <include src="source/blocks/page-head/page-head.html"></include>
+
   <title>Магазин продуктов для котов</title>
 </head>
 
 <body class='main-page'>
-  <header class="main-header">
-    <nav class="main-header__navigation site-navigation">
-      <a class="site-navigation__logo">
-        <img src="img/logo-mobile.svg" alt="Логотип сайта" width="140" height="40">
-      </a>
-      <button class="site-navigation__toggle-btn menu-toggle-btn menu-toggle-btn--open"
-      type="button" name="toggle-menu" aria-label="Открыть меню" hidden>
-      </button>
-      <ul class="site-navigation__list">
-        <li class="site-navigation__item site-navigation__item--current">
-          <a>Главная</a>
-        </li>
-        <li class="site-navigation__item">
-          <a href="catalog.html">Каталог продукции</a>
-        </li>
-        <li class="site-navigation__item">
-          <a href="form.html">Подбор программы</a>
-        </li>
-      </ul>
-    </nav>
-  </header>
+
+  <include src="source/blocks/main-header/main-header.html"></include>
 
   <main>
     <section class="product-promo">
@@ -122,28 +104,7 @@
     </section>
   </main>
 
-  <footer class="main-footer">
-    <a href="" class="main-footer__grid main-footer__logo">
-      <img src="img/footer-logo.svg" alt="Логотип магазина Cat energy" height="15" />
-    </a>
-    <div class="main-footer__grid social-links">
-      <h2 class="visually-hidden">Наши контакты в социальных сетях</h2>
-      <a href="#" class="social-links social-links--vk">
-        <span class="visually-hidden">Вконтакте</span>
-      </a>
-      <a href="#" class="social-links social-links--tw">
-        <span class="visually-hidden">Твиттер</span>
-      </a>
-      <a href="#" class="social-links social-links--fc">
-        <span class="visually-hidden">Фэйсбук</span>
-      </a>
-    </div>
-    <div class="main-footer__grid html-academy">
-      <h2 class="visually-hidden">Контакты разработчика сайта</h2>
-      <a href="#" class="html-academy__link">HTML Academy</a>
-    </div>
-  </footer>
-
+  <include src="source/blocks/main-footer/main-footer.html"></include>
 </body>
 
 </html>
