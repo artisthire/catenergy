@@ -60,11 +60,16 @@ gulp.task('img', function() {
   .pipe(gulp.dest('build/img/'))
 })
 
+gulp.task('font', function() {
+  gulp.src('source/font/*')
+  .pipe(gulp.dest('build/font/'))
+})
+
 gulp.task('clean', function() {
   clean.sync('build');
 })
 
-gulp.task('serve', ['html', 'style', 'img'], function() {
+gulp.task('serve', ['html', 'style', 'img', 'font'], function() {
     browserSync.init({
         server: 'build/',
         open: false,
@@ -75,6 +80,7 @@ gulp.task('serve', ['html', 'style', 'img'], function() {
     gulp.watch(['source/scss/*.scss', 'source/blocks/**/*.scss'], ['style']);
     gulp.watch(['source/*.html','source/blocks/**/*.html'],['html']);
     gulp.watch('source/img/*',['img']);
+    gulp.watch('source/font/*',['font']);
 });
 
 gulp.task('default', gulpSequence('clean', 'serve'));
