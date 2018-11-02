@@ -60,6 +60,11 @@ gulp.task('css', function() {
   .pipe(gulp.dest('build/css'))
 })
 
+gulp.task('js', function() {
+  gulp.src('source/js/*.js')
+  .pipe(gulp.dest('build/js'))
+})
+
 gulp.task('img', function() {
   gulp.src('source/img/*')
   .pipe(gulp.dest('build/img/'))
@@ -74,7 +79,7 @@ gulp.task('clean', function() {
   clean.sync('build');
 })
 
-gulp.task('serve', ['html', 'style', 'css', 'img', 'font'], function() {
+gulp.task('serve', ['html', 'style', 'css', 'js', 'img', 'font'], function() {
     browserSync.init({
         server: 'build/',
         open: false,
@@ -84,6 +89,7 @@ gulp.task('serve', ['html', 'style', 'css', 'img', 'font'], function() {
 
     gulp.watch(['source/scss/*.scss', 'source/blocks/**/*.scss'], ['style']);
     gulp.watch(['source/*.html','source/blocks/**/*.html'],['html']);
+    gulp.watch('source/js/*.js',['js']);
     gulp.watch('source/img/*',['img']);
     gulp.watch('source/font/*',['font']);
 });
