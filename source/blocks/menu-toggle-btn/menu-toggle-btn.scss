@@ -4,6 +4,12 @@ $btn-line-height: 2px;
 $btn-line-color: $black;
 $left-position--cross: (($btn-width - $btn-height) / 2 + $btn-line-height/ 2);
 
+//если не работает JavaScript то скрываем кнопку открытия/закрытия меню
+
+.no-js .menu-toggle-btn {
+  display: none;
+}
+
 .menu-toggle-btn {
   position: relative;
   display: block;
