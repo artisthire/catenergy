@@ -1,5 +1,7 @@
-@import "source/scss/variables.scss";
-@import "source/scss/scaffolding.scss";
+@import "variables.scss";
+@import "scaffolding.scss";
 
 
 @import "../blocks/main-header/main-header.scss";
+@import "../blocks/site-navigation/site-navigation.scss";
+@import "../blocks/menu-toggle-btn/menu-toggle-btn.scss";

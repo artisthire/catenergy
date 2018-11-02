@@ -1,0 +1,63 @@
+$btn-width: 24px;
+$btn-height: 18px;
+$btn-line-height: 2px;
+$btn-line-color: $black;
+$left-position--cross: (($btn-width - $btn-height) / 2 + $btn-line-height/ 2);
+
+.menu-toggle-btn {
+  position: relative;
+  display: block;
+  width: $btn-width;
+  height: $btn-height;
+  margin: 13px 0;
+  margin-right: 20px;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.menu-toggle-btn::before,
+.menu-toggle-btn::after {
+  content: '';
+  position: absolute;
+  width: $btn-width;
+  height: $btn-line-height;
+  left: 0;
+  background-color: $btn-line-color;
+  transition: all 0.2s linear;
+}
+
+.menu-toggle-btn::before {
+  top: 0;
+}
+
+.menu-toggle-btn::after {
+  bottom: 0;
+}
+
+.menu-toggle-btn__line {
+  position: absolute;
+  width: $btn-width;
+  height: $btn-line-height;
+  left: 0;
+  top: calc(50% - 1px);
+  background-color: $btn-line-color;
+  transition: opacity 0.1s linear 0.1s;
+}
+
+.menu-toggle-btn--open > .menu-toggle-btn__line {
+  opacity: 0;
+}
+
+.menu-toggle-btn--open::before {
+  left: $left-position--cross;
+  transform-origin: left top;
+  transform: rotate(45deg);
+}
+
+.menu-toggle-btn--open::after {
+  left: $left-position--cross;
+  transform-origin: left bottom;
+  transform: rotate(-45deg);
+}

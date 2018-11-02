@@ -21,5 +21,28 @@
 body {
   font-family: #{$main-fonts};
   font-size: $font-size--mobile;
+  line-height: $line-height--mobile;
+  color: $text-color;
   background-color: $white;
+
+  @media (min-width: $screen-sm) {
+    font-size: $font-size--tablet;
+    line-height: $line-height--tablet;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: #{$custom-fonts};
+  line-height: $line-height-header;
+  color: $title-color;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
 }
