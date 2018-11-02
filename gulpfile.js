@@ -50,9 +50,14 @@ gulp.task('style', function() {
   .pipe(postcss([
     autoprefixer()
   ]))
-  .pipe(sourcemaps.write())
+  .pipe(sourcemaps.write('.'))
   .pipe(gulp.dest('build/css/'))
   .pipe(browserSync.stream());
+})
+
+gulp.task('css', function() {
+  gulp.src('source/css/*.css')
+  .pipe(gulp.dest('build/css'))
 })
 
 gulp.task('img', function() {
@@ -69,7 +74,7 @@ gulp.task('clean', function() {
   clean.sync('build');
 })
 
-gulp.task('serve', ['html', 'style', 'img', 'font'], function() {
+gulp.task('serve', ['html', 'style', 'css', 'img', 'font'], function() {
     browserSync.init({
         server: 'build/',
         open: false,
