@@ -41,14 +41,16 @@ gulp.task('html-sort',function() {
   }))
   .pipe(posthtml([
     posthtmlAttrSort(
-      "order": [
-        "class", "id", "name",
-        "data-.+", "ng-.+", "src",
-        "for", "type", "href",
-        "values", "title", "alt",
-        "role", "aria-.+",
-        "$unknown$"
-      ]
+      {
+        "order": [
+          "class", "id", "name",
+          "data-.+", "ng-.+", "src",
+          "for", "type", "href",
+          "values", "title", "alt",
+          "role", "aria-.+",
+          "$unknown$"
+        ]
+      }
     )
   ]))
   .pipe(gulp.dest('source/'))
