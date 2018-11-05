@@ -7,6 +7,7 @@ var clean = require('del');
 var htmlhint = require("gulp-htmlhint");
 var posthtml = require('gulp-posthtml');
 var posthtmlInclude = require('posthtml-include');
+var posthtmlAttrSort = require('posthtml-attrs-sorter');
 
 var sass = require('gulp-sass');
 var postcss = require('gulp-postcss');
@@ -27,6 +28,30 @@ gulp.task('html',function() {
   ]))
   .pipe(gulp.dest('build/'))
   .pipe(browserSync.reload({stream:true}))
+});
+
+//сортировка атрибутов в тегах html
+gulp.task('html-sort',function() {
+  gulp.src(['source/*.html','source/blocks/**/*.html'])
+  .pipe(plumber({
+    handleError: function (err) {
+        console.log(err);
+        this.emit('end');
+    }
+  }))
+  .pipe(posthtml([
+    posthtmlAttrSort(
+      "order": [
+        "class", "id", "name",
+        "data-.+", "ng-.+", "src",
+        "for", "type", "href",
+        "values", "title", "alt",
+        "role", "aria-.+",
+        "$unknown$"
+      ]
+    )
+  ]))
+  .pipe(gulp.dest('source/'))
 });
 
 //проверка стиля файла HTML
