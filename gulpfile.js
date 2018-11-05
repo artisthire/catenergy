@@ -1,13 +1,14 @@
 var gulp = require('gulp');
 var plumber = require('gulp-plumber');
 var gulpSequence = require('gulp-sequence');
-var gulpMerge = require('gulp-merge');
+//var gulpMerge = require('gulp-merge');
 var browserSync = require('browser-sync').create();
 var clean = require('del');
 
 var htmlhint = require("gulp-htmlhint");
 var posthtml = require('gulp-posthtml');
-var posthtmlInclude = require('posthtml-include');
+//var posthtmlInclude = require('posthtml-include');
+var posthtmlInclude = require('posthtml-modules');
 var posthtmlAttrSort = require('posthtml-attrs-sorter');
 
 var sass = require('gulp-sass');
