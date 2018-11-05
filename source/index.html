@@ -2,21 +2,21 @@
 <html lang="ru">
 
 <head>
-  <include src="source/blocks/page-head/page-head.html"></include>
+  <include src="source/blocks/page-head/page-head.html">
 
   <title>Магазин продуктов для котов</title>
 </head>
 
-<body class='main-page no-js'>
+<body class="main-page no-js">
 
-  <include src="source/blocks/main-header/main-header.html"></include>
+  <include src="source/blocks/main-header/main-header.html">
 
   <main>
     <section class="product-promo">
       <h1 class="product-promo__title">Функциональное питание для котов</h1>
       <p class="product-promo__slogan">Занялся собой? Займись котом!</p>
-      <img src="img/promo-product--mobile.png" alt="Фото продукта Cat energy Pro" class="product-promo__img" width="280" height="270" />
-      <a href="form.html" class="product-promo__catalog-link btn">Подобрать программу</a>
+      <img class="product-promo__img" src="img/promo-product--mobile.png" alt="Фото продукта Cat energy Pro" width="280" height="270">
+      <a class="product-promo__catalog-link btn" href="form.html">Подобрать программу</a>
     </section>
 
     <section class="popular-production">
@@ -78,8 +78,8 @@
       </ul>
       <div class="client-example__photos photos-slider">
         <h3 class="visually-hidden">Фото кота до использования нашего продукта и после</h3>
-        <img src="img/before-mobile.png" alt="Фотография ДО использования нашего продукта" class="photos-slider__img" width="311" height="232"/>
-        <img src="img/after-mobile.png" alt="Фотография ПОСЛЕ использования нашего продукта" class="photos-slider__img" width="251" height="240"/>
+        <img class="photos-slider__img" src="img/before-mobile.png" alt="Фотография ДО использования нашего продукта" width="311" height="232">
+        <img class="photos-slider__img" src="img/after-mobile.png" alt="Фотография ПОСЛЕ использования нашего продукта" width="251" height="240">
         <div class="photos-slider__controls" hidden>
           <button class="photos-slider__btn photos-slider__btn--before" aria-label="Предыдущий слайд">До</button>
           <button class="photos-slider__btn photos-slider__btn--after" aria-label="Следующий слайд">После</button>
@@ -92,18 +92,18 @@
         <h2 class="main-contacts__title">Приглашаем к сотрудницеству диллеров!</h2>
         <h3 class="visually-hidden">Наш адрес</h3>
         <p class="main-contacts__address">
-          ул. Большая <br />
-          Коннюшенная д. 19/8 <br />
+          ул. Большая <br>
+          Коннюшенная д. 19/8 <br>
           Санкт-Петербург
         </p>
       </header>
       <div class="main-contacts__map map-contacts">
-        <img src="img/map-backup.jpg" alt="Санкт-Петербург, ул. Большая Коннюшенная, д. 19/8" class="map-contacts__map" height="360" />
+        <img class="map-contacts__map" src="img/map-backup.jpg" alt="Санкт-Петербург, ул. Большая Коннюшенная, д. 19/8" height="360">
       </div>
     </section>
   </main>
 
-  <include src="source/blocks/main-footer/main-footer.html"></include>
+  <include src="source/blocks/main-footer/main-footer.html">
 </body>
 
 </html>
