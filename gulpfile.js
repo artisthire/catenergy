@@ -1,6 +1,7 @@
 var gulp = require('gulp');
 var plumber = require('gulp-plumber');
 var gulpSequence = require('gulp-sequence');
+var gulpMerge = require('gulp-merge');
 var browserSync = require('browser-sync').create();
 var clean = require('del');
 
@@ -30,8 +31,13 @@ gulp.task('html',function() {
   .pipe(browserSync.reload({stream:true}))
 });
 
+// return gulpMerge(
+//   gulp.src('source/*.html',{base: './source'}),
+//   gulp.src('source/blocks/**/*.html',{base: './source/blocks/'})
+// )
 //сортировка атрибутов в тегах html
 gulp.task('html-sort',function() {
+
   gulp.src(['source/*.html','source/blocks/**/*.html'])
   .pipe(plumber({
     handleError: function (err) {
@@ -53,7 +59,9 @@ gulp.task('html-sort',function() {
       }
     )
   ]))
-  .pipe(gulp.dest('source/'))
+  .pipe(gulp.dest(function(file) {
+    if (file.base) return file.base;
+  }))
 });
 
 //проверка стиля файла HTML
