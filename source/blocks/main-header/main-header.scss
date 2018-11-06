@@ -4,4 +4,8 @@
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
+
+  @media (min-width: $screen-md) {
+    flex-wrap: nowrap;
+  }
 }

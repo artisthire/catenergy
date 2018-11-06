@@ -19,6 +19,7 @@
 
 
 body {
+  min-width: $screen-sm;
   font-family: #{$main-fonts};
   font-size: $font-size--mobile;
   line-height: $line-height--mobile;
