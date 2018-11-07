@@ -1,6 +1,6 @@
 .site-navigation {
+  $border-bottom-width: 2px;
   $border-bottom-color: #e6e6e6;
-  $border-bottom-width: 1px;
 
   @media (max-width: $screen-md) {
     border-bottom: $border-bottom-width solid $border-bottom-color;
@@ -27,6 +27,7 @@
       margin: 0;
       background: url('../img/logo-tablet.svg') center center no-repeat;
     }
+
     @media (min-width: $screen-lg) {
       width: 202px;
       height: 59px;
@@ -63,6 +64,7 @@
   &__item {
     display: block;
     text-align: center;
+
     @media (max-width: $screen-md) {
       border-top: $border-bottom-width solid $border-bottom-color;
     }

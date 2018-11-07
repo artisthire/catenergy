@@ -15,6 +15,8 @@ var sass = require('gulp-sass');
 var postcss = require('gulp-postcss');
 var autoprefixer = require('autoprefixer');
 var sourcemaps = require('gulp-sourcemaps');
+var gulpStylelint = require('gulp-stylelint');
+//var doiuse = require('doiuse')
 
 
 gulp.task('html',function() {
@@ -95,6 +97,16 @@ gulp.task('css', function() {
   gulp.src('source/css/*.css')
   .pipe(gulp.dest('build/css'))
 })
+
+//проверка css соотвествию стилю
+gulp.task('css-lint', function() {
+ gulp.src(['source/scss/*.scss', 'source/blocks/**/*.scss'])
+ .pipe(gulpStylelint({
+      reporters: [
+        {formatter: 'string', console: true}
+      ]
+    }));
+});
 
 gulp.task('js', function() {
   gulp.src('source/js/*.js')

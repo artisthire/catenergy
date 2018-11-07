@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "Магазин продуктов для котов",
   "main": "gulp.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "author": "Andrey",
   "license": "MIT",
   "devDependencies": {
@@ -21,8 +18,20 @@
     "gulp-sass": "^4.0.2",
     "gulp-sequence": "^1.0.0",
     "gulp-sourcemaps": "^2.6.4",
+    "gulp-stylelint": "^8.0.0",
     "posthtml-attrs-sorter": "^1.1.0",
     "posthtml-include": "^1.2.0",
-    "posthtml-modules": "^0.4.2"
+    "posthtml-modules": "^0.4.2",
+    "stylelint": "^9.7.1"
+  },
+  "scripts": {
+    "canuse" : "doiuse --browsers \"ie >= 11, last 2 versions, not dead\" build/css/style.css"
+  },
+  "browserslist": {
+    "production": [
+      "ie >= 11",
+      "last 2 versions",
+      "not dead"
+    ]
   }
 }

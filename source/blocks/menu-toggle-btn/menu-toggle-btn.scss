@@ -7,8 +7,10 @@
   $block: &;
   $width: 24px;
   $height: 18px;
-  $padding-v: 0;
-  $padding-g: 0;
+  $padding-v: 10px;
+  $padding-g: 10px;
+  $margin-v: 13px - $padding-v;
+  $margin-g: 20px - $padding-g;
   $line-height: 2px;
   $line-color: $black;
   $top-position: $padding-v;
@@ -21,12 +23,18 @@
   display: block;
   width: $width;
   height: $height;
-  margin: 13px 20px;
+  margin: $margin-v $margin-g;
   padding: $padding-v $padding-g;
   border: none;
   background-color: transparent;
   cursor: pointer;
 
+
+  @media (min-width: $screen-md) {
+    display: none;
+  }
+
+  //  добавляет среднюю линию в кнопке для анимации
   &__line {
     position: absolute;
     width: $width;
@@ -37,6 +45,7 @@
     transition: opacity 0.1s linear 0.1s;
   }
 
+  //  имитируют верхнюю и нижнюю линии кнопки
   &::before,
   &::after {
     content: '';
@@ -73,9 +82,5 @@
       transform-origin: left bottom;
       transform: rotate(-45deg);
     }
-  }
-
-  @media (min-width: $screen-md) {
-    display: none;
   }
 }
