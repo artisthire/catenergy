@@ -1,0 +1,42 @@
+.btn {
+  $padding-v: 15px;
+  $padding-g: 25px;
+  $color: $white;
+  $color--active: rgba(255,255,255,0.3);
+  $background-color: $icon-background;
+  $background-color--hover: #5eaa2f;
+
+  box-sizing: border-box;
+  display: inline-block;
+  padding: $padding-v $padding-g;
+  border: none;
+  font-family: #{$custom-fonts};
+  font-size: 14px;
+  font-weight: $font-weight--normal;
+  line-height: 1;
+  white-space: nowrap;
+  text-overflow: clip;
+  text-transform: uppercase;
+  text-align: center;
+  text-decoration: none;
+  color: $color;
+  background-color: $background-color;
+  cursor: pointer;
+
+  &--wide {
+    display: block;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: $background-color--hover;
+  }
+
+  &:active {
+    color: $color--active;
+  }
+
+  @media (min-width: $screen-md) {
+    font-size: 20px;
+  }
+}

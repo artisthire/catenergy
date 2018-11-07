@@ -1,0 +1,96 @@
+.product-promo {
+  $block: &;
+
+  position: relative;
+  margin-bottom: 25px;
+  padding: 25px 20px;
+  padding-bottom: 0;
+
+  @media (max-width: $screen-md - 1) {
+    color: $white;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 305px;
+      background-color: #63a73a;
+      background-image: url(../img/header-bg--mobile.jpg);
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center center;
+      z-index: -1;
+    }
+  }
+
+  @media (min-width: $screen-md) {
+    padding-left: 120px;
+    margin-bottom: 535px;
+  }
+
+  @media (min-width: $screen-lg) {
+    padding-top: 80px;
+    padding-left: 190px;
+    margin-bottom: 268px;
+  }
+
+  &__title {
+    margin: 0;
+    margin-bottom: 25px;
+    font-size: 36px;
+    font-weight: $font-weight--normal;
+    line-height: 1.1;
+    text-align: center;
+    color: inherit;
+
+    @media (min-width: $screen-md) {
+      margin-bottom: 45px;
+      font-size: 60px;
+      text-align: left;
+    }
+  }
+
+  &__slogan {
+    margin: 0;
+    margin-bottom: 27px;
+    text-align: center;
+    text-transform: uppercase;
+
+    @media (min-width: $screen-md) {
+      margin-bottom: 45px;
+      font-size: 20px;
+      text-align: left;
+    }
+  }
+
+  &__img {
+    display: block;
+    width: auto;
+    height: 271px;
+    margin: 0 auto;
+    margin-bottom: 3px;
+
+    @media (min-width: $screen-md) {
+      position: absolute;
+      left: 30px;
+      top: 243px;
+      height: 609px;
+      z-index: -1;
+    }
+
+    @media (min-width: $screen-lg) {
+      top: 0;
+      left: 600px;
+      height: 499px;
+    }
+  }
+
+  &__catalog-link {
+
+    @media (max-width: $screen-md - 1) {
+      width: 100%;
+    }
+  }
+}

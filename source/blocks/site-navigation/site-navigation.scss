@@ -7,11 +7,11 @@
   }
 
   @media (min-width: $screen-md) and (max-width: $screen-lg - 1) {
-    margin: 24px 30px;
+    padding: 24px 30px;
   }
 
   @media (min-width: $screen-lg) {
-    margin: 54px 110px;
+    padding: 54px 110px;
   }
 
   &__logo {
@@ -78,14 +78,20 @@
       padding: 20px 0;
       font-family: #{$custom-fonts};
       font-size: 20px;
-      line-height: 1.25;
       font-weight: 500;
+      line-height: 1.25;
       text-decoration: none;
       text-transform: uppercase;
       color: $title-color;
 
       @media (min-width: $screen-md) {
         font-size: 18px;
+        font-weight: 400;
+      }
+
+      @media (min-width: $screen-lg) {
+        font-size: 20px;
+        color: $white;
       }
     }
 
@@ -109,6 +115,11 @@
         bottom: 15px;
         height: 2px;
         background-color: $icon-background;
+
+        @media (min-width: $screen-lg) {
+          background-color: $white;
+        }
+
       }
     }
   }

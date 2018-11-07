@@ -1,11 +1,26 @@
-.main-header__navigation {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
+.main-header {
 
-  @media (min-width: $screen-md) {
-    flex-wrap: nowrap;
+  @media (min-width: $screen-lg) {
+    position: relative;
+
+    &:before {
+      content: url(../img/header-bg--desctop.jpg);
+      position: absolute;
+      top: 0;
+      right: 0;
+      z-index: -1;
+    }
+  }
+
+  &__navigation {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    @media (min-width: $screen-md) {
+      flex-wrap: nowrap;
+    }
   }
 }

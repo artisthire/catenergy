@@ -27,7 +27,7 @@ body {
   color: $text-color;
   background-color: $white;
 
-  @media (min-width: $screen-sm) {
+  @media (min-width: $screen-md) {
     font-size: $font-size--tablet;
     line-height: $line-height--tablet;
   }
