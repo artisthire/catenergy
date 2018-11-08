@@ -1,26 +1,71 @@
 .main-header {
+  position: relative;
+  padding-top: 13px;
 
-  @media (min-width: $screen-lg) {
-    position: relative;
-
-    &:before {
-      content: url(../img/header-bg--desctop.jpg);
-      position: absolute;
-      top: 0;
-      right: 0;
-      z-index: -1;
-    }
+  @media (max-width: $screen-md - 1) {
+    border-bottom: 2px solid #e6e6e6;
   }
 
-  &__navigation {
+  @media (min-width: $screen-md) {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    flex-wrap: wrap;
+    padding: 24px 30px;
+  }
 
-    @media (min-width: $screen-md) {
-      flex-wrap: nowrap;
+  @media (min-width: $screen-lg) {
+    padding: 54px 110px;
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      z-index: -1;
+      width: 50%;
+      height: 696px;
+      background-color: #63a73a;
+      background-image: url(../img/header-bg--desctop.jpg);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
     }
   }
+
+  &__logo {
+    display: block;
+    width: 192px;
+    height: 38px;
+    margin-left: 20px;
+    margin-bottom: 13px;
+
+    @media (min-width: $screen-md) {
+      flex-shrink: 0;
+      width: 173px;
+      height: 58px;
+      margin: 0;
+    }
+
+    @media (min-width: $screen-lg) {
+      width: 202px;
+      height: 59px;
+    }
+  }
+
+  &__logo[href]:hover,
+  &__logo[href]:focus {
+    opacity: 0.8;
+  }
+
+  &__logo[href]:active {
+    opacity: 0.6;
+  }
+
+  &__toggle-btn {
+    position: absolute;
+    top: 13px;
+    right: 10px;
+  }
+
 }

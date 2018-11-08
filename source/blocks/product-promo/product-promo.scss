@@ -33,7 +33,7 @@
   @media (min-width: $screen-lg) {
     padding-top: 80px;
     padding-left: 190px;
-    margin-bottom: 268px;
+    margin-bottom: 235px;
   }
 
   &__title {
@@ -49,6 +49,10 @@
       margin-bottom: 45px;
       font-size: 60px;
       text-align: left;
+    }
+
+    @media (min-width: $screen-lg) {
+      max-width: 38%;
     }
   }
 
@@ -74,16 +78,18 @@
 
     @media (min-width: $screen-md) {
       position: absolute;
-      left: 30px;
-      top: 243px;
-      height: 609px;
+      left: 50%;
+      top: 75%;
       z-index: -1;
+      height: 609px;
+      transform: translate(-50%);
     }
 
     @media (min-width: $screen-lg) {
       top: 0;
-      left: 600px;
+      left: 50%;
       height: 499px;
+      transform: translate(-24%);
     }
   }
 

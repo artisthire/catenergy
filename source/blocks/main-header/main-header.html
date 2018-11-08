@@ -1,10 +1,16 @@
 <header class="main-header">
-  <nav class="main-header__navigation site-navigation">
-    <a class="site-navigation__logo">
-      <span class="visually-hidden">Логотип Cat Energy</span>
-    </a>
 
-    <button class="site-navigation__toggle-btn menu-toggle-btn menu-toggle-btn--open js-menu-toggle-btn" name="toggle-menu" type="button" aria-label="Открыть меню" hidden>
+  <a class="main-header__logo">
+    <picture>
+      <source media="(min-width: 1440px)" srcset="../img/logo-desktop.svg">
+      <source media="(min-width: 768px)" srcset="../img/logo-tablet.svg">
+      <img src="../img/logo-mobile.svg" alt="Логотип Cat Energy" width="192" height="38px"/>
+    </picture>
+  </a>
+
+  <nav class="site-navigation">
+
+    <button class="main-header__toggle-btn menu-toggle-btn menu-toggle-btn--open js-menu-toggle-btn" name="toggle-menu" type="button" aria-label="Открыть меню" hidden>
       <span class="menu-toggle-btn__line"></span>
     </button>
 

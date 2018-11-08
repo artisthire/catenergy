@@ -2,46 +2,8 @@
   $border-bottom-width: 2px;
   $border-bottom-color: #e6e6e6;
 
-  @media (max-width: $screen-md) {
-    border-bottom: $border-bottom-width solid $border-bottom-color;
-  }
-
-  @media (min-width: $screen-md) and (max-width: $screen-lg - 1) {
-    padding: 24px 30px;
-  }
-
   @media (min-width: $screen-lg) {
-    padding: 54px 110px;
-  }
-
-  &__logo {
-    display: block;
-    width: 192px;
-    height: 38px;
-    margin: 13px 20px;
-    background: url('../img/logo-mobile.svg') center center no-repeat;
-
-    @media (min-width: $screen-md) {
-      width: 173px;
-      height: 58px;
-      margin: 0;
-      background: url('../img/logo-tablet.svg') center center no-repeat;
-    }
-
-    @media (min-width: $screen-lg) {
-      width: 202px;
-      height: 59px;
-      background: url('../img/logo-desktop.svg') center center no-repeat;
-    }
-  }
-
-  &__logo[href]:hover,
-  &__logo[href]:focus {
-    opacity: 0.8;
-  }
-
-  &__logo[href]:active {
-    opacity: 0.6;
+    max-width: 50%;
   }
 
   &__list {
@@ -65,7 +27,7 @@
     display: block;
     text-align: center;
 
-    @media (max-width: $screen-md) {
+    @media (max-width: $screen-md - 1) {
       border-top: $border-bottom-width solid $border-bottom-color;
     }
 
@@ -85,6 +47,7 @@
       color: $title-color;
 
       @media (min-width: $screen-md) {
+        padding: 10px 0;
         font-size: 18px;
         font-weight: 400;
       }
@@ -112,14 +75,13 @@
         position: absolute;
         left: 0;
         right: 0;
-        bottom: 15px;
+        top: calc(50% + 21px);
         height: 2px;
         background-color: $icon-background;
 
         @media (min-width: $screen-lg) {
           background-color: $white;
         }
-
       }
     }
   }
