@@ -5,6 +5,7 @@
   margin-bottom: 25px;
   padding: 25px 20px;
   padding-bottom: 0;
+  font-family: #{$custom-fonts};
 
   @media (max-width: $screen-md - 1) {
     color: $white;
