@@ -1,0 +1,118 @@
+.product-application {
+  margin: 0 20px;
+  margin-bottom: 45px;
+
+  @media (min-width: $screen-md) {
+    margin: 0 30px;
+    margin-bottom: 110px;
+  }
+
+  @media (min-width: $screen-lg) {
+    margin: 0 110px;
+    margin-bottom: 85px;
+  }
+
+  &__title {
+    margin: 0;
+    margin-bottom: 35px;
+    font-family: #{$custom-fonts};
+    font-size: 36px;
+    font-weight: $font-weight--normal;
+    line-height: 1.67;
+
+    @media (min-width: $screen-md) {
+      margin-bottom: 65px;
+      font-size: 60px;
+      line-height: 1.1;
+    }
+  }
+
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    @media (min-width: $screen-md) {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      counter-reset: list;
+    }
+  }
+
+  &__item {
+    position: relative;
+    box-sizing: border-box;
+    display: block;
+    min-height: 60px;
+    margin-bottom: 20px;
+    padding-top: 5px;
+    padding-left: 80px;
+
+    @media (min-width: $screen-md) {
+      width: 245px;
+      min-height: 230px;
+      margin-bottom: 90px;
+      margin-right: 75px;
+      padding-top: 110px;
+      padding-left: 0;
+      flex-shrink: 0;
+    }
+
+    @media (min-width: $screen-lg) {
+      margin-right: 0;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      left: 0;
+      top: 0;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-color: $icon-background;
+
+      @media (min-width: $screen-md) {
+        width: 80px;
+        height: 80px;
+      }
+    }
+
+    &--functional::before {
+      background-size: 26px 29px;
+      background-image: url(../img/advantage-1.png);
+    }
+
+    &--state::before {
+      background-size: 29px 31px;
+      background-image: url(../img/advantage-2.png);
+    }
+
+    &--food::before {
+      background-size: 23px 30px;
+      background-image: url(../img/advantage-3.png);
+    }
+
+    &--time::before {
+      background-size: 26px 31px;
+      background-image: url(../img/advantage-4.png);
+    }
+
+    @media (min-width: $screen-md) {
+      &::after {
+        counter-increment: list;
+        content: counter(list);
+        position: absolute;
+        top: -37px;
+        right: 0;
+        z-index: -1;
+        font-family: #{$custom-fonts};
+        font-size: 281px;
+        line-height: 1;
+        color: $gray;
+      }
+    }
+  }
+}
