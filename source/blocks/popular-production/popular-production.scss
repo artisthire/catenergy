@@ -16,7 +16,6 @@
   }
 
   &__card {
-    position: relative;
     margin-bottom: 20px;
     padding: 22px 20px;
     overflow: hidden;
@@ -29,7 +28,7 @@
     @media (min-width: $screen-md) and (max-width: $screen-lg - 1) {
       min-height: 200px;
       padding-top: 80px;
-      padding-right: 295px;
+      padding-right: 43%;
       padding-bottom: 60px;
       padding-left: 52px;
       margin-bottom: 30px;
@@ -48,59 +47,43 @@
       }
     }
 
-    &::before {
-      content: '';
-      position: absolute;
+    &--slim {
+      background-image: url(../img/cat-slim-icon.svg);
+      background-position: 22px 22px;
+      background-size: 50px 52px;
+      background-repeat: no-repeat;
     }
 
-    &--slim::before {
-      content: url(../img/cat-slim-icon.svg);
-      top: 22px;
-      left: 22px;
-      width: 50px;
-      height: 52px;
-    }
-    &--pro::before {
-      content: url(../img/cat-pro-icon.svg);
-      top: 24px;
-      left: 13px;
-      width: 67px;
-      height: 50px;
+    &--pro {
+      background-image: url(../img/cat-pro-icon.svg);
+      background-position: 13px 24px;
+      background-size: 67px 50px;
+      background-repeat: no-repeat;
     }
 
     @media (min-width: $screen-md) and (max-width: $screen-lg - 1) {
 
-      &--slim::before {
-        top: 80px;
-        left: auto;
-        right: 62px;
-        width: 200px;
-        height: 212px;
+      &--slim {
+        background-position: 92% 80px;
+        background-size: 200px 212px;
       }
 
-      &--pro::before {
-        top: 91px;
-        left: auto;
-        right: 28px;
-        width: 268px;
-        height: 200px;
+      &--pro {
+        background-position: 92% 91px;
+        background-size: 268px 200px;
       }
     }
 
     @media (min-width: $screen-lg) {
 
-      &--slim::before {
-        top: 41px;
-        left: 52px;
-        width: 100px;
-        height: 106px;
+      &--slim {
+        background-position: 52px 41px;
+        background-size: 100px 106px;
       }
 
-      &--pro::before {
-        top: 47px;
-        left: 34px;
-        width: 134px;
-        height: 100px;
+      &--pro {
+        background-position: 34px 47px;
+        background-size: 134px 100px;
       }
     }
   }
@@ -151,8 +134,11 @@
     margin: 0;
     font-family: #{$custom-fonts};
     font-size: 16px;
+    line-height: 1;
     text-decoration: none;
     text-transform: uppercase;
+    white-space: nowrap;
+    overflow: hidden;
     color: $title-color;
 
     @media (min-width: $screen-md) {
