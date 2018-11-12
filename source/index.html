@@ -10,14 +10,14 @@
 <body class="main-page no-js">
   <module href="source/blocks/main-header/main-header.html"></module>
   <main>
-    <section class="product-promo">
+    <section class="product-promo container">
       <h1 class="product-promo__title">Функциональное питание для&nbsp;котов</h1>
       <p class="product-promo__slogan">Занялся собой? Займись котом!</p>
       <img class="product-promo__img" src="img/promo-product--mobile.png" alt="Фото продукта Cat energy Pro" width="280" height="270">
       <a class="product-promo__catalog-link btn" href="form.html">Подобрать программу</a>
     </section>
 
-    <section class="popular-production">
+    <section class="popular-production container">
       <h2 class="visually-hidden">Популярная продукция</h2>
       <section class="popular-production__card popular-production__card--slim">
         <h3 class="popular-production__title">Похудение</h3>
@@ -37,7 +37,7 @@
       </section>
     </section>
 
-    <section class="product-application">
+    <section class="product-application container">
       <h2 class="product-application__title">Как это работает</h2>
       <ol class="product-application__list">
         <li class="product-application__item product-application__item--functional">
@@ -55,28 +55,33 @@
       </ol>
     </section>
 
-    <section class="client-exapmle">
-      <h2 class="client-example__title">Живой пример</h2>
-      <div class="client-example__inner">
+    <section class="client-example">
+      <h2 class="client-example__title container">Живой пример</h2>
+      <div class="client-example__inner container">
         <p class="client-example__desc">
-          Борис сбросил 5 км за 2 месяца, просто заменив свой обычный корм на Cat Energi Slim.
+          Борис сбросил 5 кг за 2 месяца, просто заменив свой обычный корм на Cat Energy Slim.
           Отличный результат без изнуряющих тренировок! При этом он не менял своих привычек
           и по-прежнему спит по 16 часов в день.
         </p>
-        <h3 class="visually-hidden">Основные результаты</h3>
-        <ul class="client-example__resultats">
-          <li class="client-example__item">
-            <span class="client-example__property">Снижение веса:</span> 5 кг
-          </li>
-          <li class="client-example__result-item">
-            <span class="client-example__property">Затрачено времени:</span> 60 дней
-          </li>
-          <li class="client-example__result-item client-example__result-item--total-cost">
-            Затраты на питание: <b class="client-example__cost">1500 р.</b>
-          </li>
-        </ul>
+        <table class="client-example__result-table">
+          <caption class="visually-hidden">Основные результаты</caption>
+          <tbody>
+            <tr class="client-example__result-item">
+              <td class="client-example__result-property">Снижение веса</td>
+              <td class="client-example__result-value">5 кг</td>
+            </tr>
+            <tr class="client-example__result-item">
+              <td class="client-example__result-property">Затрачено времени</td>
+              <td class="client-example__result-value">60 дней</td>
+            </tr>
+            <tr class="client-example__cost">
+              <td class="client-example__cost-property">Затраты на питание:</td>
+              <td class="client-example__cost-value">15 000 р.</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-      <div class="client-example__photos photos-slider">
+      <div class="client-example__photos container photos-slider">
         <h3 class="visually-hidden">Фото кота до использования нашего продукта и после</h3>
         <img class="photos-slider__img" src="img/before-mobile.png" alt="Фотография ДО использования нашего продукта" width="311" height="232">
         <img class="photos-slider__img" src="img/after-mobile.png" alt="Фотография ПОСЛЕ использования нашего продукта" width="251" height="240">
