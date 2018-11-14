@@ -57,37 +57,54 @@
 
     <section class="client-example">
       <h2 class="client-example__title container">Живой пример</h2>
-      <div class="client-example__inner container">
-        <p class="client-example__desc">
-          Борис сбросил 5 кг за 2 месяца, просто заменив свой обычный корм на Cat Energy Slim.
-          Отличный результат без изнуряющих тренировок! При этом он не менял своих привычек
-          и по-прежнему спит по 16 часов в день.
-        </p>
-        <table class="client-example__result-table">
-          <caption class="visually-hidden">Основные результаты</caption>
-          <tbody>
-            <tr class="client-example__result-item">
-              <td class="client-example__result-property">Снижение веса</td>
-              <td class="client-example__result-value">5 кг</td>
-            </tr>
-            <tr class="client-example__result-item">
-              <td class="client-example__result-property">Затрачено времени</td>
-              <td class="client-example__result-value">60 дней</td>
-            </tr>
-            <tr class="client-example__cost">
-              <td class="client-example__cost-property">Затраты на питание:</td>
-              <td class="client-example__cost-value">15 000 р.</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="client-example__photos container photos-slider">
-        <h3 class="visually-hidden">Фото кота до использования нашего продукта и после</h3>
-        <img class="photos-slider__img" src="img/before-mobile.png" alt="Фотография ДО использования нашего продукта" width="311" height="232">
-        <img class="photos-slider__img" src="img/after-mobile.png" alt="Фотография ПОСЛЕ использования нашего продукта" width="251" height="240">
-        <div class="photos-slider__controls" hidden>
-          <button class="photos-slider__btn photos-slider__btn--before" aria-label="Предыдущий слайд">До</button>
-          <button class="photos-slider__btn photos-slider__btn--after" aria-label="Следующий слайд">После</button>
+      <div class="client-example__inner">
+        <div class="container">
+          <p class="client-example__desc">
+            Борис сбросил 5 кг за 2 месяца, просто заменив свой обычный корм на Cat Energy Slim.
+            Отличный результат без изнуряющих тренировок! При этом он не менял своих привычек
+            и по-прежнему спит по 16 часов в день.
+          </p>
+          <table class="client-example__result-table">
+            <caption class="visually-hidden">Основные результаты</caption>
+            <tbody>
+              <tr class="client-example__result-item">
+                <td class="client-example__result-property">Снижение веса</td>
+                <td class="client-example__result-value">5 кг</td>
+              </tr>
+              <tr class="client-example__result-item">
+                <td class="client-example__result-property">Затрачено времени</td>
+                <td class="client-example__result-value">60 дней</td>
+              </tr>
+              <tr class="client-example__cost">
+                <td class="client-example__cost-property">Затраты на питание:</td>
+                <td class="client-example__cost-value">15 000 р.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="client-example__photos photos-slider">
+          <h3 class="visually-hidden">Фото кота до использования нашего продукта и после</h3>
+          <div class="photos-slider__img-container">
+            <figure class="photos-slider__img-wrap">
+              <figcaption class="photos-slider__img-title">Фото кота <strong>ДО</strong> использования <b>Cat&npEnergy Slim</b></figcaption>
+              <picture>
+                <source media="(min-width: 768px)" srcset="img/before-desktop.png">
+                <img class="photos-slider__img" src="img/before-mobile.png" alt="Фотография ДО использования Cat Energy Slim" width="320" height="240">
+              </picture>
+            </figure>
+            <figure class="photos-slider__img-wrap">
+              <figcaption class="photos-slider__img-title">Фото кота <strong>ПОСЛЕ</strong> использования <b>Cat Energy Slim</b></figcaption>
+              <picture>
+                <source media="(min-width: 768px)" srcset="img/after-desktop.png">
+                <img class="photos-slider__img" src="img/after-mobile.png" alt="Фотография ПОСЛЕ использования Cat Energy Slim" width="320" height="240">
+              </picture>
+            </figure>
+          </div>
+          <div class="photos-slider__controls" hidden>
+            <button class="photos-slider__label" type="button" aria-label="Предыдущий слайд">Было</button>
+            <span class="photos-slider__control-background"><button class="photos-slider__control" type="button" aria-label="Сменить слайд">Сменить слайд</button></span>
+            <button class="photos-slider__label" type="button" aria-label="Следующий слайд">Стало</button>
+          </div>
         </div>
       </div>
     </section>

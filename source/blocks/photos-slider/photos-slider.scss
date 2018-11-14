@@ -1,0 +1,169 @@
+.photos-slider__img {
+  display: block;
+  width: 320px;
+  min-width: 320px;
+  height: 240px;
+  margin: 0 auto;
+
+  @media (min-width: $screen-md) {
+    width: 677px;
+    min-width: 677px;
+    height: 499px;
+  }
+}
+
+.no-js .photos-slider {
+
+  &__img-wrap {
+    display: block;
+    margin: 10px 0;
+  }
+
+  &__img-title {
+    padding: 0 20px;
+    text-align: center;
+
+    @media (min-width: $screen-md) {
+      padding: 0 30px;
+    }
+
+    @media (min-width: $screen-lg) {
+      padding: 0 110px;
+    }
+  }
+}
+
+.js .photos-slider {
+
+
+  @media (min-width: $screen-md) and (max-width: $screen-lg - 1){
+    margin-top: 170px;
+  }
+
+  @media (min-width: $screen-md) {
+    background-image: linear-gradient(to right, $gray 50%, #eaeaea 50%);
+  }
+
+  @media (min-width: $screen-lg) {
+    height: 100%;
+  }
+
+  &__img-container {
+    position: relative;
+    width: 100%;
+    height: 240px;
+
+    @media (min-width: $screen-md) {
+      height: 329px;
+    }
+  }
+
+  &__img-wrap {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translate(-50%);
+    display: block;
+    margin: 0;
+
+    @media (max-width: $screen-md - 1) {
+      &:last-child {
+        display: none;
+      }
+    }
+
+    @media (min-width: $screen-md) {
+      top: -170px;
+
+      &:first-child {
+        clip: rect(auto, 339px, auto, 0);
+      }
+
+      &:last-child {
+        clip: rect(auto, auto, auto, 338px);
+      }
+    }
+  }
+
+  &__img-title {
+    display: none;
+  }
+
+  &__controls {
+    display: block;
+    padding: 30px 0;
+    text-align: center;
+  }
+
+  &__label {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 5px;
+    padding: 0 10px;
+    font-family: #{$custom-fonts};
+    font-size: 16px;
+    line-height: 20px;
+    text-transform: uppercase;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+
+  &__control-background {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    height: 14px;
+    width: 84px;
+    font-size: 0;
+    border: 1px solid $gray-darken;
+    border-radius: 6px;
+    background-color: $white;
+
+    @media (min-width: $screen-md) {
+      width: 428px;
+      height: 6px;
+      border: none;
+      border-radius: 3px;
+      background-color: #dcdcdc;
+    }
+  }
+
+  &__control {
+    box-sizing: border-box;
+    position: absolute;
+    top: 50%;
+    left: 6px;
+    width: 35px;
+    height: 6px;
+    margin: 0;
+    margin-top: -3px;
+    padding: 0;
+    border: none;
+    border-radius: inherit;
+    background-color: $icon-background;
+    cursor: pointer;
+
+    @media (max-width: $screen-md - 1) {
+      transition: all 0.3s linear;
+
+      &--right {
+        left: 43px;
+      }
+    }
+
+    @media (min-width: $screen-md) {
+      left: 50%;
+      width: 32px;
+      height: 32px;
+      margin-left: -14px;
+      margin-top: -16px;
+      border: 12px solid $white;
+      border-radius: 50%;
+      background-color: $icon-background;
+      box-shadow:
+          0 0 0 1px #cdcdcd,
+          0 2px 5px 0 rgba(0, 0, 0, 0.15);
+    }
+  }
+}
