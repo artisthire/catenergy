@@ -1,4 +1,5 @@
 .client-example {
+  $block: &;
 
   @media (max-width: $screen-md - 1) {
     background-color: $gray;
@@ -20,13 +21,9 @@
 
   &__inner {
     position: relative;
-    padding-bottom: 45px;
-
-    @media (min-width: $screen-md) {
-      padding-bottom: 85px;
-    }
 
     @media (min-width: $screen-lg) {
+      min-height: 300px;
       padding-top: 70px;
       padding-bottom: 70px;
       background-color: $gray;
@@ -187,12 +184,19 @@
   }
 
   .js &__photos {
+    margin-top: 40px;
+
+    @media (min-width: $screen-md) {
+      margin-top: 105px;
+    }
 
     @media (min-width: $screen-lg) {
       position: absolute;
       left: 50%;
-      top: 0;
+      top: -170px;
       width: 50%;
+      height: 100%;
+      margin-top: 0;
     }
   }
 }

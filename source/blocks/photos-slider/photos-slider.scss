@@ -34,53 +34,58 @@
 }
 
 .js .photos-slider {
-
-
-  @media (min-width: $screen-md) and (max-width: $screen-lg - 1){
-    margin-top: 170px;
+  @media (max-width: $screen-lg - 1) {
+    position: relative;
   }
 
   @media (min-width: $screen-md) {
-    background-image: linear-gradient(to right, $gray 50%, #eaeaea 50%);
-  }
+    padding-top: 170px;
+    z-index: 2;
 
-  @media (min-width: $screen-lg) {
-    height: 100%;
-  }
-
-  &__img-container {
-    position: relative;
-    width: 100%;
-    height: 240px;
-
-    @media (min-width: $screen-md) {
-      height: 329px;
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 170px;
+      bottom: 0;
+      z-index: -1;
+      background-image:
+       linear-gradient(to right, $gray 50%, #eaeaea 50%);
     }
   }
 
   &__img-wrap {
-    position: absolute;
-    left: 50%;
-    top: 0;
-    transform: translate(-50%);
-    display: block;
     margin: 0;
+    padding-bottom: 88px;
 
     @media (max-width: $screen-md - 1) {
-      &:last-child {
+      &--next {
         display: none;
       }
     }
 
     @media (min-width: $screen-md) {
-      top: -170px;
+      padding-bottom: 115px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
 
-      &:first-child {
-        clip: rect(auto, 339px, auto, 0);
+      &--prev {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        clip: rect(auto, 350px, auto, 0);
+        background-image: linear-gradient(to bottom, $white 170px, $gray 170px);
+
+        // background-color: $gray;
       }
 
-      &:last-child {
-        clip: rect(auto, auto, auto, 338px);
+      &--next {
+        margin-top: -170px;
+        background-image: linear-gradient(to bottom, $white 170px, #eaeaea 170px);
+        // background-color: #eaeaea;
       }
     }
   }
@@ -90,29 +95,71 @@
   }
 
   &__controls {
-    display: block;
-    padding: 30px 0;
-    text-align: center;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 260px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    @media (min-width: $screen-md) {
+      top: 530px;
+    }
   }
 
   &__label {
-    display: inline-block;
-    vertical-align: middle;
-    margin: 0 5px;
-    padding: 0 10px;
+    position: relative;
+    display: block;
+    padding: 0 15px;
+    border: none;
     font-family: #{$custom-fonts};
     font-size: 16px;
     line-height: 20px;
     text-transform: uppercase;
     background-color: transparent;
-    border: none;
-    cursor: pointer;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 15px;
+      right: 15px;
+      bottom: -3px;
+      height: 1px;
+      border-bottom: 1px dashed #bebebe;
+    }
+
+    @media (max-width: $screen-md - 1) {
+      cursor: pointer;
+
+      &:hover::after,
+      &:focus::after {
+        border-bottom-style: solid;
+
+      }
+
+      &--active {
+        cursor: auto;
+        pointer-events: none;
+      }
+
+      &--active::after,
+      &:active::after {
+        border-bottom-color: transparent;
+      }
+    }
+
+    @media (min-width: $screen-md) {
+      margin: 0 10px;
+      pointer-events: none;
+      cursor: auto;
+    }
   }
 
   &__control-background {
     position: relative;
-    display: inline-block;
-    vertical-align: middle;
+    display: block;
     height: 14px;
     width: 84px;
     font-size: 0;
@@ -142,10 +189,11 @@
     border: none;
     border-radius: inherit;
     background-color: $icon-background;
-    cursor: pointer;
+
 
     @media (max-width: $screen-md - 1) {
       transition: all 0.3s linear;
+      pointer-events: none;
 
       &--right {
         left: 43px;
@@ -163,7 +211,23 @@
       background-color: $icon-background;
       box-shadow:
           0 0 0 1px #cdcdcd,
-          0 2px 5px 0 rgba(0, 0, 0, 0.15);
+          0 3px 5px 0 rgba(0, 0, 0, 0.15);
+      pointer-events: auto;
+      cursor: pointer;
+
+      &:hover,
+      &:focus {
+        outline: none;
+        box-shadow:
+            0 0 0 1px #cdcdcd,
+            0 3px 5px 0 rgba(0, 0, 0, 0.25);
+      }
+
+      &:active {
+        box-shadow:
+            0 0 0 2px $icon-background,
+            0 5px 5px 0 rgba(0, 0, 0, 0.3);
+      }
     }
   }
 }

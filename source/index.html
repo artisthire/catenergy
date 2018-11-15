@@ -84,33 +84,38 @@
         </div>
         <div class="client-example__photos photos-slider">
           <h3 class="visually-hidden">Фото кота до использования нашего продукта и после</h3>
-          <div class="photos-slider__img-container">
-            <figure class="photos-slider__img-wrap">
-              <figcaption class="photos-slider__img-title">Фото кота <strong>ДО</strong> использования <b>Cat&npEnergy Slim</b></figcaption>
-              <picture>
-                <source media="(min-width: 768px)" srcset="img/before-desktop.png">
-                <img class="photos-slider__img" src="img/before-mobile.png" alt="Фотография ДО использования Cat Energy Slim" width="320" height="240">
-              </picture>
-            </figure>
-            <figure class="photos-slider__img-wrap">
-              <figcaption class="photos-slider__img-title">Фото кота <strong>ПОСЛЕ</strong> использования <b>Cat Energy Slim</b></figcaption>
-              <picture>
-                <source media="(min-width: 768px)" srcset="img/after-desktop.png">
-                <img class="photos-slider__img" src="img/after-mobile.png" alt="Фотография ПОСЛЕ использования Cat Energy Slim" width="320" height="240">
-              </picture>
-            </figure>
-          </div>
+          <!-- для мобильной версии поочередное переключение оберток для двух картинок __img-wrap: display: block/none -->
+          <!-- для версии от планшета и выше __img-wrap--prev: rect(auto, 350px, auto, 0),
+          уменшая/увеличивая вторую координату (350px),
+          где общая ширина обертки 700px, средина - 350px
+        -->
+          <figure class="photos-slider__img-wrap photos-slider__img-wrap--prev">
+            <figcaption class="photos-slider__img-title">Фото кота <strong>ДО</strong> использования <b>Cat&npEnergy Slim</b></figcaption>
+            <picture>
+              <source media="(min-width: 768px)" srcset="img/before-desktop.png">
+              <img class="photos-slider__img" src="img/before-mobile.png" alt="Фотография ДО использования Cat Energy Slim" width="320" height="240">
+            </picture>
+          </figure>
+          <figure class="photos-slider__img-wrap photos-slider__img-wrap--next">
+            <figcaption class="photos-slider__img-title">Фото кота <strong>ПОСЛЕ</strong> использования <b>Cat Energy Slim</b></figcaption>
+            <picture>
+              <source media="(min-width: 768px)" srcset="img/after-desktop.png">
+              <img class="photos-slider__img" src="img/after-mobile.png" alt="Фотография ПОСЛЕ использования Cat Energy Slim" width="320" height="240">
+            </picture>
+          </figure>
           <div class="photos-slider__controls" hidden>
-            <button class="photos-slider__label" type="button" aria-label="Предыдущий слайд">Было</button>
+            <!-- для мобильной версии выбор актвного слайда "БЫЛО" и "СТАЛО" путем добавлениея photos-slider__label--active -->
+            <!-- Контролл photos-slider__control в мобильной версии выступает только как индикатор, переключение слайдов с помощью клика по не активной photos-slider__label -->
+            <button class="photos-slider__label photos-slider__label--active" type="button" aria-label="Предыдущий слайд">Было</button>
+              <!-- в версии от планшета интеративой есть только кнопка перетягивания видимости слайда photos-slider__control-->
             <span class="photos-slider__control-background"><button class="photos-slider__control" type="button" aria-label="Сменить слайд">Сменить слайд</button></span>
             <button class="photos-slider__label" type="button" aria-label="Следующий слайд">Стало</button>
           </div>
         </div>
-      </div>
     </section>
 
     <section class="main-contacts">
-      <header class="main-contacts__header">
+      <header class="container main-contacts__header">
         <h2 class="main-contacts__title">Приглашаем к сотрудницеству диллеров!</h2>
         <h3 class="visually-hidden">Наш адрес</h3>
         <p class="main-contacts__address">
