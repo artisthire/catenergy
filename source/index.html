@@ -84,48 +84,58 @@
         </div>
         <div class="client-example__photos photos-slider">
           <h3 class="visually-hidden">Фото кота до использования нашего продукта и после</h3>
-          <!-- для мобильной версии поочередное переключение оберток для двух картинок __img-wrap: display: block/none -->
-          <!-- для версии от планшета и выше __img-wrap--prev: rect(auto, 350px, auto, 0),
-          уменшая/увеличивая вторую координату (350px),
-          где общая ширина обертки 700px, средина - 350px
-        -->
-          <figure class="photos-slider__img-wrap photos-slider__img-wrap--prev">
-            <figcaption class="photos-slider__img-title">Фото кота <strong>ДО</strong> использования <b>Cat&npEnergy Slim</b></figcaption>
-            <picture>
-              <source media="(min-width: 768px)" srcset="img/before-desktop.png">
-              <img class="photos-slider__img" src="img/before-mobile.png" alt="Фотография ДО использования Cat Energy Slim" width="320" height="240">
-            </picture>
-          </figure>
-          <figure class="photos-slider__img-wrap photos-slider__img-wrap--next">
-            <figcaption class="photos-slider__img-title">Фото кота <strong>ПОСЛЕ</strong> использования <b>Cat Energy Slim</b></figcaption>
-            <picture>
-              <source media="(min-width: 768px)" srcset="img/after-desktop.png">
-              <img class="photos-slider__img" src="img/after-mobile.png" alt="Фотография ПОСЛЕ использования Cat Energy Slim" width="320" height="240">
-            </picture>
-          </figure>
+          <div class="photos-slider__img-container">
+            <!-- для мобильной версии поочередное переключение оберток для двух картинок __img-wrap: display: block/none -->
+            <!-- для версии от планшета и выше __img-wrap--prev: rect(auto, 350px, auto, 0),
+            уменшая/увеличивая вторую координату (350px),
+            где общая ширина обертки 700px, средина - 350px
+                    -->
+            <figure class="photos-slider__img-wrap photos-slider__img-wrap--prev">
+              <figcaption class="photos-slider__img-title">Фото кота <strong>ДО</strong> использования <b>Cat&npEnergy Slim</b></figcaption>
+              <picture>
+                <source media="(min-width: 768px)" srcset="img/before-desktop.png">
+                <img class="photos-slider__img" src="img/before-mobile.png" alt="Фотография ДО использования Cat Energy Slim" width="320" height="240">
+              </picture>
+            </figure>
+            <figure class="photos-slider__img-wrap photos-slider__img-wrap--next">
+              <figcaption class="photos-slider__img-title">Фото кота <strong>ПОСЛЕ</strong> использования <b>Cat Energy Slim</b></figcaption>
+              <picture>
+                <source media="(min-width: 768px)" srcset="img/after-desktop.png">
+                <img class="photos-slider__img" src="img/after-mobile.png" alt="Фотография ПОСЛЕ использования Cat Energy Slim" width="320" height="240">
+              </picture>
+            </figure>
+          </div>
           <div class="photos-slider__controls" hidden>
-            <!-- для мобильной версии выбор актвного слайда "БЫЛО" и "СТАЛО" путем добавлениея photos-slider__label--active -->
-            <!-- Контролл photos-slider__control в мобильной версии выступает только как индикатор, переключение слайдов с помощью клика по не активной photos-slider__label -->
-            <button class="photos-slider__label photos-slider__label--active" type="button" aria-label="Предыдущий слайд">Было</button>
-              <!-- в версии от планшета интеративой есть только кнопка перетягивания видимости слайда photos-slider__control-->
+            <!-- в версии от планшета быстрое переключение слайдов при нажании на "БЫЛО" и "СТАЛО" откроет полностью весь соответствующий слайд -->
+            <!-- если один из слайдов быстрым переключением открывается полностью, соотвествующую __label можно сделать активной добавив класс photos-slider__label--active -->
+            <button class="photos-slider__label" type="button" aria-label="Предыдущий слайд">Было</button>
+              <!-- для мобильной версии выбор актвного слайда "БЫЛО" и "СТАЛО" через центральный переключатель __control, его позиция меняется добавлением класса photos-slider__control--right -->
+              <!-- в версии от планшета медленно открывать слайды можно перетягивая photos-slider__control при этом изменяя видимость первого слайда с помощью свойства clip:rect -->
             <span class="photos-slider__control-background"><button class="photos-slider__control" type="button" aria-label="Сменить слайд">Сменить слайд</button></span>
             <button class="photos-slider__label" type="button" aria-label="Следующий слайд">Стало</button>
           </div>
         </div>
+      </div>
     </section>
 
     <section class="main-contacts">
-      <header class="container main-contacts__header">
-        <h2 class="main-contacts__title">Приглашаем к сотрудницеству диллеров!</h2>
+      <header class="main-contacts__header">
+        <h2 class="main-contacts__title">Приглашаем к&nbsp;сотрудницеству диллеров!</h2>
         <h3 class="visually-hidden">Наш адрес</h3>
         <p class="main-contacts__address">
           ул. Большая <br>
-          Коннюшенная д. 19/8 <br>
+          Коннюшенная д. 19/8 <br />
+          <br class="main-contacts__address-br">
           Санкт-Петербург
         </p>
       </header>
-      <div class="main-contacts__map map-contacts">
-        <img class="map-contacts__map" src="img/map-backup.jpg" alt="Санкт-Петербург, ул. Большая Коннюшенная, д. 19/8" height="360">
+      <div class="main-contacts__map">
+        <picture>
+          <source media="(min-width: 1440px)" srcset="img/map-backup.jpg">
+          <source media="(min-width: 768px)" srcset="img/map-backup--1440.jpg">
+          <img class="main-contacts__img" src="img/map-backup--768.jpg" alt="Санкт-Петербург, ул. Большая Коннюшенная, д. 19/8" height="360">
+        </picture>
+
       </div>
     </section>
   </main>

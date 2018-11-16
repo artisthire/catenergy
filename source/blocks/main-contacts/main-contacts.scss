@@ -1,0 +1,54 @@
+.main-contacts {
+  position: relative;
+
+  &__header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 30px 20px;
+
+    @media (min-width: $screen-md) {
+      padding: 65px 70px;
+    }
+
+    @media (min-width: $screen-lg) {
+      position: absolute;
+      left: 147px;
+      top: 95px;
+      width: 570px;
+      z-index: 2;
+      background-color: $white;
+    }
+  }
+
+  &__title {
+    max-width: 140px;
+    margin: 0;
+    font-family: #{$custom-fonts};
+    font-size: 16px;
+    font-weight: $font-weight--normal;
+    line-height: 20px;
+    text-transform: uppercase;
+
+    @media (min-width: $screen-md) {
+      font-size: 20px;
+      line-height: 25px;
+    }
+  }
+
+  &__address {
+    margin: 0;
+    line-height: 20px;
+  }
+
+  &__address-br {
+    @media (max-width: $screen-md - 1) {
+      display: none;
+    }
+  }
+
+  &__map {
+    height: 363px;
+    overflow: hidden;
+  }
+}

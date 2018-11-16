@@ -34,30 +34,70 @@
 }
 
 .js .photos-slider {
-  @media (max-width: $screen-lg - 1) {
+  $gradient-color--top: $white;
+  $gradient-color--left: $gray;
+  $gradient-color--right: #eaeaea;
+  $gradient-top-height: 170px;
+  $max-width-img-wrap: 700px;
+  $rect-start-position: $max-width-img-wrap / 2;
+  $padding-img-wrap--mobile: 88px;
+  $padding-img-wrap--tablet: 115px;
+  //определяется с учетом размера картинок
+  $controls-top-position--mobile: 240px + 35px;
+  $controls-top-position--tablet: 499px + 35px;
+
+
+
+  position: relative;
+  // @media (max-width: $screen-lg - 1) {
+  //   position: relative;
+  // }
+  //
+  // @media (min-width: $screen-md) {
+  //   padding-top: 170px;
+  //   z-index: 2;
+  //
+  //   &::after {
+  //     content: '';
+  //     position: absolute;
+  //     left: 0;
+  //     right: 0;
+  //     top: 170px;
+  //     bottom: 0;
+  //     z-index: -1;
+  //     background-image:
+  //      linear-gradient(to right, $gray 50%, #eaeaea 50%);
+  //   }
+  // }
+
+  &__img-container {
     position: relative;
-  }
 
-  @media (min-width: $screen-md) {
-    padding-top: 170px;
-    z-index: 2;
-
-    &::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      right: 0;
-      top: 170px;
-      bottom: 0;
-      z-index: -1;
+    @media (min-width: $screen-md) {
+      // z-index: 2;
+      height: 100%;
       background-image:
-       linear-gradient(to right, $gray 50%, #eaeaea 50%);
+       linear-gradient(to bottom, $gradient-color--top $gradient-top-height, transparent $gradient-top-height),
+       linear-gradient(to right, $gradient-color--left 50%, $gradient-color--right 50%);
+
+
+      // &::after {
+      //   content: '';
+      //   position: absolute;
+      //   left: 0;
+      //   right: 0;
+      //   top: 170px;
+      //   bottom: 0;
+      //   z-index: -1;
+      //
+      // }
     }
   }
 
   &__img-wrap {
-    margin: 0;
-    padding-bottom: 88px;
+    max-width: $max-width-img-wrap;
+    margin: 0 auto;
+    padding-bottom: $padding-img-wrap--mobile;
 
     @media (max-width: $screen-md - 1) {
       &--next {
@@ -66,26 +106,19 @@
     }
 
     @media (min-width: $screen-md) {
-      padding-bottom: 115px;
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
+      padding-bottom: $padding-img-wrap--tablet;
 
       &--prev {
         position: absolute;
         left: 0;
         right: 0;
         top: 0;
-        clip: rect(auto, 350px, auto, 0);
-        background-image: linear-gradient(to bottom, $white 170px, $gray 170px);
-
-        // background-color: $gray;
+        clip: rect(auto, $rect-start-position, auto, 0);
+        background-image: linear-gradient(to bottom, $gradient-color--top $gradient-top-height, $gradient-color--left $gradient-top-height);
       }
 
       &--next {
-        margin-top: -170px;
-        background-image: linear-gradient(to bottom, $white 170px, #eaeaea 170px);
-        // background-color: #eaeaea;
+        background-image: linear-gradient(to bottom, $gradient-color--top $gradient-top-height, $gradient-color--right $gradient-top-height);
       }
     }
   }
@@ -94,49 +127,57 @@
     display: none;
   }
 
+  $padding-label--g: 15px;
+  $font-size--mobile: 16px;
+  $font-size--tablet: 20px;
+  $line-height: 20px;
+
   &__controls {
     position: absolute;
     left: 0;
     right: 0;
-    top: 260px;
+    top: $controls-top-position--mobile;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
 
     @media (min-width: $screen-md) {
-      top: 530px;
+      top: $controls-top-position--tablet;
     }
   }
 
   &__label {
     position: relative;
     display: block;
-    padding: 0 15px;
+    padding: 0 $padding-label--g;
     border: none;
     font-family: #{$custom-fonts};
-    font-size: 16px;
-    line-height: 20px;
+    font-size: $font-size--mobile;
+    line-height: $line-height;
     text-transform: uppercase;
+    color: $title-color;
     background-color: transparent;
 
-    &::after {
-      content: '';
-      position: absolute;
-      left: 15px;
-      right: 15px;
-      bottom: -3px;
-      height: 1px;
-      border-bottom: 1px dashed #bebebe;
-    }
-
-    @media (max-width: $screen-md - 1) {
+    @media (min-width: $screen-md) {
+      margin: 0 10px;
+      font-size: $font-size--tablet;
+      // outline: none;
       cursor: pointer;
+
+      &::after {
+        content: '';
+        position: absolute;
+        left: $padding-label--g;
+        right: $padding-label--g;
+        bottom: -3px;
+        height: 1px;
+        border-bottom: 1px dashed #bebebe;
+      }
 
       &:hover::after,
       &:focus::after {
         border-bottom-style: solid;
-
       }
 
       &--active {
@@ -149,25 +190,13 @@
         border-bottom-color: transparent;
       }
     }
-
-    @media (min-width: $screen-md) {
-      margin: 0 10px;
-      pointer-events: none;
-      cursor: auto;
-    }
   }
 
   &__control-background {
-    position: relative;
-    display: block;
-    height: 14px;
-    width: 84px;
-    font-size: 0;
-    border: 1px solid $gray-darken;
-    border-radius: 6px;
-    background-color: $white;
 
     @media (min-width: $screen-md) {
+      position: relative;
+      display: block;
       width: 428px;
       height: 6px;
       border: none;
@@ -178,29 +207,43 @@
 
   &__control {
     box-sizing: border-box;
-    position: absolute;
-    top: 50%;
-    left: 6px;
-    width: 35px;
-    height: 6px;
+    display: block;
     margin: 0;
-    margin-top: -3px;
     padding: 0;
-    border: none;
-    border-radius: inherit;
-    background-color: $icon-background;
-
+    font-size: 0;
+    cursor: pointer;
 
     @media (max-width: $screen-md - 1) {
+      position: relative;
+      height: 14px;
+      width: 84px;
+      border: 1px solid $gray-darken;
+      border-radius: 6px;
+      background-color: $white;
       transition: all 0.3s linear;
-      pointer-events: none;
 
-      &--right {
+      &::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 6px;
+        width: 35px;
+        height: 6px;
+        padding: 0;
+        border-radius: inherit;
+        margin: 0;
+        margin-top: -3px;
+        background-color: $icon-background;
+      }
+
+      &--right::after {
         left: 43px;
       }
     }
 
     @media (min-width: $screen-md) {
+      position: absolute;
+      top: 50%;
       left: 50%;
       width: 32px;
       height: 32px;
@@ -212,12 +255,10 @@
       box-shadow:
           0 0 0 1px #cdcdcd,
           0 3px 5px 0 rgba(0, 0, 0, 0.15);
-      pointer-events: auto;
-      cursor: pointer;
 
       &:hover,
       &:focus {
-        outline: none;
+        // outline: none;
         box-shadow:
             0 0 0 1px #cdcdcd,
             0 3px 5px 0 rgba(0, 0, 0, 0.25);

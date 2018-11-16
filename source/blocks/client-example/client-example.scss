@@ -20,12 +20,14 @@
   }
 
   &__inner {
-    position: relative;
 
     @media (min-width: $screen-lg) {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
       min-height: 300px;
       padding-top: 70px;
-      padding-bottom: 70px;
+      // padding-bottom: 70px;
       background-color: $gray;
     }
   }
@@ -48,16 +50,19 @@
     display: block;
     max-width: 300px;
     margin: 0 auto;
+    padding-bottom: 40px;
     border-spacing: 0;
 
     @media (min-width: $screen-md) and (max-width: $screen-lg - 1) {
       max-width: none;
       margin: 0;
+      padding-bottom: 105px;
     }
 
     @media (min-width: $screen-lg) {
       max-width: 450px;
       margin: 0;
+      padding-bottom: 70px;
     }
 
     & > tbody {
@@ -184,19 +189,10 @@
   }
 
   .js &__photos {
-    margin-top: 40px;
-
-    @media (min-width: $screen-md) {
-      margin-top: 105px;
-    }
 
     @media (min-width: $screen-lg) {
-      position: absolute;
-      left: 50%;
-      top: -170px;
       width: 50%;
-      height: 100%;
-      margin-top: 0;
+      margin-top: -240px;
     }
   }
 }
