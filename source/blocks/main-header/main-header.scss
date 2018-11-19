@@ -11,11 +11,13 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    padding: 24px 30px;
+    padding-top: 24px;
+    padding-bottom: 24px;
   }
 
   @media (min-width: $screen-lg) {
-    padding: 54px 110px;
+    padding-top: 54px;
+    padding-bottom: 54px;
 
     &:before {
       content: '';
@@ -37,14 +39,14 @@
     display: block;
     width: 192px;
     height: 38px;
-    margin-left: 20px;
-    margin-bottom: 13px;
+    margin: 0;
+    padding-bottom: 13px;
 
     @media (min-width: $screen-md) {
       flex-shrink: 0;
       width: 173px;
       height: 58px;
-      margin: 0;
+      padding-bottom: 0;
     }
 
     @media (min-width: $screen-lg) {

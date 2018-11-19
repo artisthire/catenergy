@@ -9,7 +9,7 @@
 
 <body class="main-page no-js">
   <module href="source/blocks/main-header/main-header.html"></module>
-  <main>
+  <main >
     <section class="product-promo container">
       <h1 class="product-promo__title">Функциональное питание для&nbsp;котов</h1>
       <p class="product-promo__slogan">Занялся собой? Займись котом!</p>
@@ -55,10 +55,10 @@
       </ol>
     </section>
 
-    <section class="client-example">
-      <h2 class="client-example__title container">Живой пример</h2>
+    <section class="client-example container">
+      <h2 class="client-example__title">Живой пример</h2>
       <div class="client-example__inner">
-        <div class="container">
+        <div>
           <p class="client-example__desc">
             Борис сбросил 5 кг за 2 месяца, просто заменив свой обычный корм на Cat Energy Slim.
             Отличный результат без изнуряющих тренировок! При этом он не менял своих привычек
@@ -129,13 +129,12 @@
           Санкт-Петербург
         </p>
       </header>
-      <div class="main-contacts__map">
+      <div class="main-contacts__map-wrap">
         <picture>
-          <source media="(min-width: 1440px)" srcset="img/map-backup.jpg">
-          <source media="(min-width: 768px)" srcset="img/map-backup--1440.jpg">
-          <img class="main-contacts__img" src="img/map-backup--768.jpg" alt="Санкт-Петербург, ул. Большая Коннюшенная, д. 19/8" height="360">
+          <source media="(min-width: 1440px)" srcset="img/map-backup--lg.jpg 1x, img/map-backup--lg-x2.jpg 2x, img/map-backup--lg-x3.jpg 3x">
+          <source media="(min-width: 768px)" srcset="img/map-backup--md.jpg 1x, img/map-backup--md-x2.jpg 2x, img/map-backup--md-x3.jpg 3x">
+          <img class="main-contacts__map-img" src="img/map-backup--sm.jpg" srcset="img/map-backup--sm-x2.jpg 2x, img/map-backup--sm-x3.jpg 3x" alt="Санкт-Петербург, ул. Большая Коннюшенная, д. 19/8" height="365">
         </picture>
-
       </div>
     </section>
   </main>

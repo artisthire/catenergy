@@ -1,5 +1,15 @@
 .main-contacts {
   position: relative;
+  width: 320px;
+  margin: 0 auto;
+
+  @media (min-width: $screen-md) {
+    width: 768px;
+  }
+
+  @media (min-width: $screen-lg) {
+    width: 1440px;
+  }
 
   &__header {
     display: flex;
@@ -47,8 +57,32 @@
     }
   }
 
-  &__map {
-    height: 363px;
+  &__map-wrap {
+    position: relative;
+    height: 360px;
     overflow: hidden;
+    background-color: $gray;
+
+    @media (min-width: $screen-md) {
+      height: 400px;
+    }
   }
+
+  &__map-img {
+    display: block;
+    position: absolute;
+    left: 50%;
+    top:50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    max-width: none;
+    height: auto;
+
+    @media (min-width: $screen-md) {
+      left: auto;
+      right: 0;
+      transform: translate(0, -50%);
+    }
+  }
+
 }

@@ -26,13 +26,11 @@
   }
 
   @media (min-width: $screen-md) {
-    padding-left: 120px;
     margin-bottom: 535px;
   }
 
   @media (min-width: $screen-lg) {
     padding-top: 80px;
-    padding-left: 190px;
     margin-bottom: 235px;
   }
 
@@ -47,6 +45,7 @@
 
     @media (min-width: $screen-md) {
       margin-bottom: 45px;
+      padding-left: 85px;
       font-size: 60px;
       text-align: left;
     }
@@ -64,6 +63,7 @@
 
     @media (min-width: $screen-md) {
       margin-bottom: 45px;
+      padding-left: 85px;
       font-size: 20px;
       text-align: left;
     }
@@ -82,14 +82,14 @@
       top: 75%;
       z-index: -1;
       height: 609px;
-      transform: translate(-50%);
+      transform: translate(-45%);
     }
 
     @media (min-width: $screen-lg) {
       top: 0;
       left: 50%;
       height: 499px;
-      transform: translate(-24%);
+      transform: translate(-25%);
     }
   }
 
@@ -97,6 +97,10 @@
 
     @media (max-width: $screen-md - 1) {
       width: 100%;
+    }
+
+    @media (min-width: $screen-md) {
+      margin-left: 85px;
     }
   }
 }

@@ -72,6 +72,7 @@
 
   &__img-container {
     position: relative;
+    overflow: hidden;
 
     @media (min-width: $screen-md) {
       // z-index: 2;

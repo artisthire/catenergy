@@ -28,6 +28,9 @@
     text-align: center;
 
     @media (max-width: $screen-md - 1) {
+      // box-shadow: 0 -1px 0 0 $border-bottom-color;
+      margin-left: -20px;
+      margin-right: -20px;
       border-top: $border-bottom-width solid $border-bottom-color;
     }
 
