@@ -1,0 +1,55 @@
+.main-footer {
+  background-color: $gray;
+
+  &__logo {
+    display: block;
+    padding-top: 40px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
+    &:hover,
+    &:focus {
+      opacity: 0.8;
+    }
+
+    &:active {
+      opacity: 0.6;
+    }
+
+    & > img {
+      display: block;
+      width: 128px;
+      height: 24px;
+      margin: 0 auto;
+    }
+  }
+
+  &__social {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  &__authors-link {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+    padding: 25px 0;
+    font-family: #{$main-fonts};
+    font-size: 16px;
+    line-height: 1;
+    text-decoration: none;
+    color: #444;
+
+    &:active {
+      opacity: 0.3;
+    }
+
+  }
+
+  &__authors-icon {
+    display: block;
+    width: 27px;
+    height: 34px;
+  }
+}

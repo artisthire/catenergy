@@ -1,0 +1,33 @@
+.social-links {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 25px 0;
+  list-style: none;
+
+  &__item {
+    margin-right: 35px;
+  }
+
+  &__link {
+    display: block;
+
+    &--vk {
+      width: 22px;
+      height: 12px;
+    }
+
+    &--tw {
+      width: 16px;
+      height: 16px;
+    }
+
+    &--fb {
+      width: 10px;
+      height: 19px;
+    }
+  }
+}
