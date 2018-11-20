@@ -127,7 +127,7 @@
   }
 
   &__catalog-link {
-    display: block;
+    display: inline-block;
     margin: 0;
     font-family: #{$custom-fonts};
     font-size: 16px;
@@ -137,6 +137,11 @@
     white-space: nowrap;
     overflow: hidden;
     color: $title-color;
+
+    @keyframes stretch{
+      from  { background-position: -10px center; }
+      to { background-position: 0 center; }
+    }
 
     @media (min-width: $screen-md) {
       font-size: 20px;
@@ -149,15 +154,16 @@
       margin-left: 25px;
       width: 33px;
       height: 1em;
-      background-image: url(data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAxMSI+PGRlZnM+PHN0eWxlPi5jbHMtMXtmaWxsOiMzZjQyNDI7fTwvc3R5bGU+PC9kZWZzPjx0aXRsZT5yaWdodC1hcnJvdy12ZXJ5bG9uZzwvdGl0bGU+PHBvbHlnb24gY2xhc3M9ImNscy0xIiBwb2ludHM9IjI1LjQgMCAzMiA1LjUgMjUuNCAxMSAyNS40IDYuNiAwIDYuNiAwIDQuNCAyNS40IDQuNCAyNS40IDAiLz48L3N2Zz4=);
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 11"><polygon points="25.4 0 32 5.5 25.4 11 25.4 6.6 0 6.6 0 4.4 25.4 4.4 25.4 0" fill="%233f4242"/></svg>');
       background-repeat: no-repeat;
       background-position: -10px center;
-      transition: background 0.2s ease-in;
+      // transition: background 0.2s ease-in;
     }
 
     &:hover::after,
     &:focus::after {
-      background-position: 0 center;
+      animation: stretch 0.7s linear infinite;
+      // background-position: 0 center;
     }
 
     &:active {

@@ -5,29 +5,62 @@
   justify-content: center;
   align-items: center;
   margin: 0;
-  padding: 25px 0;
+  padding-left: 0;
   list-style: none;
 
   &__item {
-    margin-right: 35px;
+    display: block;
+    margin-right: 30px;
+
+    &:last-child {
+      margin-right: 0;
+    }
   }
 
   &__link {
     display: block;
+    padding: 5px;
+    fill: #666;
 
-    &--vk {
-      width: 22px;
-      height: 12px;
+    &:hover,
+    &:focus {
+      fill: $icon-background;
     }
 
-    &--tw {
-      width: 16px;
+    &:active {
+      opacity: 0.3;
+    }
+
+    &--vk svg {
+      width: 30px;
       height: 16px;
+
+      @media (max-width: $screen-md - 1) {
+        width: 22px;
+        height: 12px;
+      }
     }
 
-    &--fb {
-      width: 10px;
-      height: 19px;
+    &--tw svg {
+      width: 23px;
+      height: 23px;
+
+      @media (max-width: $screen-md - 1) {
+        width: 16px;
+        height: 16px;
+      }
+
+    }
+
+    &--fb svg {
+      width: 14px;
+      height: 28px;
+
+      @media (max-width: $screen-md - 1) {
+        width: 10px;
+        height: 19px;
+      }
+
     }
   }
 }
