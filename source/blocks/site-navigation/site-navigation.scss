@@ -39,7 +39,9 @@
     }
 
     & a {
+      position: relative;
       display: inline-block;
+      vertical-align: middle;
       padding: 20px 0;
       font-family: #{$custom-fonts};
       font-size: 20px;
@@ -62,29 +64,25 @@
     }
 
     & a[href]:hover,
-      a[href]:focus {
-        opacity: 0.6;
-      }
+    & a[href]:focus {
+      opacity: 0.6;
+    }
 
     & a[href]:active {
       opacity: 0.3;
     }
 
-    &--current a {
-      position: relative;
+    &--current a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 10px;
+      height: 2px;
+      background-color: $icon-background;
 
-      &::after {
-        content: '';
-        position: absolute;
-        left: 0;
-        right: 0;
-        top: calc(50% + 21px);
-        height: 2px;
-        background-color: $icon-background;
-
-        @media (min-width: $screen-lg) {
-          background-color: $white;
-        }
+      @media (min-width: $screen-lg) {
+        background-color: $white;
       }
     }
   }

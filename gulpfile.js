@@ -5,7 +5,6 @@ var gulpSequence = require('gulp-sequence');
 var browserSync = require('browser-sync').create();
 var clean = require('del');
 
-var htmlhint = require("gulp-htmlhint");
 var posthtml = require('gulp-posthtml');
 //var posthtmlInclude = require('posthtml-include');
 var posthtmlInclude = require('posthtml-modules');
@@ -15,7 +14,6 @@ var sass = require('gulp-sass');
 var postcss = require('gulp-postcss');
 var autoprefixer = require('autoprefixer');
 var sourcemaps = require('gulp-sourcemaps');
-var gulpStylelint = require('gulp-stylelint');
 //var doiuse = require('doiuse')
 
 
@@ -31,14 +29,16 @@ gulp.task('html',function() {
     posthtmlInclude()
   ]))
   .pipe(gulp.dest('build/'))
-  .pipe(browserSync.reload({stream:true}))
+  .pipe(browserSync.reload({stream:true}));
 });
 
 // return gulpMerge(
 //   gulp.src('source/*.html',{base: './source'}),
 //   gulp.src('source/blocks/**/*.html',{base: './source/blocks/'})
 // )
+
 //сортировка атрибутов в тегах html
+
 gulp.task('html-sort',function() {
 
   gulp.src(['source/*.html','source/blocks/**/*.html'])
@@ -64,16 +64,8 @@ gulp.task('html-sort',function() {
   ]))
   .pipe(gulp.dest(function(file) {
     if (file.base) return file.base;
-  }))
+  }));
 });
-
-//проверка стиля файла HTML
-//источник берется из паки build, поскольку в файлах source используется posthtml
-gulp.task('html-lint', function() {
-  gulp.src("build/*.html")
-    .pipe(htmlhint('.htmlhintrc'))
-    .pipe(htmlhint.reporter())
-})
 
 gulp.task('style', function() {
   gulp.src('source/scss/style.scss')
@@ -91,43 +83,39 @@ gulp.task('style', function() {
   .pipe(sourcemaps.write('.'))
   .pipe(gulp.dest('build/css/'))
   .pipe(browserSync.stream());
-})
+});
 
 gulp.task('css', function() {
   gulp.src('source/css/*.css')
-  .pipe(gulp.dest('build/css'))
-})
-
-//проверка css соотвествию стилю
-gulp.task('css-lint', function() {
- gulp.src(['source/scss/*.scss', 'source/blocks/**/*.scss'])
- .pipe(gulpStylelint({
-      reporters: [
-        {formatter: 'string', console: true}
-      ]
-    }));
+  .pipe(gulp.dest('build/css'));
 });
 
 gulp.task('js', function() {
   gulp.src('source/js/*.js')
-  .pipe(gulp.dest('build/js'))
-})
+  .pipe(gulp.dest('build/js'));
+});
 
 gulp.task('img', function() {
   gulp.src('source/img/*')
-  .pipe(gulp.dest('build/img/'))
-})
+  .pipe(gulp.dest('build/img/'));
+});
+
+//копирование фавиконок в корень директории сайта
+gulp.task('favicon', function() {
+  gulp.src('source/img/favicon/*')
+  .pipe(gulp.dest('build/'));
+});
 
 gulp.task('font', function() {
   gulp.src('source/font/*')
-  .pipe(gulp.dest('build/font/'))
-})
+  .pipe(gulp.dest('build/font/'));
+});
 
 gulp.task('clean', function() {
   clean.sync('build');
-})
+});
 
-gulp.task('serve', ['html', 'style', 'css', 'js', 'img', 'font'], function() {
+gulp.task('serve', ['html', 'style', 'css', 'js', 'img', 'favicon', 'font'], function() {
     browserSync.init({
         server: 'build/',
         open: false,
@@ -137,8 +125,10 @@ gulp.task('serve', ['html', 'style', 'css', 'js', 'img', 'font'], function() {
 
     gulp.watch(['source/scss/*.scss', 'source/blocks/**/*.scss'], ['style']);
     gulp.watch(['source/*.html','source/blocks/**/*.html'],['html']);
+    gulp.watch('source/css/*.css',['css']);
     gulp.watch('source/js/*.js',['js']);
     gulp.watch('source/img/*',['img']);
+    gulp.watch('source/img/favicon/*',['favicon']);
     gulp.watch('source/font/*',['font']);
 });
 

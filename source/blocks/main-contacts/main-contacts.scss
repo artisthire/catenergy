@@ -52,6 +52,7 @@
   }
 
   &__address-br {
+
     @media (max-width: $screen-md - 1) {
       display: none;
     }
@@ -62,17 +63,23 @@
     height: 360px;
     overflow: hidden;
     background-color: $gray;
+    z-index: 1;
 
     @media (min-width: $screen-md) {
       height: 400px;
     }
   }
 
+  // для добавления интерактивной карты
+  &__map-container {
+    height: 100%;
+  }
+
   &__map-img {
     display: block;
     position: absolute;
     left: 50%;
-    top:50%;
+    top: 50%;
     transform: translate(-50%, -50%);
     min-width: 100%;
     max-width: none;
@@ -84,5 +91,4 @@
       transform: translate(0, -50%);
     }
   }
-
 }

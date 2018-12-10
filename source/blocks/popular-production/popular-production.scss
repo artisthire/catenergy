@@ -1,7 +1,7 @@
 .popular-production {
   margin-bottom: 30px;
 
-  @media(min-width: $screen-md) {
+  @media (min-width: $screen-md) {
     margin-bottom: 50px;
   }
 
@@ -96,12 +96,12 @@
     line-height: $line-height-header;
     text-transform: uppercase;
 
-    @media(min-width: $screen-md) {
+    @media (min-width: $screen-md) {
       font-size: 36px;
       padding: 0;
     }
 
-    @media(min-width: $screen-lg) {
+    @media (min-width: $screen-lg) {
       padding: 25px 0;
       padding-left: 165px;
     }
@@ -138,9 +138,15 @@
     overflow: hidden;
     color: $title-color;
 
-    @keyframes stretch{
-      from  { background-position: -10px center; }
-      to { background-position: 0 center; }
+    @keyframes stretch {
+
+      0% {
+        background-position: -10px center;
+      }
+
+      100% {
+        background-position: 0 center;
+      }
     }
 
     @media (min-width: $screen-md) {

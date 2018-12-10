@@ -107,6 +107,7 @@
     }
 
     @media (min-width: $screen-md) {
+
       &::after {
         counter-increment: list;
         content: counter(list);

@@ -77,9 +77,7 @@
     @media (min-width: $screen-md) {
       // z-index: 2;
       height: 100%;
-      background-image:
-       linear-gradient(to bottom, $gradient-color--top $gradient-top-height, transparent $gradient-top-height),
-       linear-gradient(to right, $gradient-color--left 50%, $gradient-color--right 50%);
+      background-image: linear-gradient(to bottom, $gradient-color--top $gradient-top-height, transparent $gradient-top-height), linear-gradient(to right, $gradient-color--left 50%, $gradient-color--right 50%);
 
 
       // &::after {
@@ -101,6 +99,7 @@
     padding-bottom: $padding-img-wrap--mobile;
 
     @media (max-width: $screen-md - 1) {
+
       &--next {
         display: none;
       }
@@ -253,22 +252,16 @@
       border: 12px solid $white;
       border-radius: 50%;
       background-color: $icon-background;
-      box-shadow:
-          0 0 0 1px #cdcdcd,
-          0 3px 5px 0 rgba(0, 0, 0, 0.15);
+      box-shadow: 0 0 0 1px #cdcdcd, 0 3px 5px 0 rgba(0, 0, 0, 0.15);
 
       &:hover,
       &:focus {
         // outline: none;
-        box-shadow:
-            0 0 0 1px #cdcdcd,
-            0 3px 5px 0 rgba(0, 0, 0, 0.25);
+        box-shadow: 0 0 0 1px #cdcdcd, 0 3px 5px 0 rgba(0, 0, 0, 0.25);
       }
 
       &:active {
-        box-shadow:
-            0 0 0 2px $icon-background,
-            0 5px 5px 0 rgba(0, 0, 0, 0.3);
+        box-shadow: 0 0 0 2px $icon-background, 0 5px 5px 0 rgba(0, 0, 0, 0.3);
       }
     }
   }

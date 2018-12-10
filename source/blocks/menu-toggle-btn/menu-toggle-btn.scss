@@ -39,7 +39,7 @@
     width: $width;
     height: $line-height;
     left: $left-position--line;
-    top: calc(50% - #{$line-height} / 2);
+    top: ($height + 2 * $padding-v ) / 2 - $line-height / 2;
     background-color: $line-color;
     transition: opacity 0.1s linear 0.1s;
   }
