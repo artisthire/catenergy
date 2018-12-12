@@ -160,7 +160,8 @@
       margin-left: 25px;
       width: 33px;
       height: 1em;
-      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 11"><polygon points="25.4 0 32 5.5 25.4 11 25.4 6.6 0 6.6 0 4.4 25.4 4.4 25.4 0" fill="%233f4242"/></svg>');
+      background-image: svg-load('../blocks/popular-production/img_to_bgn/right-arrow-verylong.svg');
+      //url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 11"><polygon points="25.4 0 32 5.5 25.4 11 25.4 6.6 0 6.6 0 4.4 25.4 4.4 25.4 0" fill="%233f4242"/></svg>');
       background-repeat: no-repeat;
       background-position: -10px center;
       // transition: background 0.2s ease-in;

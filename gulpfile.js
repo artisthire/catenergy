@@ -21,8 +21,10 @@ var postcss = require('gulp-postcss');
 var autoprefixer = require('autoprefixer');
 var sourcemaps = require('gulp-sourcemaps');
 var mqpacker = require("css-mqpacker");
+var inlineSVG = require('postcss-inline-svg');
 //var gcmq = require('gulp-group-css-media-queries');
-var csso = require('gulp-csso');
+//var csso = require('gulp-csso');
+var cssnano = require('cssnano');
 var rename = require('gulp-rename');
 //var doiuse = require('doiuse')
 
@@ -34,7 +36,9 @@ var postCssPlugins = [
   autoprefixer({browsers: ["ie >= 11", "last 2 versions", "not dead"]}),
   mqpacker({
     sort: true
-  })
+  }),
+  inlineSVG(),
+  cssnano()
 ];
 
 // atImport(),
@@ -116,7 +120,6 @@ gulp.task('style', function() {
   .pipe(debug({title: "Style:"}))
   .pipe(sass())
   .pipe(postcss(postCssPlugins))
-  .pipe(gulpIf(!isDev, csso()))
   .pipe(rename({suffix: '.min'}))
   .pipe(gulpIf(isDev, sourcemaps.write('/')))
   .pipe(size({
@@ -132,7 +135,6 @@ gulp.task('css', function() {
   console.log('---------- Копирование стилей');
   gulp.src('source/css/*.css')
   .pipe(postcss(postCssPlugins))
-  .pipe(csso())
   .pipe(size({
     title: 'Размер',
     showFiles: true,
