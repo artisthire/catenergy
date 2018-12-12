@@ -7,7 +7,8 @@ var clean = require('del');
 
 var posthtml = require('gulp-posthtml');
 //var posthtmlInclude = require('posthtml-include');
-var posthtmlInclude = require('posthtml-modules');
+var fileinclude = require('gulp-file-include');
+//var posthtmlInclude = require('posthtml-modules');
 var posthtmlAttrSort = require('posthtml-attrs-sorter');
 
 var sass = require('gulp-sass');
@@ -28,9 +29,11 @@ gulp.task('html',function() {
         this.emit('end');
     }
   }))
-  .pipe(posthtml([
-    posthtmlInclude()
-  ]))
+  .pipe(fileinclude({
+    prefix: '@@',
+    basepath: '@file',
+    indent: true
+  }))
   .pipe(gulp.dest('build/'))
   .pipe(browserSync.reload({stream:true}));
 });
@@ -125,7 +128,7 @@ gulp.task('serve', ['html', 'style', 'css', 'js', 'img', 'favicon', 'font'], fun
     });
 
     gulp.watch(['source/scss/*.scss', 'source/blocks/**/*.scss'], ['style']);
-    gulp.watch(['source/*.html','source/blocks/**/*.html'],['html']);
+    gulp.watch(['source/*.html','source/includes/*.html'],['html']);
     gulp.watch('source/css/*.css',['css']);
     gulp.watch('source/js/*.js',['js']);
     gulp.watch('source/img/*',['img']);

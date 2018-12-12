@@ -2,16 +2,17 @@
 <html lang="ru">
 
 <head>
-  <module href="source/blocks/page-head/page-head.html"></module>
+  @@include("includes/page-head.html", {
+    "add_style_file" : ["css/leaflet.css", "css/normalize.css"],
+    "add_head_script": ["js/leaflet.js"]
+  })
 
   <title>Каталог продуктов для котов</title>
-  <link href="css/leaflet.css" rel="stylesheet">
-  <link href="css/normalize.css" rel="stylesheet">
-  <link href="css/style.css" rel="stylesheet">
-  <script src="js/leaflet.js"></script>
 </head>
 <body>
-  <module href="source/blocks/main-header/main-header.html"></module>
+  @@include("includes/main-header.html", {
+    "current_page": "catalog_html"
+  })
   <main>
     <section class="container product-catalog">
       <h1 class="product-catalog__title">Каталог продукции</h1>
@@ -228,6 +229,6 @@
       </div>
     </section>
   </main>
-  <module href="source/blocks/main-footer/main-footer.html"></module>
+  @@include("includes/main-footer.html")
 </body>
 </html>

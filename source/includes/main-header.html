@@ -15,6 +15,7 @@
     </button>
 
     <ul class="site-navigation__list js-site-menu">
+      @@if (current_page === "index_html") {
       <li class="site-navigation__item site-navigation__item--current">
         <a>Главная</a>
       </li>
@@ -24,6 +25,29 @@
       <li class="site-navigation__item">
         <a href="form.html">Подбор программы</a>
       </li>
+      }
+      @@if (current_page === "catalog_html") {
+      <li class="site-navigation__item">
+        <a href="index.html">Главная</a>
+      </li>
+      <li class="site-navigation__item site-navigation__item--current">
+        <a>Каталог продукции</a>
+      </li>
+      <li class="site-navigation__item">
+        <a href="form.html">Подбор программы</a>
+      </li>
+      }
+      @@if (current_page === "form_html") {
+      <li class="site-navigation__item">
+        <a href="index.html">Главная</a>
+      </li>
+      <li class="site-navigation__item">
+        <a href="catalog.html">Каталог продукции</a>
+      </li>
+      <li class="site-navigation__item  site-navigation__item--current">
+        <a>Подбор программы</a>
+      </li>
+      }
     </ul>
   </nav>
 </header>
