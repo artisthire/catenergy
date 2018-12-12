@@ -14,6 +14,9 @@ var sass = require('gulp-sass');
 var postcss = require('gulp-postcss');
 var autoprefixer = require('autoprefixer');
 var sourcemaps = require('gulp-sourcemaps');
+var gcmq = require('gulp-group-css-media-queries');
+var csso = require('gulp-csso');
+var rename = require('gulp-rename');
 //var doiuse = require('doiuse')
 
 
@@ -31,11 +34,6 @@ gulp.task('html',function() {
   .pipe(gulp.dest('build/'))
   .pipe(browserSync.reload({stream:true}));
 });
-
-// return gulpMerge(
-//   gulp.src('source/*.html',{base: './source'}),
-//   gulp.src('source/blocks/**/*.html',{base: './source/blocks/'})
-// )
 
 //сортировка атрибутов в тегах html
 
@@ -80,6 +78,9 @@ gulp.task('style', function() {
   .pipe(postcss([
     autoprefixer()
   ]))
+  .pipe(gcmq())
+  .pipe(csso())
+  .pipe(rename({suffix: '.min'}))
   .pipe(sourcemaps.write('.'))
   .pipe(gulp.dest('build/css/'))
   .pipe(browserSync.stream());
