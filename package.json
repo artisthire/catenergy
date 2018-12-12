@@ -8,20 +8,26 @@
   "devDependencies": {
     "autoprefixer": "^9.2.1",
     "browser-sync": "^2.26.3",
+    "css-mqpacker": "^7.0.0",
     "del": "^3.0.0",
     "gulp": "^3.9.1",
     "gulp-clean-css": "^4.0.0",
     "gulp-csso": "^3.0.1",
+    "gulp-debug": "^4.0.0",
     "gulp-file-include": "^2.0.1",
     "gulp-group-css-media-queries": "^1.2.2",
     "gulp-htmlhint": "^2.2.1",
+    "gulp-if": "^2.0.2",
     "gulp-merge": "^0.1.1",
+    "gulp-newer": "^1.4.0",
+    "gulp-notify": "^3.2.0",
     "gulp-plumber": "^1.2.0",
     "gulp-postcss": "^8.0.0",
     "gulp-posthtml": "^3.0.4",
     "gulp-rename": "^1.4.0",
     "gulp-sass": "^4.0.2",
     "gulp-sequence": "^1.0.0",
+    "gulp-size": "^3.0.0",
     "gulp-sourcemaps": "^2.6.4",
     "gulp-stylelint": "^8.0.0",
     "posthtml-attrs-sorter": "^1.1.0",
@@ -31,12 +37,5 @@
   },
   "scripts": {
     "canuse": "doiuse --browsers \"ie >= 11, last 2 versions, not dead\" build/css/style.css"
-  },
-  "browserslist": {
-    "production": [
-      "ie >= 11",
-      "last 2 versions",
-      "not dead"
-    ]
   }
 }

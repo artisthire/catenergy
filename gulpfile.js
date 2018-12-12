@@ -1,6 +1,11 @@
 var gulp = require('gulp');
 var plumber = require('gulp-plumber');
 var gulpSequence = require('gulp-sequence');
+var gulpIf = require('gulp-if');
+var size = require('gulp-size');
+var newer = require('gulp-newer');
+var debug = require('gulp-debug');
+var notify = require('gulp-notify');
 //var gulpMerge = require('gulp-merge');
 var browserSync = require('browser-sync').create();
 var clean = require('del');
@@ -15,13 +20,34 @@ var sass = require('gulp-sass');
 var postcss = require('gulp-postcss');
 var autoprefixer = require('autoprefixer');
 var sourcemaps = require('gulp-sourcemaps');
-var gcmq = require('gulp-group-css-media-queries');
+var mqpacker = require("css-mqpacker");
+//var gcmq = require('gulp-group-css-media-queries');
 var csso = require('gulp-csso');
 var rename = require('gulp-rename');
 //var doiuse = require('doiuse')
 
+//флаг, устанавливающий разработка это или сборка для продакшина
+var isDev = true;
 
+// Плагины postCSS, которыми обрабатываются все стилевые файлы
+var postCssPlugins = [
+  autoprefixer({browsers: ["ie >= 11", "last 2 versions", "not dead"]}),
+  mqpacker({
+    sort: true
+  })
+];
+
+// atImport(),
+// inlineSVG(),
+// objectFitImages(),
+// imageInliner({
+//   assetPaths: ['src/blocks/**/img_to_bg/'],
+//   maxFileSize: 10240
+// })
+
+//обработка файлов html
 gulp.task('html',function() {
+  console.log('---------- Компиляция HTML');
   gulp.src('source/*.html')
   .pipe(plumber({
     handleError: function (err) {
@@ -34,14 +60,19 @@ gulp.task('html',function() {
     basepath: '@file',
     indent: true
   }))
+  .pipe(size({
+    title: 'Размер',
+    showFiles: true,
+    showTotal: false,
+  }))
   .pipe(gulp.dest('build/'))
   .pipe(browserSync.reload({stream:true}));
 });
 
 //сортировка атрибутов в тегах html
-
+//выполняется один раз для исходных файлов, чтобы атрибут класса был в начале тега
 gulp.task('html-sort',function() {
-
+  console.log('---------- Сортировка атрибутов в тегах (делается в исходниках)');
   gulp.src(['source/*.html','source/blocks/**/*.html'])
   .pipe(plumber({
     handleError: function (err) {
@@ -68,54 +99,93 @@ gulp.task('html-sort',function() {
   }));
 });
 
+//обработка стилевых файлов
 gulp.task('style', function() {
+  console.log('---------- Компиляция стилей');
   gulp.src('source/scss/style.scss')
   .pipe(plumber({
-    handleError: function (err) {
-        console.log(err);
-        this.emit('end');
+    errorHandler: function(err) {
+      notify.onError({
+        title: 'Styles compilation error',
+        message: err.message
+      })(err);
+      this.emit('end');
     }
   }))
-  .pipe(sourcemaps.init())
+  .pipe(gulpIf(isDev, sourcemaps.init()))
+  .pipe(debug({title: "Style:"}))
   .pipe(sass())
-  .pipe(postcss([
-    autoprefixer()
-  ]))
-  .pipe(gcmq())
-  .pipe(csso())
+  .pipe(postcss(postCssPlugins))
+  .pipe(gulpIf(!isDev, csso()))
   .pipe(rename({suffix: '.min'}))
-  .pipe(sourcemaps.write('.'))
+  .pipe(gulpIf(isDev, sourcemaps.write('/')))
+  .pipe(size({
+    title: 'Размер',
+    showFiles: true,
+    showTotal: false,
+  }))
   .pipe(gulp.dest('build/css/'))
   .pipe(browserSync.stream());
 });
 
 gulp.task('css', function() {
+  console.log('---------- Копирование стилей');
   gulp.src('source/css/*.css')
+  .pipe(postcss(postCssPlugins))
+  .pipe(csso())
+  .pipe(size({
+    title: 'Размер',
+    showFiles: true,
+    showTotal: false,
+  }))
   .pipe(gulp.dest('build/css'));
 });
 
 gulp.task('js', function() {
+  console.log('---------- Компиляция JS');
   gulp.src('source/js/*.js')
   .pipe(gulp.dest('build/js'));
 });
 
 gulp.task('img', function() {
+  console.log('---------- Копирование картинок');
   gulp.src('source/img/*')
+  .pipe(newer('build/img/'))
+  .pipe(size({
+    title: 'Размер',
+    showFiles: true,
+    showTotal: false,
+  }))
   .pipe(gulp.dest('build/img/'));
 });
 
 //копирование фавиконок в корень директории сайта
 gulp.task('favicon', function() {
+  console.log('---------- Копирование фавиконок');
   gulp.src('source/img/favicon/*')
+  .pipe(newer('build/'))
+  .pipe(size({
+    title: 'Размер',
+    showFiles: true,
+    showTotal: false,
+  }))
   .pipe(gulp.dest('build/'));
 });
 
 gulp.task('font', function() {
+  console.log('---------- Копирование шрифтов');
   gulp.src('source/font/*')
+  .pipe(newer('build/font/'))
+  .pipe(size({
+    title: 'Размер',
+    showFiles: true,
+    showTotal: false,
+  }))
   .pipe(gulp.dest('build/font/'));
 });
 
 gulp.task('clean', function() {
+  console.log('---------- Очистка рабочей директории');
   clean.sync('build');
 });
 
