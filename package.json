@@ -16,8 +16,6 @@
     "gulp-csso": "^3.0.1",
     "gulp-debug": "^4.0.0",
     "gulp-file-include": "^2.0.1",
-    "gulp-group-css-media-queries": "^1.2.2",
-    "gulp-htmlhint": "^2.2.1",
     "gulp-if": "^2.0.2",
     "gulp-merge": "^0.1.1",
     "gulp-newer": "^1.4.0",
@@ -30,12 +28,9 @@
     "gulp-sequence": "^1.0.0",
     "gulp-size": "^3.0.0",
     "gulp-sourcemaps": "^2.6.4",
-    "gulp-stylelint": "^8.0.0",
+    "postcss-image-inliner": "^2.0.0",
     "postcss-inline-svg": "^3.1.1",
-    "posthtml-attrs-sorter": "^1.1.0",
-    "posthtml-include": "^1.2.0",
-    "posthtml-modules": "^0.4.2",
-    "stylelint": "^9.7.1"
+    "posthtml-attrs-sorter": "^1.1.0"
   },
   "scripts": {
     "canuse": "doiuse --browsers \"ie >= 11, last 2 versions, not dead\" build/css/style.css"

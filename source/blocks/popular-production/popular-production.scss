@@ -45,14 +45,14 @@
     }
 
     &--slim {
-      background-image: url(../img/cat-slim-icon.svg);
+      background-image: svg-load('../blocks/popular-production/img_to_bgn/cat-slim-icon.svg');
       background-position: 22px 22px;
       background-size: 50px 52px;
       background-repeat: no-repeat;
     }
 
     &--pro {
-      background-image: url(../img/cat-pro-icon.svg);
+      background-image: svg-load('../blocks/popular-production/img_to_bgn/cat-pro-icon.svg');
       background-position: 13px 24px;
       background-size: 67px 50px;
       background-repeat: no-repeat;

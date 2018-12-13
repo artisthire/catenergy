@@ -88,22 +88,22 @@
 
     &--functional::before {
       background-size: 26px 29px;
-      background-image: url(../img/advantage-1.png);
+      background-image: url(advantage-1.png);
     }
 
     &--state::before {
       background-size: 29px 31px;
-      background-image: url(../img/advantage-2.png);
+      background-image: url(advantage-2.png);
     }
 
     &--food::before {
       background-size: 23px 30px;
-      background-image: url(../img/advantage-3.png);
+      background-image: url(advantage-3.png);
     }
 
     &--time::before {
       background-size: 26px 31px;
-      background-image: url(../img/advantage-4.png);
+      background-image: url(advantage-4.png);
     }
 
     @media (min-width: $screen-md) {

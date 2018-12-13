@@ -22,6 +22,7 @@ var autoprefixer = require('autoprefixer');
 var sourcemaps = require('gulp-sourcemaps');
 var mqpacker = require("css-mqpacker");
 var inlineSVG = require('postcss-inline-svg');
+var imageInliner = require('postcss-image-inliner');
 //var gcmq = require('gulp-group-css-media-queries');
 //var csso = require('gulp-csso');
 var cssnano = require('cssnano');
@@ -38,6 +39,10 @@ var postCssPlugins = [
     sort: true
   }),
   inlineSVG(),
+  imageInliner({
+    assetPaths: ['source/blocks/**/img_bgn/'],
+    maxFileSize: 0
+  }),
   cssnano()
 ];
 
