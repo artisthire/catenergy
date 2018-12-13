@@ -18,7 +18,11 @@
     <section class="product-promo container">
       <h1 class="product-promo__title">Функциональное питание для&nbsp;котов</h1>
       <p class="product-promo__slogan">Занялся собой? Займись котом!</p>
-      <img class="product-promo__img" src="img/promo-product--mobile.png" alt="Фото продукта Cat energy Pro" width="280" height="270">
+      <picture>
+        <source media="(min-width: 1440px)" srcset="img/promo-product--desctop.png">
+        <source media="(min-width: 768px)" srcset="img/promo-product--tablet.jpg">
+        <img class="product-promo__img" src="img/promo-product--mobile.png" alt="Фото продукта Cat energy Pro" width="280" height="270">
+      </picture>
       <a class="product-promo__catalog-link btn" href="form.html">Подобрать программу</a>
     </section>
 
@@ -93,8 +97,7 @@
             <!-- для мобильной версии поочередное переключение оберток для двух картинок __img-wrap: display: block/none -->
             <!-- для версии от планшета и выше __img-wrap--prev: rect(auto, 350px, auto, 0),
             уменшая/увеличивая вторую координату (350px),
-            где общая ширина обертки 700px, средина - 350px
-                    -->
+            где общая ширина обертки 700px, средина - 350px -->
             <figure class="photos-slider__img-wrap photos-slider__img-wrap--prev">
               <figcaption class="photos-slider__img-title">Фото кота <strong>ДО</strong> использования <b>Cat&npEnergy Slim</b></figcaption>
               <picture>
