@@ -6,13 +6,15 @@ var size = require('gulp-size');
 var newer = require('gulp-newer');
 var debug = require('gulp-debug');
 var notify = require('gulp-notify');
+var rename = require('gulp-rename');
+var fileinclude = require('gulp-file-include');
 //var gulpMerge = require('gulp-merge');
 var browserSync = require('browser-sync').create();
+var fs = require('fs');
 var clean = require('del');
 
 var posthtml = require('gulp-posthtml');
 //var posthtmlInclude = require('posthtml-include');
-var fileinclude = require('gulp-file-include');
 //var posthtmlInclude = require('posthtml-modules');
 var posthtmlAttrSort = require('posthtml-attrs-sorter');
 
@@ -23,11 +25,18 @@ var sourcemaps = require('gulp-sourcemaps');
 var mqpacker = require("css-mqpacker");
 var inlineSVG = require('postcss-inline-svg');
 var imageInliner = require('postcss-image-inliner');
+var cssnano = require('cssnano');
 //var gcmq = require('gulp-group-css-media-queries');
 //var csso = require('gulp-csso');
-var cssnano = require('cssnano');
-var rename = require('gulp-rename');
+
+var svgstore = require('gulp-svgstore');
+var svgmin = require('gulp-svgmin');
+var cheerio = require('gulp-cheerio');
+
+
 //var doiuse = require('doiuse')
+
+var spriteSvgDir = 'source/img/sprite-svg/';
 
 //флаг, устанавливающий разработка это или сборка для продакшина
 var isDev = true;
@@ -41,7 +50,7 @@ var postCssPlugins = [
   inlineSVG(),
   imageInliner({
     assetPaths: ['source/blocks/**/img_bgn/'],
-    maxFileSize: 0
+    maxFileSize: 10240
   }),
   cssnano()
 ];
@@ -179,6 +188,47 @@ gulp.task('favicon', function() {
   .pipe(gulp.dest('build/'));
 });
 
+gulp.task('sprite:svg', function() {
+
+  if(fileExist(spriteSvgDir) !== false) {
+     console.log('---------- Сборка SVG спрайта');
+     return gulp.src(spriteSvgDir + '*.svg')
+       .pipe(svgmin({
+         plugins: [
+           {minifyStyles: true}
+         ]
+        },
+         function (file) {
+         return {
+           plugins: [{
+             cleanupIDs: {
+               minify: true
+             }
+           }]
+         };
+       }))
+       .pipe(svgstore({ inlineSvg: true }))
+       .pipe(cheerio({
+         run: function($) {
+           $('svg').attr('style',  'display:none');
+         },
+         parserOptions: {
+           xmlMode: true
+         }
+       }))
+       .pipe(rename('sprite-svg.svg'))
+       .pipe(size({
+         title: 'Размер',
+         showFiles: true,
+         showTotal: false,
+       }))
+       .pipe(gulp.dest(spriteSvgDir + 'img/'));
+   }
+   else {
+     console.log('---------- Сборка SVG спрайта: ОТМЕНА, нет папки с картинками');
+   }
+});
+
 gulp.task('font', function() {
   console.log('---------- Копирование шрифтов');
   gulp.src('source/font/*')
@@ -211,6 +261,23 @@ gulp.task('serve', ['html', 'style', 'css', 'js', 'img', 'favicon', 'font'], fun
     gulp.watch('source/img/*',['img']);
     gulp.watch('source/img/favicon/*',['favicon']);
     gulp.watch('source/font/*',['font']);
+    gulp.watch(spriteSvgDir + '*',['sprite:svg', 'html']);
 });
 
 gulp.task('default', gulpSequence('clean', 'serve'));
+
+
+/**
+ * Проверка существования файла или папки
+ * @param  {string} filepath      Путь до файла или папки
+ * @return {boolean}
+ */
+function fileExist(filepath) {
+  var flag = true;
+  try{
+    fs.accessSync(filepath, fs.F_OK);
+  } catch(e) {
+    flag = false;
+  }
+  return flag;
+}
