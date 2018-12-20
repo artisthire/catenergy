@@ -163,6 +163,34 @@ gulp.task('js', function() {
   .pipe(gulp.dest('build/js'));
 });
 
+// Ручная оптимизация изображений
+// Использование: folder=source/img npm start img:opt
+var folder = process.env.folder;
+gulp.task('img:opt', function () {
+  var imagemin = require('gulp-imagemin');
+  var gulpPngquant = require('gulp-pngquant');
+  //var pngquant = require('imagemin-pngquant');
+  if(folder){
+    console.log('---------- Оптимизация картинок');
+    gulp.src(folder + '/*.{jpg,jpeg,gif,svg}')
+      .pipe(imagemin())
+      //.pipe(rename({suffix: '.min'}))
+      .pipe(gulp.dest(folder));
+
+    gulp.src(folder + '/*.png')
+      .pipe(gulpPngquant({
+          quality: '65-80'
+      }))
+      .pipe(gulp.dest(folder));
+
+    return true;
+  }
+  else {
+    console.log('---------- Оптимизация картинок: ошибка (не указана папка)');
+    console.log('---------- Пример вызова команды: folder=source/img npm start img:opt');
+  }
+});
+
 gulp.task('img', function() {
   console.log('---------- Копирование картинок');
   gulp.src('source/img/*')

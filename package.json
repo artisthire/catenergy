@@ -8,6 +8,7 @@
   "devDependencies": {
     "autoprefixer": "^9.2.1",
     "browser-sync": "^2.26.3",
+    "cross-env": "^5.2.0",
     "css-mqpacker": "^7.0.0",
     "cssnano": "^4.1.7",
     "del": "^3.0.0",
@@ -19,10 +20,12 @@
     "gulp-debug": "^4.0.0",
     "gulp-file-include": "^2.0.1",
     "gulp-if": "^2.0.2",
+    "gulp-imagemin": "^5.0.3",
     "gulp-merge": "^0.1.1",
     "gulp-newer": "^1.4.0",
     "gulp-notify": "^3.2.0",
     "gulp-plumber": "^1.2.0",
+    "gulp-pngquant": "^1.0.12",
     "gulp-postcss": "^8.0.0",
     "gulp-posthtml": "^3.0.4",
     "gulp-rename": "^1.4.0",
@@ -37,6 +40,10 @@
     "posthtml-attrs-sorter": "^1.1.0"
   },
   "scripts": {
-    "canuse": "doiuse --browsers \"ie >= 11, last 2 versions, not dead\" build/css/style.css"
+    "canuse": "doiuse --browsers \"ie >= 11, last 2 versions, not dead\" build/css/style.css",
+    "start": "gulp"
+  },
+  "dependencies": {
+    "pngquant-bin": "^3.1.1"
   }
 }
