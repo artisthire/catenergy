@@ -26,6 +26,7 @@
   &__item {
     display: block;
     text-align: center;
+    color: $title-color;
 
     @media (max-width: $screen-md - 1) {
       // box-shadow: 0 -1px 0 0 $border-bottom-color;
@@ -36,6 +37,13 @@
 
     @media (min-width: $screen-md) {
       margin-left: 35px;
+    }
+
+    .main-page & {
+
+      @media (min-width: $screen-lg) {
+        color: $white;
+      }
     }
 
     & a {
@@ -49,7 +57,7 @@
       line-height: 1.25;
       text-decoration: none;
       text-transform: uppercase;
-      color: $title-color;
+      color: inherit;
 
       @media (min-width: $screen-md) {
         padding: 10px 0;
@@ -59,7 +67,6 @@
 
       @media (min-width: $screen-lg) {
         font-size: 20px;
-        color: $white;
       }
     }
 
@@ -80,9 +87,12 @@
       bottom: 10px;
       height: 2px;
       background-color: $icon-background;
+    }
+
+    .main-page &--current a::after {
 
       @media (min-width: $screen-lg) {
-        background-color: $white;
+        background-color: currentColor;
       }
     }
   }

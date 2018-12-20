@@ -3,6 +3,7 @@
 
   position: relative;
   margin-bottom: 25px;
+  padding: 0 20px;
   padding-top: 30px;
   font-family: #{$custom-fonts};
 
@@ -27,9 +28,12 @@
 
   @media (min-width: $screen-md) {
     margin-bottom: 535px;
+    padding: 0 30px;
+    padding-top: 30px;
   }
 
   @media (min-width: $screen-lg) {
+    padding: 0 110px;
     padding-top: 80px;
     margin-bottom: 235px;
   }
@@ -71,25 +75,25 @@
 
   &__img {
     display: block;
-    width: auto;
-    height: 271px;
+    width: 280px;
+    height: auto;
     margin: 0 auto;
     margin-bottom: 3px;
 
     @media (min-width: $screen-md) {
       position: absolute;
-      left: 50%;
+      right: 40px;
       top: 75%;
       z-index: -1;
-      height: 609px;
-      transform: translate(-45%);
+      width: 708px;
+      // transform: translate(-45%);
     }
 
     @media (min-width: $screen-lg) {
       top: 0;
-      left: 50%;
-      height: 499px;
-      transform: translate(-25%);
+      right: 328px;
+      width: 552px;
+      // transform: translate(-25%);
     }
   }
 

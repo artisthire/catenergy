@@ -1,6 +1,6 @@
 .main-header {
   position: relative;
-  padding-top: 13px;
+  padding: 0 20px;
 
   @media (max-width: $screen-md - 1) {
     border-bottom: 2px solid #e6e6e6;
@@ -11,15 +11,16 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    padding-top: 24px;
-    padding-bottom: 24px;
+    padding: 11px 30px;
   }
 
   @media (min-width: $screen-lg) {
-    padding-top: 54px;
-    padding-bottom: 54px;
+    padding: 41px 110px;
+  }
 
-    &:before {
+  .main-page &:before {
+
+    @media (min-width: $screen-lg) {
       content: '';
       position: absolute;
       top: 0;
@@ -40,13 +41,12 @@
     width: 192px;
     height: 38px;
     margin: 0;
-    padding-bottom: 13px;
+    padding: 13px 0;
 
     @media (min-width: $screen-md) {
       flex-shrink: 0;
       width: 173px;
       height: 58px;
-      padding-bottom: 0;
     }
 
     @media (min-width: $screen-lg) {
