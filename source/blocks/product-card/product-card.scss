@@ -1,0 +1,119 @@
+.product-card {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  min-height: 160px;
+  padding: 0 20px;
+  padding-bottom: 25px;
+
+  @media (min-width: $screen-md) {
+    display: block;
+    width: 250px;
+    padding: 40px 37px;
+    background-color: $gray;
+  }
+
+  @media (min-width: $screen-lg) {
+    width: 171px;
+  }
+
+  &__img-wrap {
+    display: block;
+    width: 50%;
+
+    @media (min-width: $screen-md) {
+      position: relative;
+      top: -82px;
+      width: auto;
+      height: 208px;
+      margin-bottom: 39px;
+    }
+  }
+
+  &__img {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 0;
+  }
+
+  &__desc {
+    flex-shrink: 0;
+    width: 50%;
+    margin-bottom: 13px;
+
+    @media (min-width: $screen-md) {
+      width: auto;
+      margin-bottom: 25px;
+    }
+  }
+
+  &__title {
+    width: 140px;
+    margin: 0;
+    padding-top: 25px;
+    padding-bottom: 15px;
+    font-family: #{$custom-fonts};
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.25;
+    text-transform: uppercase;
+    color: #111;
+
+    @media (min-width: $screen-md) {
+      margin: 0 auto;
+      padding-top: 0;
+      font-size: 20px;
+      line-height: 1;
+      text-align: center;
+
+      & br {
+        display: none;
+      }
+    }
+  }
+
+  &__table {
+    width: 140px;
+    font-family: #{$main-fonts};
+    font-size: 12px;
+    line-height: 1.33;
+    color: #444;
+    border-collapse: collapse;
+
+    @media (min-width: $screen-md) {
+      width: 100%;
+      margin-bottom: 33px;
+      font-size: 16px;
+      line-height: 1;
+    }
+  }
+
+  &__table-row {
+
+    @media (min-width: $screen-md) {
+      border-bottom: 1px solid $gray-darken;
+
+      & td {
+        padding-top: 7px;
+        padding-bottom: 6px;
+      }
+    }
+
+    & td:last-child {
+      text-align: right;
+    }
+  }
+
+  &__product-price {
+    text-transform: uppercase;
+  }
+
+  &__buy-link {
+    width: 100%;
+    font-size: 16px;
+    line-height: 1.25;
+  }
+}

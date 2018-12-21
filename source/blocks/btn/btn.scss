@@ -27,6 +27,16 @@
     display: block;
   }
 
+  &--gray {
+    color: $text-color;
+    background-color: $gray;
+
+    &:hover,
+    &:focus {
+      background-color: #ebebeb;
+    }
+  }
+
   &:hover,
   &:focus {
     background-color: $background-color--hover;
