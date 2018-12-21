@@ -1,13 +1,17 @@
 .main-footer {
   background-color: $gray;
+  padding: 0 20px;
 
   @media (min-width: $screen-md) {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding-top: 60px;
-    padding-bottom: 60px;
+    padding: 60px 30px;
+  }
+
+  @media (min-width: $screen-lg) {
+    padding: 60px 110px;
   }
 
   &__logo {
