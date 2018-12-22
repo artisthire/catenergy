@@ -1,42 +1,51 @@
 .product-card {
-  position: relative;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
-  min-height: 160px;
-  padding: 0 20px;
-  padding-bottom: 25px;
+  min-height: 185px;
 
   @media (min-width: $screen-md) {
+    box-sizing: border-box;
+    position: relative;
     display: block;
-    width: 250px;
-    padding: 40px 37px;
-    background-color: $gray;
+    width: 324px;
+    height: 100%;
+    padding: 0 38px;
+    padding-bottom: 40px;
+    background-image: linear-gradient(to bottom, $white 80px, $gray 80px);
+    // background-color: $gray;
   }
 
   @media (min-width: $screen-lg) {
-    width: 171px;
+    width: 245px;
   }
 
   &__img-wrap {
     display: block;
     width: 50%;
+    height: 144px;
+    overflow: hidden;
 
     @media (min-width: $screen-md) {
       position: relative;
-      top: -82px;
-      width: auto;
+      width: 100%;
       height: 208px;
-      margin-bottom: 39px;
+      margin-bottom: 35px;
     }
   }
 
   &__img {
     display: block;
-    width: 100%;
-    height: auto;
-    margin: 0;
+    margin: 0 auto;
+
+    @media (min-width: $screen-md) {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
   }
 
   &__desc {
@@ -46,7 +55,7 @@
 
     @media (min-width: $screen-md) {
       width: auto;
-      margin-bottom: 25px;
+      margin-bottom: 30px;
     }
   }
 
@@ -65,6 +74,7 @@
     @media (min-width: $screen-md) {
       margin: 0 auto;
       padding-top: 0;
+      padding-bottom: 20px;
       font-size: 20px;
       line-height: 1;
       text-align: center;
@@ -85,7 +95,6 @@
 
     @media (min-width: $screen-md) {
       width: 100%;
-      margin-bottom: 33px;
       font-size: 16px;
       line-height: 1;
     }
@@ -112,8 +121,14 @@
   }
 
   &__buy-link {
+    max-width: 450px;
     width: 100%;
+    padding: 10px;
     font-size: 16px;
     line-height: 1.25;
+
+    @media (min-width: $screen-md) {
+      font-size: 16px;
+    }
   }
 }
