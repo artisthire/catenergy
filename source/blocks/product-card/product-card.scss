@@ -12,7 +12,6 @@
     display: block;
     width: 324px;
     height: 100%;
-    padding: 0 38px;
     padding-bottom: 40px;
     background-image: linear-gradient(to bottom, $white 80px, $gray 80px);
     // background-color: $gray;
@@ -56,6 +55,7 @@
     @media (min-width: $screen-md) {
       width: auto;
       margin-bottom: 30px;
+      padding: 0 38px;
     }
   }
 
@@ -121,6 +121,7 @@
   }
 
   &__buy-link {
+    display: block;
     max-width: 450px;
     width: 100%;
     padding: 10px;
@@ -128,6 +129,8 @@
     line-height: 1.25;
 
     @media (min-width: $screen-md) {
+      width: auto;
+      margin: 0 38px;
       font-size: 16px;
     }
   }
