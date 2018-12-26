@@ -1,0 +1,181 @@
+.extra-products {
+  margin-bottom: 35px;
+
+  @media (min-width: $screen-md) {
+    margin-bottom: 76px;
+  }
+
+  @media (min-width: $screen-lg) {
+    margin-bottom: 86px;
+  }
+
+  &__title-wrap {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 35px;
+
+    @media (max-width: $screen-md - 1) {
+
+      &::before {
+        display: none;
+      }
+    }
+
+    @media (min-width: $screen-md) {
+      margin-bottom: 70px;
+    }
+
+    @media (min-width: $screen-lg) {
+
+      &::before {
+        width: 70px;
+      }
+    }
+
+    &::before,
+    &::after {
+      content: '';
+      width: 30px;
+      height: 3px;
+      background-color: $icon-background;
+    }
+
+    &::after {
+      flex-grow: 1;
+    }
+  }
+
+  &__title {
+    margin: 0;
+    padding: 0 20px;
+    font-family: #{$custom-fonts};
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1;
+    color: $title-color;
+
+    @media (min-width: $screen-md) {
+      padding: 0 38px;
+      font-size: 36px;
+    }
+  }
+
+  &__desc {
+    padding: 0 20px;
+
+    @media (min-width: $screen-md) {
+      padding: 0 30px;
+    }
+
+    @media (min-width: $screen-lg) {
+      padding: 0 110px;
+    }
+  }
+
+  &__table {
+    display: block;
+    font-family: #{$main-fonts};
+    font-size: 14px;
+    line-height: 1;
+    color: $text-color;
+
+    @media (min-width: $screen-sm) {
+      font-size: 16px;
+      line-height: 1.25;
+    }
+
+    @media (min-width: $screen-lg) {
+      display: table;
+      width: 900px;
+      border-collapse: collapse;
+
+      & > tbody {
+        display: table-row-group;
+      }
+    }
+
+    & > tbody {
+      display: block;
+    }
+  }
+
+  &__table-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding-top: 10px;
+    padding-bottom: 17px;
+    border-top: 1px solid $gray-darken;
+
+    &:last-child {
+      border-bottom: 1px solid $gray-darken;
+    }
+
+    @media (min-width: $screen-md) and (max-width: $screen-lg - 1) {
+      padding: 25px 40px;
+      border: 1px solid $gray-darken;
+
+      &:not(:last-child) {
+        border-bottom: none;
+      }
+    }
+
+    @media (min-width: $screen-lg) {
+      display: table-row;
+    }
+  }
+
+  &__product-name {
+    width: 100%;
+    margin-bottom: 13px;
+    font-family: #{$custom-fonts};
+    font-size: 16px;
+    line-height: 1;
+    text-transform: uppercase;
+    color: $menu-header-color;
+
+    @media (min-width: $screen-md) {
+      width: auto;
+      margin-right: auto;
+      margin-bottom: 25px;
+      font-size: 20px;
+    }
+
+    @media (min-width: $screen-lg) {
+      width: 330px;
+      margin-bottom: 0;
+    }
+  }
+
+  &__product-price {
+    margin-bottom: 13px;
+    text-transform: uppercase;
+
+    @media (min-width: $screen-md) {
+      margin-left: 55px;
+    }
+
+    @media (min-width: $screen-lg) {
+      width: 80px;
+      margin: 0;
+    }
+  }
+
+  &__product-buy {
+    width: 100%;
+
+    @media (min-width: $screen-lg) {
+      width: 245px;
+      padding: 15px 0;
+    }
+  }
+
+  &__buy-link {
+    display: block;
+    padding: 10px;
+    font-size: 16px;
+    line-height: 1.25;
+  }
+}
