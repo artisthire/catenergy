@@ -34,6 +34,7 @@
   }
 
   &__list {
+    display: block;
     margin: 0;
     padding: 0;
     list-style: none;
@@ -53,9 +54,8 @@
   }
 
   &__item {
-    margin: 0;
+    display: block;
     margin-bottom: 25px;
-    padding: 0 20px;
 
     @media (max-width: $screen-md - 1) {
       border-top: 1px solid #ededed;
@@ -69,7 +69,6 @@
       margin: 0;
       margin-top: 60px;
       margin-left: 60px;
-      padding: 0;
     }
 
     @media (min-width: $screen-lg) {
