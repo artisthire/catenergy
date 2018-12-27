@@ -20,11 +20,11 @@
     <section class="select-program">
       <h1 class="select-program__title">Подбор программы</h1>
 
-      <form class="select-program__form program-form" action="https://echo.htmlacademy.ru/" method="post">
+      <form class="program-form" action="https://echo.htmlacademy.ru/" method="post">
         <h2 class="program-form__title">Заполните анкету и мы подберем <br> программу питания для вашего кота</h2>
 
         <div class="program-form__general-info">
-          <fieldset>
+          <fieldset class="program-form__fieldset">
             <legend class="visually-hidden">Основные данные о вашем коте</legend>
             <p class="program-form__input-wrap">
               <label for="name" class="program-form__label">Имя:*</label>
@@ -40,7 +40,7 @@
             </p>
           </fieldset>
 
-          <fieldset class="program-form__fielset">
+          <fieldset class="program-form__fieldset program-form__fieldset--border">
             <legend class="visually-hidden">Какую программу выбираете</legend>
             <p class="program-form__input-wrap">
               <input id="program-1" name="program" value="down_weight" type="radio" checked/>
@@ -57,7 +57,7 @@
           </fieldset>
         </div>
 
-        <fieldset>
+        <fieldset class="program-form__fieldset">
           <div class="title-back-line">
             <legend class="title-back-line__text program-form__legend">Контактные данные <br> (владельца кота)</legend>
           </div>
@@ -71,14 +71,14 @@
           </p>
         </fieldset>
 
-        <fieldset>
+        <fieldset class="program-form__fieldset">
           <div class="title-back-line">
             <legend class="title-back-line__text program-form__legend">Коментарии</legend>
           </div>
           <textarea name="comments" cols="35" rows="10" class="program-form__input-textarea" placeholder="Расскажите обо всех повадках кота"></textarea>
         </fieldset>
 
-        <fieldset>
+        <fieldset class="program-form__fieldset">
           <div class="title-back-line">
             <legend class="title-back-line__text program-form__legend">Дополнительно</legend>
           </div>
