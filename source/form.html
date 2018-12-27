@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  @@include("includes/page-head.html", {
+    "add_style_file" : ["css/leaflet.css", "css/normalize.css"],
+    "add_head_script": ["js/leaflet.js"]
+  })
+
+  <title>Подбор программы</title>
+</head>
+<body>
+  @@include("img/sprite-svg/img/sprite-svg.svg")
+
+  @@include("includes/main-header.html", {
+    "current_page": "form_html"
+  })
+  <main>
+
+    <section class="select-program">
+      <h1 class="select-program__title">Подбор программы</h1>
+
+      <form class="select-program__form program-form" action="https://echo.htmlacademy.ru/" method="post">
+        <h2 class="program-form__title">Заполните анкету и мы подберем <br> программу питания для вашего кота</h2>
+
+        <div class="program-form__general-info">
+          <fieldset>
+            <legend class="visually-hidden">Основные данные о вашем коте</legend>
+            <p class="program-form__input-wrap">
+              <label for="name" class="program-form__label">Имя:*</label>
+              <input id="name" name="name" type="text" class="program-form__input-text" placeholder="Барсик" required/>
+            </p>
+            <p class="program-form__input-wrap">
+              <label for="weight" class="program-form__label">Вес (кг):*</label>
+              <input id="weight" name="weight" type="text" class="program-form__input-text" placeholder="7" required/>
+            </p>
+            <p class="program-form__input-wrap">
+              <label for="age" class="program-form__label">Возраст (лет):</label>
+              <input id="age" name="age" type="text" class="program-form__input-text" placeholder="7"/>
+            </p>
+          </fieldset>
+
+          <fieldset class="program-form__fielset">
+            <legend class="visually-hidden">Какую программу выбираете</legend>
+            <p class="program-form__input-wrap">
+              <input id="program-1" name="program" value="down_weight" type="radio" checked/>
+              <label for="program-1" class="program-form__label program-form__label--input-radio">Похудение</label>
+            </p>
+            <p class="program-form__input-wrap">
+              <input id="program-2" name="program" value="up_weight" type="radio" />
+              <label for="program-2" class="program-form__label program-form__label--input-radio">Набор массы</label>
+            </p>
+            <p class="program-form__input-wrap">
+              <input id="program-3" name="program" value="unknown" type="radio" />
+              <label for="program-3" class="program-form__label program-form__label--input-radio">Не знаю (Нужен ваш совет)</label>
+            </p>
+          </fieldset>
+        </div>
+
+        <fieldset>
+          <div class="title-back-line">
+            <legend class="title-back-line__text program-form__legend">Контактные данные <br> (владельца кота)</legend>
+          </div>
+          <p class="program-form__input-wrap program-form__input-wrap--icon-email">
+            <label for="email" class="program-form__label">E-mail:*</label>
+            <input id="email" name="email" type="email" class="program-form__input-text" placeholder="kuklachev@gmail.com" equired/>
+          </p>
+          <p class="program-form__input-wrap program-form__input-wrap--icon-phone">
+            <label for="telephone" class="program-form__label">Телефон:*</label>
+            <input id="telephone" name="telephone" type="tel" class="program-form__input-text" placeholder="8 (960) 900-60-90" required/>
+          </p>
+        </fieldset>
+
+        <fieldset>
+          <div class="title-back-line">
+            <legend class="title-back-line__text program-form__legend">Коментарии</legend>
+          </div>
+          <textarea name="comments" cols="35" rows="10" class="program-form__input-textarea" placeholder="Расскажите обо всех повадках кота"></textarea>
+        </fieldset>
+
+        <fieldset>
+          <div class="title-back-line">
+            <legend class="title-back-line__text program-form__legend">Дополнительно</legend>
+          </div>
+          <p class="program-form__input-wrap">
+            <input id="sweetener" name="sweetener" type="checkbox" checked/>
+            <label for="sweetener" class="program-form__label program-form__label--input-checkbox">Сахарозаменитель</label>
+          </p>
+          <p class="program-form__input-wrap">
+            <input id="water" name="water" type="checkbox" />
+            <label for="water" class="program-form__label program-form__label--input-checkbox">Питьевая вода</label>
+          </p>
+          <p class="program-form__input-wrap">
+            <input id="milk" name="milk" type="checkbox" />
+            <label for="milk" class="program-form__label program-form__label--input-checkbox">Молоко</label>
+          </p>
+          <p class="program-form__input-wrap">
+            <input id="vitamins" name="vitamins" type="checkbox" />
+            <label for="vitamins" class="program-form__label program-form__label--input-checkbox">Витамины</label>
+          </p>
+        </fieldset>
+        <div class="program-form__submit-wrap">
+          <p class="program-form__info">* — Обязательные поля</p>
+          <button type="submit" class="btn program-form__btn-submit">Отправить заявку</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="main-contacts">
+      <header class="main-contacts__header">
+        <h2 class="main-contacts__title">Приглашаем к&nbsp;сотрудницеству диллеров!</h2>
+        <h3 class="visually-hidden">Наш адрес</h3>
+        <p class="main-contacts__address">
+          ул. Большая <br>
+          Коннюшенная д. 19/8 <br />
+          <br class="main-contacts__address-br">
+          Санкт-Петербург
+        </p>
+      </header>
+      <div class="main-contacts__map-wrap">
+        <picture id="main_contacts_map_backup">
+          <source media="(min-width: 1440px)" srcset="img/map-backup--lg.jpg 1x, img/map-backup--lg-x2.jpg 2x, img/map-backup--lg-x3.jpg 3x">
+          <source media="(min-width: 768px)" srcset="img/map-backup--md.jpg 1x, img/map-backup--md-x2.jpg 2x, img/map-backup--md-x3.jpg 3x">
+          <img class="main-contacts__map-img" src="img/map-backup--sm.jpg" srcset="img/map-backup--sm-x2.jpg 2x, img/map-backup--sm-x3.jpg 3x" alt="Санкт-Петербург, ул. Большая Коннюшенная, д. 19/8" height="365">
+        </picture>
+        <div class="main-contacts__map-container" id="main_contacts_map">
+        </div>
+      </div>
+    </section>
+  </main>
+  @@include("includes/main-footer.html")
+</body>
+</html>
