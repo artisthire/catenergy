@@ -1,3 +1,67 @@
 .form-checkbox-btn {
+  font-family: #{$custom-fonts};
+  font-size: 16px;
+  line-height: 1.13;
+  text-transform: uppercase;
+  color: $menu-header-color;
 
+  @media (min-width: $screen-md) {
+    font-size: 20px;
+    line-height: 1;
+  }
+
+  //скрываем "правильно" для скринридеров
+  &__input {
+    position: absolute;
+    clip: rect(0 0 0 0);
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+  }
+
+  &__input:checked ~ &__label > &__pseudo-icon::after {
+    border-bottom-color: $icon-background;
+    border-left-color: $icon-background;
+  }
+
+  &__label {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  &__label:hover > &__pseudo-icon {
+    border-color: #bababa;
+  }
+
+  &__label:active {
+    opacity: 0.3;
+  }
+
+  &__pseudo-icon {
+    position: relative;
+    box-sizing: border-box;
+    display: inline-block;
+    vertical-align: middle;
+    width: 30px;
+    height: 30px;
+    margin-right: 20px;
+    border: 1px solid #cdcdcd;
+
+    @media (min-width: $screen-md) {
+      width: 40px;
+      height: 40px;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-45%, -80%) rotate(-45deg);
+      width: 19px;
+      height: 9px;
+      border: 2px solid transparent;
+    }
+  }
 }
