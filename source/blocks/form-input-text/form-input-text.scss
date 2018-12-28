@@ -1,3 +1,78 @@
 .form-input-text {
+  $block: &;
 
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 0;
+  font-family: #{$custom-fonts};
+  font-size: 16px;
+  line-height: 1.13;
+  text-transform: uppercase;
+  color: $text-color;
+
+  @media (min-width: $screen-md) {
+    font-size: 20px;
+    line-height: 1;
+  }
+
+  &--add-icon {
+    position: relative;
+
+    & #{$block}__input {
+      padding-right: 45px;
+    }
+
+    & svg {
+      position: absolute;
+      top: 50%;
+      right: 25px;
+      transform: translate(50%, -50%);
+    }
+  }
+
+  &__label {
+    margin-right: 15px;
+  }
+
+  &__input {
+    box-sizing: border-box;
+    flex-grow: 1;
+    padding: 14px 15px;
+    font: inherit;
+    color: inherit;
+    text-transform: uppercase;
+    border: none;
+    outline-offset: -1px;
+    outline: 1px solid #cdcdcd;
+    background-color: transparent;
+
+    @media (min-width: $screen-md) {
+      padding-top: 12px;
+      padding-bottom: 12px;
+    }
+
+    &::placeholder {
+      font: inherit;
+      color: inherit;
+    }
+
+    &:focus {
+      outline-offset: -2px;
+      outline: 2px solid #444;
+
+      #{$block} svg {
+        fill: $icon-background;
+      }
+    }
+
+    &:invalid {
+      outline-offset: -2px;
+      outline: 2px solid #ff8282;
+
+      #{$block} svg {
+        fill: #ff8282;
+      }
+    }
+  }
 }
