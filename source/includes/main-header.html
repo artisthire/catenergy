@@ -1,6 +1,12 @@
 <header class="main-header">
 
+  @@if (current_page === "index_html") {
   <a class="main-header__logo">
+  }
+
+  @@if (current_page !== "index_html") {
+  <a href="index.html" class="main-header__logo">
+  }
     <picture>
       <source media="(min-width: 1440px)" srcset="img/header-logo--desktop.svg">
       <source media="(min-width: 768px)" srcset="img/header-logo--tablet.svg">
