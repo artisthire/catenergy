@@ -3,8 +3,12 @@
 
 
 @import '../blocks/visually-hidden/visually-hidden.scss';
+@import '../blocks/wrapper/wrapper.scss';
 @import '../blocks/btn/btn.scss';
 @import '../blocks/title-back-line/title-back-line.scss';
+@import '../blocks/form-checkbox-btn/form-checkbox-btn.scss';
+@import '../blocks/form-radio-btn/form-radio-btn.scss';
+@import '../blocks/form-input-text/form-input-text.scss';
 @import '../blocks/main-header/main-header.scss';
 @import '../blocks/site-navigation/site-navigation.scss';
 @import '../blocks/menu-toggle-btn/menu-toggle-btn.scss';
@@ -20,5 +24,4 @@
 @import '../blocks/product-card/product-card.scss';
 @import '../blocks/more-products-card/more-products-card.scss';
 @import '../blocks/extra-products/extra-products.scss';
-@import '../blocks/select-program/select-program.scss';
 @import '../blocks/program-form/program-form.scss';
