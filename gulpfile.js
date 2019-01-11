@@ -173,7 +173,11 @@ gulp.task('img:opt', function () {
   if(folder){
     console.log('---------- Оптимизация картинок');
     gulp.src(folder + '/*.{jpg,jpeg,gif,svg}')
-      .pipe(imagemin())
+      .pipe(imagemin([
+		imagemin.gifsicle({interlaced: true}),
+		imagemin.jpegtran({progressive: true}),
+		imagemin.svgo()
+	  ]))
       //.pipe(rename({suffix: '.min'}))
       .pipe(gulp.dest(folder));
 
