@@ -33,6 +33,8 @@ var svgstore = require('gulp-svgstore');
 var svgmin = require('gulp-svgmin');
 var cheerio = require('gulp-cheerio');
 
+var uglify = require('gulp-uglify');
+
 
 //var doiuse = require('doiuse')
 
@@ -149,6 +151,7 @@ gulp.task('css', function() {
   console.log('---------- Копирование стилей');
   gulp.src('source/css/*.css')
   .pipe(postcss(postCssPlugins))
+  .pipe(rename({suffix: '.min'}))
   .pipe(size({
     title: 'Размер',
     showFiles: true,
@@ -160,6 +163,24 @@ gulp.task('css', function() {
 gulp.task('js', function() {
   console.log('---------- Компиляция JS');
   gulp.src('source/js/*.js')
+  .pipe(plumber({
+    errorHandler: function(err) {
+      notify.onError({
+        title: 'Javascript concat/uglify error',
+        message: err.message
+      })(err);
+      this.emit('end');
+    }
+  }))
+  // .pipe(gulpIf(isDev, sourcemaps.init()))
+  .pipe(uglify())
+  // .pipe(gulpIf(isDev, sourcemaps.write('/')))
+  .pipe(rename({suffix: '.min'}))
+  .pipe(size({
+    title: 'Размер',
+    showFiles: true,
+    showTotal: false,
+  }))
   .pipe(gulp.dest('build/js'));
 });
 

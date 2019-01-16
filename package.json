@@ -35,6 +35,7 @@
     "gulp-sourcemaps": "^2.6.4",
     "gulp-svgmin": "^2.1.0",
     "gulp-svgstore": "^7.0.0",
+    "gulp-uglify": "^3.0.1",
     "postcss-image-inliner": "^2.0.0",
     "postcss-inline-svg": "^3.1.1",
     "posthtml-attrs-sorter": "^1.1.0"

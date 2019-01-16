@@ -16,9 +16,8 @@
 <link href="`+add_style_file[i]+`" rel="stylesheet">
   }
 }
-<link href="css/style.min.css" rel="stylesheet">
 @@if (add_head_script) {
   @@for (var i = 0; i < add_head_script.length; i++) {
-<script src="`+add_head_script[i]+`"></script>
+<script src="`+add_head_script[i]+`" async></script>
   }
 }
