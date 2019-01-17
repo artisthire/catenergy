@@ -47,11 +47,27 @@ window.addEventListener('resize', function() {
   screen_width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
 
   // удаляем маркер с карты для его реинициализации на новых вьюпорта (чтобы небыло наложения)
-  layer.removeFrom(map);
-  initMap();
+  if (layer !== null) {
+    layer.removeFrom(map);
+    initMap();
+  }
 });
 
 function initMap() {
+  //console.log('Инициализация карты');
+
+  //проверяем доступность ассинхронно загружаемого скрипта leaflet для карты
+  var timerId = null;
+  if (!window.L) {
+    //console.log('Инициализация таймера');
+    timerId = setTimeout(initMap, 500);
+    return false;
+  }
+  else {
+    clearTimeout(timerId);
+    timerId = null;
+  }
+
   //скрываем картинку для бэкапа если JS не работает
   //показываем блок для дальнейшего размещения в нем карты
   map_backup.style.display = 'none';

@@ -2,7 +2,7 @@
 <html lang="ru">
 
 <head>
-  @@include("includes/page-head.html", {
+  @@include("html_templates/page-head.html", {
     "add_style_file" : [],
     "add_head_script": []
   })
@@ -12,7 +12,7 @@
 <body>
   @@include("img/sprite-svg/img/sprite-svg.svg")
 
-  @@include("includes/main-header.html", {
+  @@include("html_templates/main-header.html", {
     "current_page": "catalog_html"
   })
   <main>
@@ -286,6 +286,6 @@
       </div>
     </section>
   </main>
-  @@include("includes/main-footer.html")
+  @@include("html_templates/main-footer.html")
 </body>
 </html>
