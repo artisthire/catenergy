@@ -20,11 +20,13 @@
   &__link {
     display: block;
     padding: 5px;
-    fill: #666;
+    color: #666;
+    // fill: #666;
 
     &:hover,
     &:focus {
-      fill: $icon-background;
+      color: $icon-background;
+      // fill: $icon-background;
     }
 
     &:active {
