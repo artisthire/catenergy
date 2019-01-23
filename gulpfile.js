@@ -287,7 +287,7 @@ gulp.task('sprite:svg', function() {
        .pipe(svgstore({ inlineSvg: false}))
        .pipe(cheerio({
          run: function($) {
-           $('svg').attr('style',  'display:none');
+           // $('svg').attr('style',  'display:none');
            $('symbol').attr('fill',  'currentColor');
          },
          parserOptions: {

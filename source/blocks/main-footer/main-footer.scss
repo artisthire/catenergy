@@ -16,13 +16,23 @@
 
   &__logo {
     display: block;
-    cursor: pointer;
 
     @media (max-width: $screen-md - 1) {
       padding-top: 40px;
       padding-bottom: 30px;
       border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     }
+
+    & > img {
+      display: block;
+      width: 128px;
+      height: 38px;
+      margin: 0 auto;
+    }
+  }
+
+  &__logo[href] {
+    cursor: pointer;
 
     &:hover,
     &:focus {
@@ -31,13 +41,6 @@
 
     &:active {
       opacity: 0.6;
-    }
-
-    & > img {
-      display: block;
-      width: 128px;
-      height: 38px;
-      margin: 0 auto;
     }
   }
 

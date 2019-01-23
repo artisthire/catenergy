@@ -55,9 +55,18 @@
       & > tbody {
         display: table-row-group;
       }
+
+      & td {
+        display: table-cell;
+      }
     }
 
     & > tbody {
+      display: block;
+    }
+
+    //для исправления изменения таблицы с помощью flex на IE11
+    & td {
       display: block;
     }
   }

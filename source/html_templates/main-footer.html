@@ -1,40 +1,47 @@
 <footer class="container main-footer">
-    <a class="main-footer__logo">
-      <img src="img/footer-logo.svg" alt="Логотип магазина Cat energy" width="128" height="38">
-    </a>
 
-    <ul class="main-footer__social social-links">
-      <li class="social-links__item">
-        <a class="social-links__link social-links__link--vk" href="#">
-          <span class="visually-hidden">Мы в Вконтакте</span>
-          <svg width="30" height="16">
-            <use xlink:href="img/sprite-svg/sprite-svg.svg#icon-vk"></use>
-          </svg>
-        </a>
-      </li>
-      <li class="social-links__item">
-        <a class="social-links__link social-links__link--tw" href="#">
-          <span class="visually-hidden">Мы в Инстаграмме</span>
-          <svg width="23" height="23">
-            <use xlink:href="img/sprite-svg/sprite-svg.svg#icon-insta"></use>
-          </svg>
-        </a>
-      </li>
-      <li class="social-links__item">
-        <a class="social-links__link social-links__link--fb" href="#">
-          <span class="visually-hidden">Мы в Фэйсбуке</span>
-          <svg width="14" height="28">
-            <use xlink:href="img/sprite-svg/sprite-svg.svg#icon-fc"></use>
-          </svg>
-        </a>
-      </li>
-    </ul>
+  @@if (current_page === "index_html") {
+  <a class="main-footer__logo">
+  }
 
-    <a class="main-footer__authors-link" href="#">
-      <span class="main-footer__authors-text">HTML Academy</span>
-      <svg width="27" height="34">
-        <use xlink:href="img/sprite-svg/sprite-svg.svg#icon-htmlacademy"></use>
-      </svg>
-    </a>
+  @@if (current_page !== "index_html") {
+  <a href="index.html" class="main-footer__logo">
+  }
+    <img src="img/footer-logo.svg" alt="Логотип магазина Cat energy" width="128" height="38">
+  </a>
+
+  <ul class="main-footer__social social-links">
+    <li class="social-links__item">
+      <a class="social-links__link social-links__link--vk" href="#">
+        <span class="visually-hidden">Мы в Вконтакте</span>
+        <svg width="30" height="16">
+          <use xlink:href="img/sprite-svg/sprite-svg.svg#icon-vk"></use>
+        </svg>
+      </a>
+    </li>
+    <li class="social-links__item">
+      <a class="social-links__link social-links__link--tw" href="#">
+        <span class="visually-hidden">Мы в Инстаграмме</span>
+        <svg width="23" height="23">
+          <use xlink:href="img/sprite-svg/sprite-svg.svg#icon-insta"></use>
+        </svg>
+      </a>
+    </li>
+    <li class="social-links__item">
+      <a class="social-links__link social-links__link--fb" href="#">
+        <span class="visually-hidden">Мы в Фэйсбуке</span>
+        <svg width="14" height="28">
+          <use xlink:href="img/sprite-svg/sprite-svg.svg#icon-fc"></use>
+        </svg>
+      </a>
+    </li>
+  </ul>
+
+  <a class="main-footer__authors-link" href="#">
+    <span class="main-footer__authors-text">HTML Academy</span>
+    <svg width="27" height="34">
+      <use xlink:href="img/sprite-svg/sprite-svg.svg#icon-htmlacademy"></use>
+    </svg>
+  </a>
 </footer>
 <script src="js/script.min.js"></script>
