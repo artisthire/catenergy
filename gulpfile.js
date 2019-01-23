@@ -45,7 +45,7 @@ var source_scss = source_root_dir + 'scss/*.scss';
 var source_scss_file = source_root_dir + 'scss/style.scss';
 //ссылка на scss файлы в блоках для слежения в gulp.watch
 var source_blocks = source_root_dir + 'blocks/**/*.scss';
-var source_img = source_root_dir + 'img/*';
+var source_img = source_root_dir + 'img/*.{jpg,jpeg,gif,svg,png,webp}';
 var source_favicon = source_root_dir + 'img/favicon/*';
 var source_js = source_root_dir + 'js/*.js';
 var source_font = source_root_dir + 'font/*.{woff,woff2}';
@@ -61,6 +61,7 @@ var source_img_to_bg = source_root_dir + 'blocks/**/img_bgn/';
 var build_root_dir = 'build/';
 var build_css = build_root_dir + 'css/';
 var build_img = build_root_dir + 'img/';
+var build_svg_sprite = build_root_dir + 'img/sprite-svg/';
 var build_favicon = build_root_dir + 'favicon/';
 var build_font = build_root_dir + 'font/';
 var build_js = build_root_dir + 'js/';
@@ -198,7 +199,8 @@ gulp.task('js', function() {
     showFiles: true,
     showTotal: false,
   }))
-  .pipe(gulp.dest(build_js));
+  .pipe(gulp.dest(build_js))
+  .pipe(browserSync.stream());
 });
 
 gulp.task('js:copy', function() {
@@ -276,22 +278,17 @@ gulp.task('sprite:svg', function() {
      return gulp.src(source_svg_sprite + "*.svg")
        .pipe(svgmin({
          plugins: [
-           {minifyStyles: true}
+           {minifyStyles: true},
+           {cleanupIDs: {
+             minify: true
+           }}
          ]
-        },
-         function (file) {
-         return {
-           plugins: [{
-             cleanupIDs: {
-               minify: true
-             }
-           }]
-         };
        }))
-       .pipe(svgstore({ inlineSvg: true }))
+       .pipe(svgstore({ inlineSvg: false}))
        .pipe(cheerio({
          run: function($) {
            $('svg').attr('style',  'display:none');
+           $('symbol').attr('fill',  'currentColor');
          },
          parserOptions: {
            xmlMode: true
@@ -303,7 +300,7 @@ gulp.task('sprite:svg', function() {
          showFiles: true,
          showTotal: false,
        }))
-       .pipe(gulp.dest(source_svg_sprite + 'img/'));
+       .pipe(gulp.dest(build_svg_sprite));
    }
    else {
      console.log('---------- Сборка SVG спрайта: ОТМЕНА, нет папки с картинками');
@@ -327,7 +324,7 @@ gulp.task('clean', function() {
   del.sync(build_root_dir);
 });
 
-gulp.task('serve', ['html', 'style', 'style:copy', 'js', 'js:copy', 'img', 'favicon', 'font'], function() {
+gulp.task('serve', ['sprite:svg', 'html', 'style', 'style:copy', 'js', 'js:copy', 'img', 'favicon', 'font'], function() {
     browserSync.init({
         server: build_root_dir,
         open: false,
@@ -340,7 +337,9 @@ gulp.task('serve', ['html', 'style', 'style:copy', 'js', 'js:copy', 'img', 'favi
     gulp.watch(source_libs_css, ['style:copy']);
     gulp.watch(source_js, ['js']);
     gulp.watch(source_libs_js, ['js:copy']);
-    gulp.watch(source_img , ['img']);
+    gulp.watch(source_img , function() {
+      gulpSequence('img', 'browserReload');
+    });
     gulp.watch(source_favicon, ['favicon']);
     gulp.watch(source_font, ['font']);
     gulp.watch(source_img_to_bg + '*', ['style']);
@@ -352,12 +351,16 @@ gulp.task('serve', ['html', 'style', 'style:copy', 'js', 'js:copy', 'img', 'favi
 
 gulp.task('default', gulpSequence('clean', 'serve'));
 
+function browserReload () {
+  browserSync.reload({stream:true});
+}
+
 /**
  * Проверка существования файла или папки
  * @param  {string} filepath      Путь до файла или папки
  * @return {boolean}
  */
-function fileExist(filepath) {
+function fileExist (filepath) {
   var flag = true;
   try{
     fs.accessSync(filepath, fs.F_OK);
