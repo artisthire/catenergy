@@ -9,20 +9,21 @@
 
   <title>Подбор программы</title>
 </head>
-<body>
+<body class="page-form">
   <!-- @@include("img/sprite-svg/img/sprite-svg.svg") -->
 
   @@include("html_templates/main-header.html", {
     "current_page": "form_html"
   })
-  <main>
+  <main class="wrapper program-select">
+
+    <h1 class="program-select__title">Подбор программы</h1>
 
     <form class="program-form" action="https://echo.htmlacademy.ru/" method="post">
-      <h1 class="program-form__title">Подбор программы</h1>
 
-      <h2 class="program-form__subtitle">Заполните анкету и мы подберем <br> программу питания для вашего кота</h2>
+      <h2 class="program-form__title">Заполните анкету и мы подберем <br> программу питания для вашего кота</h2>
 
-      <div class="program-form__general-info">
+      <div class="program-form__wrapper">
         <fieldset class="program-form__field">
           <legend class="visually-hidden">Основные данные о вашем коте</legend>
           <p class="form-input-text program-form__input-wrap">
@@ -66,20 +67,22 @@
         <div class="title-back-line">
           <legend class="title-back-line__text program-form__legend">Контактные данные <br> (владельца кота)</legend>
         </div>
-        <p class="form-input-text form-input-text--add-icon program-form__input-wrap">
-          <label for="email" class="form-input-text__label">E-mail:*</label>
-          <input id="email" name="email" type="email" class="form-input-text__input" placeholder="kuklachev@gmail.com" required/>
-          <svg width="17" height="13" aria-hidden="true" class="form-input-text__input-icon">
-            <use xlink:href="img/sprite-svg/sprite-svg.svg#icon-email"></use>
-          </svg>
-        </p>
-        <p class="form-input-text form-input-text--add-icon program-form__input-wrap">
-          <label for="telephone" class="form-input-text__label">Телефон:*</label>
-          <input id="telephone" name="telephone" type="tel" class="form-input-text__input" placeholder="8 (960) 900-60-90" required/>
-          <svg width="20" height="20" aria-hidden="true" class="form-input-text__input-icon">
-            <use xlink:href="img/sprite-svg/sprite-svg.svg#icon-phone"></use>
-          </svg>
-        </p>
+        <div class="program-form__wrapper">
+          <p class="form-input-text form-input-text--add-icon program-form__input-wrap">
+            <label for="email" class="form-input-text__label">E-mail:*</label>
+            <input id="email" name="email" type="email" class="form-input-text__input" placeholder="kuklachev@gmail.com" required/>
+            <svg width="17" height="13" aria-hidden="true" class="form-input-text__input-icon">
+              <use xlink:href="img/sprite-svg/sprite-svg.svg#icon-email"></use>
+            </svg>
+          </p>
+          <p class="form-input-text form-input-text--add-icon program-form__input-wrap">
+            <label for="telephone" class="form-input-text__label">Телефон:*</label>
+            <input id="telephone" name="telephone" type="tel" class="form-input-text__input" placeholder="8 (960) 900-60-90" required/>
+            <svg width="20" height="20" aria-hidden="true" class="form-input-text__input-icon">
+              <use xlink:href="img/sprite-svg/sprite-svg.svg#icon-phone"></use>
+            </svg>
+          </p>
+        </div>
       </fieldset>
 
       <fieldset class="program-form__field">
@@ -93,59 +96,39 @@
         <div class="title-back-line">
           <legend class="title-back-line__text program-form__legend">Дополнительно</legend>
         </div>
-        <p class="form-checkbox-btn program-form__input-wrap">
-          <input class="form-checkbox-btn__input" id="sweetener" name="sweetener" type="checkbox" checked/>
-          <label for="sweetener" class="form-checkbox-btn__label">
-            <span class="form-checkbox-btn__pseudo-icon" aria-hidden="true"></span>
-            Сахарозаменитель</label>
-        </p>
-        <p class="form-checkbox-btn program-form__input-wrap">
-          <input class="form-checkbox-btn__input" id="water" name="water" type="checkbox" />
-          <label for="water" class="form-checkbox-btn__label">
-            <span class="form-checkbox-btn__pseudo-icon" aria-hidden="true"></span>
-            Питьевая вода</label>
-        </p>
-        <p class="form-checkbox-btn program-form__input-wrap">
-          <input class="form-checkbox-btn__input" id="milk" name="milk" type="checkbox" />
-          <label for="milk" class="form-checkbox-btn__label">
-            <span class="form-checkbox-btn__pseudo-icon" aria-hidden="true"></span>
-            Молоко</label>
-        </p>
-        <p class="form-checkbox-btn program-form__input-wrap">
-          <input class="form-checkbox-btn__input" id="vitamins" name="vitamins" type="checkbox" />
-          <label for="vitamins" class="form-checkbox-btn__label">
-            <span class="form-checkbox-btn__pseudo-icon" aria-hidden="true"></span>
-            Витамины</label>
-        </p>
+        <div class="program-form__checkboxes-wrapper">
+          <p class="form-checkbox-btn program-form__input-wrap">
+            <input class="form-checkbox-btn__input" id="sweetener" name="sweetener" type="checkbox" checked/>
+            <label for="sweetener" class="form-checkbox-btn__label">
+              <span class="form-checkbox-btn__pseudo-icon" aria-hidden="true"></span>
+              Сахарозаменитель</label>
+          </p>
+          <p class="form-checkbox-btn program-form__input-wrap">
+            <input class="form-checkbox-btn__input" id="water" name="water" type="checkbox" />
+            <label for="water" class="form-checkbox-btn__label">
+              <span class="form-checkbox-btn__pseudo-icon" aria-hidden="true"></span>
+              Питьевая вода</label>
+          </p>
+          <p class="form-checkbox-btn program-form__input-wrap">
+            <input class="form-checkbox-btn__input" id="milk" name="milk" type="checkbox" />
+            <label for="milk" class="form-checkbox-btn__label">
+              <span class="form-checkbox-btn__pseudo-icon" aria-hidden="true"></span>
+              Молоко</label>
+          </p>
+          <p class="form-checkbox-btn program-form__input-wrap">
+            <input class="form-checkbox-btn__input" id="vitamins" name="vitamins" type="checkbox" />
+            <label for="vitamins" class="form-checkbox-btn__label">
+              <span class="form-checkbox-btn__pseudo-icon" aria-hidden="true"></span>
+              Витамины</label>
+          </p>
+        </div>
       </fieldset>
 
-      <div class="wrapper program-form__submit-wrap">
+      <div class="program-form__submit-wrap">
         <p class="program-form__info">* — Обязательные поля</p>
         <button type="submit" class="btn program-form__btn-submit">Отправить заявку</button>
       </div>
     </form>
-
-    <section class="main-contacts">
-      <header class="main-contacts__header">
-        <h2 class="main-contacts__title">Приглашаем к&nbsp;сотрудницеству диллеров!</h2>
-        <h3 class="visually-hidden">Наш адрес</h3>
-        <p class="main-contacts__address">
-          ул. Большая <br>
-          Коннюшенная д. 19/8 <br />
-          <br class="main-contacts__address-br">
-          Санкт-Петербург
-        </p>
-      </header>
-      <div class="main-contacts__map-wrap">
-        <picture id="main_contacts_map_backup">
-          <source media="(min-width: 1440px)" srcset="img/map-backup--lg.jpg 1x, img/map-backup--lg-x2.jpg 2x, img/map-backup--lg-x3.jpg 3x">
-          <source media="(min-width: 768px)" srcset="img/map-backup--md.jpg 1x, img/map-backup--md-x2.jpg 2x, img/map-backup--md-x3.jpg 3x">
-          <img class="main-contacts__map-img" src="img/map-backup--sm.jpg" srcset="img/map-backup--sm-x2.jpg 2x, img/map-backup--sm-x3.jpg 3x" alt="Санкт-Петербург, ул. Большая Коннюшенная, д. 19/8" height="365">
-        </picture>
-        <div class="main-contacts__map-container" id="main_contacts_map">
-        </div>
-      </div>
-    </section>
   </main>
   @@include("html_templates/main-footer.html", {
     "current_page": ""

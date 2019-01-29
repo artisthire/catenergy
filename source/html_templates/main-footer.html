@@ -1,47 +1,72 @@
-<footer class="container main-footer">
+<footer class="main-footer">
 
-  @@if (current_page === "index_html") {
-  <a class="main-footer__logo">
-  }
+  <div class="main-contacts">
+    <header class="main-contacts__header">
+      <h2 class="main-contacts__title">Приглашаем к&nbsp;сотрудницеству диллеров!</h2>
+      <h3 class="visually-hidden">Наш адрес</h3>
+      <p class="main-contacts__address">
+        ул. Большая <br>
+        Коннюшенная д. 19/8 <br />
+        <br class="main-contacts__address-br">
+        Санкт-Петербург
+      </p>
+    </header>
+    <div class="main-contacts__map-wrap">
+      <picture id="main_contacts_map_backup">
+        <source media="(min-width: 1440px)" srcset="img/map-backup--lg.jpg 1x, img/map-backup--lg-x2.jpg 2x, img/map-backup--lg-x3.jpg 3x">
+        <source media="(min-width: 768px)" srcset="img/map-backup--md.jpg 1x, img/map-backup--md-x2.jpg 2x, img/map-backup--md-x3.jpg 3x">
+        <img class="main-contacts__map-img" src="img/map-backup--sm.jpg" srcset="img/map-backup--sm-x2.jpg 2x, img/map-backup--sm-x3.jpg 3x" alt="Санкт-Петербург, ул. Большая Коннюшенная, д. 19/8" height="365">
+      </picture>
+      <div class="main-contacts__map-container" id="main_contacts_map">
+      </div>
+    </div>
+  </div>
 
-  @@if (current_page !== "index_html") {
-  <a href="index.html" class="main-footer__logo">
-  }
-    <img src="img/footer-logo.svg" alt="Логотип магазина Cat energy" width="128" height="38">
-  </a>
+  <div class="wrapper main-footer__links">
 
-  <ul class="main-footer__social social-links">
-    <li class="social-links__item">
-      <a class="social-links__link social-links__link--vk" href="#">
-        <span class="visually-hidden">Мы в Вконтакте</span>
-        <svg width="30" height="16">
-          <use xlink:href="img/sprite-svg/sprite-svg.svg#icon-vk"></use>
-        </svg>
-      </a>
-    </li>
-    <li class="social-links__item">
-      <a class="social-links__link social-links__link--tw" href="#">
-        <span class="visually-hidden">Мы в Инстаграмме</span>
-        <svg width="23" height="23">
-          <use xlink:href="img/sprite-svg/sprite-svg.svg#icon-insta"></use>
-        </svg>
-      </a>
-    </li>
-    <li class="social-links__item">
-      <a class="social-links__link social-links__link--fb" href="#">
-        <span class="visually-hidden">Мы в Фэйсбуке</span>
-        <svg width="14" height="28">
-          <use xlink:href="img/sprite-svg/sprite-svg.svg#icon-fc"></use>
-        </svg>
-      </a>
-    </li>
-  </ul>
+    @@if (current_page === "index_html") {
+    <a class="main-footer__logo">
+    }
 
-  <a class="main-footer__authors-link" href="#">
-    <span class="main-footer__authors-text">HTML Academy</span>
-    <svg width="27" height="34">
-      <use xlink:href="img/sprite-svg/sprite-svg.svg#icon-htmlacademy"></use>
-    </svg>
-  </a>
+    @@if (current_page !== "index_html") {
+    <a href="index.html" class="main-footer__logo">
+    }
+      <img src="img/footer-logo.svg" alt="Логотип магазина Cat energy" width="128" height="38">
+    </a>
+
+    <ul class="main-footer__social social-links">
+      <li class="social-links__item">
+        <a class="social-links__link social-links__link--vk" href="#">
+          <span class="visually-hidden">Мы в Вконтакте</span>
+          <svg width="30" height="16">
+            <use xlink:href="img/sprite-svg/sprite-svg.svg#icon-vk"></use>
+          </svg>
+        </a>
+      </li>
+      <li class="social-links__item">
+        <a class="social-links__link social-links__link--tw" href="#">
+          <span class="visually-hidden">Мы в Инстаграмме</span>
+          <svg width="23" height="23">
+            <use xlink:href="img/sprite-svg/sprite-svg.svg#icon-insta"></use>
+          </svg>
+        </a>
+      </li>
+      <li class="social-links__item">
+        <a class="social-links__link social-links__link--fb" href="#">
+          <span class="visually-hidden">Мы в Фэйсбуке</span>
+          <svg width="14" height="28">
+            <use xlink:href="img/sprite-svg/sprite-svg.svg#icon-fc"></use>
+          </svg>
+        </a>
+      </li>
+    </ul>
+
+    <a class="main-footer__authors-link" href="#">
+      HTML Academy
+      <svg width="27" height="34">
+        <use xlink:href="img/sprite-svg/sprite-svg.svg#icon-htmlacademy"></use>
+      </svg>
+    </a>
+  </div>
 </footer>
 <script src="js/script.min.js"></script>

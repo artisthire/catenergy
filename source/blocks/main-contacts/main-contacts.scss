@@ -19,6 +19,13 @@
       z-index: 2;
       background-color: $white;
     }
+
+    .page-form & {
+
+      @media (max-width: $screen-lg - 1) {
+        background-color: $gray;
+      }
+    }
   }
 
   &__title {
