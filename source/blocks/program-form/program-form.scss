@@ -2,6 +2,11 @@
   $block: &;
   margin: 0;
 
+  @media (min-width: $screen-md) and (max-width: $screen-lg - 1) {
+    margin-left: 40px;
+    margin-right: 35px;
+  }
+
   &__title {
     margin: 0;
     margin-bottom: 40px;
@@ -19,45 +24,6 @@
     }
   }
 
-  &__wrapper {
-
-    @media (min-width: $screen-lg) {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-
-      & > #{$block}__field {
-        width: 570px;
-      }
-
-      & > #{$block}__input-wrap {
-        width: 570px;
-        margin-bottom: 0;
-      }
-    }
-  }
-
-  &__checkboxes-wrapper {
-
-    @media (min-width: $screen-md) {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      justify-content: space-between;
-
-      & > #{$block}__input-wrap {
-        width: 285px;
-      }
-    }
-
-    @media (min-width: $screen-lg) {
-
-      & > #{$block}__input-wrap {
-        width: 245px;
-      }
-    }
-  }
-
   &__field {
     box-sizing: border-box;
     margin: 0;
@@ -66,12 +32,6 @@
     border: none;
 
     @media (min-width: $screen-md) {
-      margin: 0 40px;
-      margin-bottom: 70px;
-    }
-
-    @media (min-width: $screen-lg) {
-      margin: 0;
       margin-bottom: 70px;
     }
 
@@ -109,19 +69,10 @@
   }
 
   &__submit-wrap {
-    display: flex;
-    flex-direction: column;
     margin-top: 35px;
 
     @media (min-width: $screen-md) {
-      flex-direction: row;
-      align-items: center;
-      margin: 0 40px;
       margin-top: -10px;
-    }
-
-    @media (min-width: $screen-lg) {
-      margin: 0;
     }
   }
 
@@ -133,30 +84,24 @@
     color: $text-color;
 
     @media (min-width: $screen-md) {
-      margin-left: 60px;
+      align-self: center;
       font-size: 16px;
       line-height: 1;
       text-align: left;
-    }
-
-    @media (min-width: $screen-lg) {
-      margin-left: 80px;
     }
   }
 
   &__btn-submit {
     order: -1;
-    width: 100%;
     margin-bottom: 20px;
 
-    @media (min-width: $screen-md) {
-      width: 280px;
-      margin-bottom: 0;
-      font-size: 20px;
+    @media (max-width: $screen-md - 1) {
+      width: 100%;
     }
 
-    @media (min-width: $screen-lg) {
-      width: 570px;
+    @media (min-width: $screen-md) {
+      margin-bottom: 0;
+      font-size: 20px;
     }
   }
 }
