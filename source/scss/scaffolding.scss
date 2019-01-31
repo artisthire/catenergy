@@ -22,6 +22,7 @@
 
 
 body {
+  position: relative;
   min-width: $screen-sm;
   max-width: $screen-lg;
   margin: 0 auto;
@@ -51,4 +52,11 @@ h6 {
 img {
   max-width: 100%;
   height: auto;
+  //лечит opacity при :active в IE11
+  pointer-events: none;
+}
+
+//лечит opacity при :active в IE11
+svg {
+  pointer-events: none;
 }
