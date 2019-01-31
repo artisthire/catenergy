@@ -7,60 +7,60 @@
   margin: 0;
   padding-left: 0;
   list-style: none;
+}
 
-  &__item {
-    display: block;
-    margin-right: 30px;
+.social-links__item {
+  display: block;
+  margin-right: 30px;
 
-    &:last-child {
-      margin-right: 0;
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.social-links__link {
+  display: block;
+  padding: 5px;
+  color: #666;
+  // fill: #666;
+
+  &:hover,
+  &:focus {
+    color: $icon-background;
+    // fill: $icon-background;
+  }
+
+  &:active {
+    opacity: 0.3;
+  }
+
+  &--vk svg {
+    width: 30px;
+    height: 16px;
+
+    @media (max-width: $screen-md - 1) {
+      width: 22px;
+      height: 12px;
     }
   }
 
-  &__link {
-    display: block;
-    padding: 5px;
-    color: #666;
-    // fill: #666;
+  &--tw svg {
+    width: 23px;
+    height: 23px;
 
-    &:hover,
-    &:focus {
-      color: $icon-background;
-      // fill: $icon-background;
-    }
-
-    &:active {
-      opacity: 0.3;
-    }
-
-    &--vk svg {
-      width: 30px;
+    @media (max-width: $screen-md - 1) {
+      width: 16px;
       height: 16px;
-
-      @media (max-width: $screen-md - 1) {
-        width: 22px;
-        height: 12px;
-      }
     }
+  }
 
-    &--tw svg {
-      width: 23px;
-      height: 23px;
+  &--fb svg {
+    width: 14px;
+    height: 28px;
 
-      @media (max-width: $screen-md - 1) {
-        width: 16px;
-        height: 16px;
-      }
-    }
-
-    &--fb svg {
-      width: 14px;
-      height: 28px;
-
-      @media (max-width: $screen-md - 1) {
-        width: 10px;
-        height: 19px;
-      }
+    @media (max-width: $screen-md - 1) {
+      width: 10px;
+      height: 19px;
     }
   }
 }

@@ -16,104 +16,104 @@
       background-color: #e6e6e6;
     }
   }
+}
 
-  &__title {
-    margin: 0;
-    margin-bottom: 35px;
-    font-family: #{$custom-fonts};
-    font-size: 36px;
-    font-weight: $font-weight--normal;
-    line-height: 1.67;
+.product-application__title {
+  margin: 0;
+  margin-bottom: 35px;
+  font-family: #{$custom-fonts};
+  font-size: 36px;
+  font-weight: $font-weight--normal;
+  line-height: 1.67;
 
-    @media (min-width: $screen-md) {
-      margin-bottom: 20px;
-      font-size: 60px;
-      line-height: 1.1;
-    }
-  }
-
-  &__list {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    counter-reset: list;
-  }
-
-  &__item {
-    position: relative;
-    flex-shrink: 0;
-    box-sizing: border-box;
-    display: block;
-    min-height: 60px;
+  @media (min-width: $screen-md) {
     margin-bottom: 20px;
-    padding-top: 5px;
-    padding-left: 80px;
+    font-size: 60px;
+    line-height: 1.1;
+  }
+}
+
+.product-application__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: list;
+}
+
+.product-application__item {
+  position: relative;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  display: block;
+  min-height: 60px;
+  margin-bottom: 20px;
+  padding-top: 5px;
+  padding-left: 80px;
+
+  @media (min-width: $screen-md) {
+    min-height: 230px;
+    margin-top: 45px;
+    margin-bottom: 45px;
+    padding-top: 110px;
+    padding-left: 0;
+    padding-right: 30px;
+
+    &::after {
+      counter-increment: list;
+      content: counter(list);
+      position: absolute;
+      top: -37px;
+      right: 60px;
+      z-index: -1;
+      font-family: #{$custom-fonts};
+      font-size: 281px;
+      line-height: 1;
+      color: $gray;
+    }
+  }
+
+  @media (min-width: $screen-lg) {
+    padding-right: 0;
+
+    &::after {
+      right: 0;
+    }
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    left: 0;
+    top: 0;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: $icon-background;
 
     @media (min-width: $screen-md) {
-      min-height: 230px;
-      margin-top: 45px;
-      margin-bottom: 45px;
-      padding-top: 110px;
-      padding-left: 0;
-      padding-right: 30px;
-
-      &::after {
-        counter-increment: list;
-        content: counter(list);
-        position: absolute;
-        top: -37px;
-        right: 60px;
-        z-index: -1;
-        font-family: #{$custom-fonts};
-        font-size: 281px;
-        line-height: 1;
-        color: $gray;
-      }
+      width: 80px;
+      height: 80px;
     }
+  }
 
-    @media (min-width: $screen-lg) {
-      padding-right: 0;
+  &--functional::before {
+    background-size: 26px 29px;
+    background-image: url(advantage-1.png);
+  }
 
-      &::after {
-        right: 0;
-      }
-    }
+  &--state::before {
+    background-size: 29px 31px;
+    background-image: url(advantage-2.png);
+  }
 
-    &::before {
-      content: '';
-      position: absolute;
-      width: 60px;
-      height: 60px;
-      left: 0;
-      top: 0;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-color: $icon-background;
+  &--food::before {
+    background-size: 23px 30px;
+    background-image: url(advantage-3.png);
+  }
 
-      @media (min-width: $screen-md) {
-        width: 80px;
-        height: 80px;
-      }
-    }
-
-    &--functional::before {
-      background-size: 26px 29px;
-      background-image: url(advantage-1.png);
-    }
-
-    &--state::before {
-      background-size: 29px 31px;
-      background-image: url(advantage-2.png);
-    }
-
-    &--food::before {
-      background-size: 23px 30px;
-      background-image: url(advantage-3.png);
-    }
-
-    &--time::before {
-      background-size: 26px 31px;
-      background-image: url(advantage-4.png);
-    }
+  &--time::before {
+    background-size: 26px 31px;
+    background-image: url(advantage-4.png);
   }
 }

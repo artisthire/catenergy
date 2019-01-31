@@ -4,27 +4,13 @@
 }
 
 .menu-toggle-btn {
-  $block: &;
-  $width: 24px;
-  $height: 18px;
-  $padding-v: 10px;
-  $padding-g: 10px;
-  $margin-v: 0;
-  $margin-g: 0;
-  $line-height: 2px;
-  $line-color: $black;
-  $top-position: $padding-v;
-  $bottom-position: $padding-v;
-  $left-position--line: $padding-g;
-  $left-position--cross: ($width - $width * 0.7071) / 2 + $padding-g;
-
   box-sizing: content-box;
-  // position: relative;
+  // position: absolute;
   display: block;
-  width: $width;
-  height: $height;
-  margin: $margin-v $margin-g;
-  padding: $padding-v $padding-g;
+  width: 24px;
+  height: 18px;
+  margin: 0;
+  padding: 10px;
   border: none;
   background-color: transparent;
   cursor: pointer;
@@ -33,53 +19,53 @@
     display: none;
   }
 
-  //  добавляет среднюю линию в кнопке для анимации
-  &__line {
-    position: absolute;
-    width: $width;
-    height: $line-height;
-    left: $left-position--line;
-    top: ($height + 2 * $padding-v ) / 2 - $line-height / 2;
-    background-color: $line-color;
-    transition: opacity 0.1s linear 0.1s;
-  }
-
   //  имитируют верхнюю и нижнюю линии кнопки
   &::before,
   &::after {
     content: '';
     position: absolute;
-    width: $width;
-    height: $line-height;
-    left: $left-position--line;
-    background-color: $line-color;
+    width: 24px;
+    height: 2px;
+    left: 10px;
+    background-color: $black;
     transition: all 0.2s linear;
   }
 
   &::before {
-    top: $top-position;
+    top: 10px;
   }
 
   &::after {
-    bottom: $bottom-position;
+    bottom: 10px;
   }
 
   &--open {
 
-    & #{$block}__line {
+    & .menu-toggle-btn__line {
       opacity: 0;
     }
 
     &::before {
-      left: $left-position--cross;
+      left: (24px - 24px * 0.7071) / 2 + 10px;
       transform-origin: left top;
       transform: rotate(45deg);
     }
 
     &::after {
-      left: $left-position--cross;
+      left: (24px - 24px * 0.7071) / 2 + 10px;
       transform-origin: left bottom;
       transform: rotate(-45deg);
     }
   }
+}
+
+//  добавляет среднюю линию в кнопке для анимации
+.menu-toggle-btn__line {
+  position: absolute;
+  width: 24px;
+  height: 2px;
+  left: 10px;
+  top: (18px + 2 * 10px ) / 2 - 2px / 2;
+  background-color: $black;
+  transition: opacity 0.1s linear 0.1s;
 }

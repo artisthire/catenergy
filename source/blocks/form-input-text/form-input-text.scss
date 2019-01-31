@@ -1,6 +1,5 @@
 .form-input-text {
-  $block: &;
-
+  position: relative;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -15,66 +14,59 @@
     font-size: 20px;
     line-height: 1;
   }
+}
 
-  &--add-icon {
-    position: relative;
+.form-input-text__label {
+  margin-right: 15px;
+}
 
-    & #{$block}__input {
-      padding-right: 45px;
-    }
+.form-input-text__input {
+  box-sizing: border-box;
+  flex-grow: 1;
+  padding: 14px 15px;
+  padding-right: 45px;
+  font: inherit;
+  color: inherit;
+  text-transform: uppercase;
+  border: none;
+  outline-offset: -1px;
+  outline: 1px solid #cdcdcd;
+  background-color: transparent;
+
+  @media (min-width: $screen-md) {
+    padding-top: 12px;
+    padding-bottom: 12px;
   }
 
-  &__label {
-    margin-right: 15px;
-  }
-
-  &__input {
-    box-sizing: border-box;
-    flex-grow: 1;
-    padding: 14px 15px;
+  &::placeholder {
     font: inherit;
     color: inherit;
-    text-transform: uppercase;
-    border: none;
-    outline-offset: -1px;
-    outline: 1px solid #cdcdcd;
-    background-color: transparent;
+  }
 
-    @media (min-width: $screen-md) {
-      padding-top: 12px;
-      padding-bottom: 12px;
-    }
+  &:focus {
+    outline-offset: -2px;
+    outline: 2px solid #444;
 
-    &::placeholder {
-      font: inherit;
-      color: inherit;
-    }
-
-    &:focus {
-      outline-offset: -2px;
-      outline: 2px solid #444;
-    }
-
-    &:invalid {
-      outline-offset: -2px;
-      outline: 2px solid #ff8282;
+    & ~ .form-input-text__input-icon {
+      color: $icon-background;
+      // fill: $icon-background;
     }
   }
 
-  &__input-icon {
-    position: absolute;
-    top: 50%;
-    right: 25px;
-    transform: translate(50%, -50%);
-  }
+  &:invalid {
+    outline-offset: -2px;
+    outline: 2px solid #ff8282;
 
-  &__input:focus ~ &__input-icon {
-    color: $icon-background;
-    // fill: $icon-background;
+    & ~ .form-input-text__input-icon {
+      color: #ff8282;
+      // fill: $icon-background;
+    }
   }
+}
 
-  &__input:invalid ~ &__input-icon {
-    color: #ff8282;
-    // fill: #ff8282;
-  }
+.form-input-text__input-icon {
+  position: absolute;
+  top: 50%;
+  right: 25px;
+  transform: translate(50%, -50%);
 }

@@ -1,92 +1,89 @@
-.main-footer {
+.main-footer__links {
+  background-color: $gray;
 
-  &__links {
-    background-color: $gray;
-
-    @media (min-width: $screen-md) {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-      padding-top: 60px;
-      padding-bottom: 60px;
-    }
-  }
-
-  &__logo {
-    display: block;
-
-    @media (max-width: $screen-md - 1) {
-      padding-top: 40px;
-      padding-bottom: 30px;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    }
-
-    & > img {
-      display: block;
-      width: 128px;
-      height: 38px;
-      margin: 0 auto;
-    }
-  }
-
-  &__logo[href] {
-    cursor: pointer;
-
-    &:hover,
-    &:focus {
-      opacity: 0.8;
-    }
-
-    &:active {
-      opacity: 0.6;
-    }
-  }
-
-  &__social {
-
-    @media (max-width: $screen-md - 1) {
-      padding: 25px 0;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    }
-  }
-
-  &__authors-link {
+  @media (min-width: $screen-md) {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    margin: 0;
-    font-family: #{$main-fonts};
-    font-size: 16px;
-    line-height: 1;
-    text-decoration: none;
-    color: #444;
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+}
 
-    @media (max-width: $screen-md - 1) {
+.main-footer__logo {
+  display: block;
 
-      padding: 25px 0;
-    }
+  @media (max-width: $screen-md - 1) {
+    padding-top: 40px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  & > img {
+    display: block;
+    width: 128px;
+    height: 38px;
+    margin: 0 auto;
+  }
+}
+
+.main-footer__logo[href] {
+  cursor: pointer;
+
+  &:hover,
+  &:focus {
+    opacity: 0.8;
+  }
+
+  &:active {
+    opacity: 0.6;
+  }
+}
+
+.main-footer__social {
+
+  @media (max-width: $screen-md - 1) {
+    padding: 25px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+}
+
+.main-footer__authors-link {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+  font-family: #{$main-fonts};
+  font-size: 16px;
+  line-height: 1;
+  text-decoration: none;
+  color: #444;
+
+  @media (max-width: $screen-md - 1) {
+
+    padding: 25px 0;
+  }
+
+  &:hover,
+  &:focus {
 
     & > svg {
-      width: 27px;
-      height: 34px;
-      margin-left: 20px;
-      color: #666;
-      // fill: #666;
+      color: $icon-background;
+      // fill: $icon-background;
     }
+  }
 
-    &:hover,
-    &:focus {
+  &:active {
+    opacity: 0.3;
+  }
 
-      & > svg {
-        color: $icon-background;
-        // fill: $icon-background;
-      }
-    }
-
-    &:active {
-      opacity: 0.3;
-    }
+  & > svg {
+    width: 27px;
+    height: 34px;
+    margin-left: 20px;
+    color: #666;
+    // fill: #666;
   }
 }

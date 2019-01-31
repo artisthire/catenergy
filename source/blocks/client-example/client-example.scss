@@ -3,205 +3,205 @@
   @media (max-width: $screen-md - 1) {
     background-color: $gray;
   }
+}
 
-  &__title {
-    margin: 0 auto;
-    padding-top: 50px;
-    padding-bottom: 70px;
-    font-size: 36px;
-    font-weight: $font-weight--normal;
-    line-height: 1;
-    color: $title-color;
+.client-example__title {
+  margin: 0 auto;
+  padding-top: 50px;
+  padding-bottom: 70px;
+  font-size: 36px;
+  font-weight: $font-weight--normal;
+  line-height: 1;
+  color: $title-color;
 
-    @media (min-width: $screen-md) {
-      font-size: $font-header--tablet;
-    }
+  @media (min-width: $screen-md) {
+    font-size: $font-header--tablet;
+  }
+}
+
+.client-example__inner {
+
+  @media (min-width: $screen-lg) {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    min-height: 300px;
+    margin-left: -110px;
+    margin-right: -110px;
+    padding-top: 70px;
+    padding-left: 110px;
+    // padding-bottom: 70px;
+    background-color: $gray;
+  }
+}
+
+.client-example__desc {
+  margin: 0;
+  margin-bottom: 25px;
+
+  @media (min-width: $screen-md) {
+    margin-bottom: 55px;
   }
 
-  &__inner {
-
-    @media (min-width: $screen-lg) {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      min-height: 300px;
-      margin-left: -110px;
-      margin-right: -110px;
-      padding-top: 70px;
-      padding-left: 110px;
-      // padding-bottom: 70px;
-      background-color: $gray;
-    }
+  @media (min-width: $screen-lg) {
+    max-width: 450px;
+    margin-bottom: 70px;
   }
+}
 
-  &__desc {
+.client-example__result-table {
+  display: block;
+  max-width: 300px;
+  margin: 0 auto;
+  padding-bottom: 40px;
+  border-spacing: 0;
+
+  @media (min-width: $screen-md) and (max-width: $screen-lg - 1) {
+    max-width: none;
     margin: 0;
-    margin-bottom: 25px;
-
-    @media (min-width: $screen-md) {
-      margin-bottom: 55px;
-    }
-
-    @media (min-width: $screen-lg) {
-      max-width: 450px;
-      margin-bottom: 70px;
-    }
+    padding-bottom: 105px;
   }
 
-  &__result-table {
-    display: block;
-    max-width: 300px;
-    margin: 0 auto;
-    padding-bottom: 40px;
-    border-spacing: 0;
+  @media (min-width: $screen-lg) {
+    max-width: 450px;
+    margin: 0;
+    padding-bottom: 70px;
+  }
 
-    @media (min-width: $screen-md) and (max-width: $screen-lg - 1) {
-      max-width: none;
-      margin: 0;
-      padding-bottom: 105px;
-    }
+  & > tbody {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
 
-    @media (min-width: $screen-lg) {
-      max-width: 450px;
-      margin: 0;
-      padding-bottom: 70px;
-    }
+  @media (min-width: $screen-md)  and (max-width: $screen-lg - 1) {
 
     & > tbody {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      justify-content: space-between;
-    }
-
-    @media (min-width: $screen-md)  and (max-width: $screen-lg - 1) {
-
-      & > tbody {
-        flex-wrap: nowrap;
-        justify-content: flex-start;
-        align-items: center;
-      }
-    }
-  }
-
-  &__result-item {
-    box-sizing: border-box;
-    position: relative;
-    display: block;
-    width: 125px;
-    padding: 16px 5px;
-    border: 1px solid $gray-darken;
-    border-radius: 3px;
-    text-align: center;
-
-    @media (min-width: $screen-md) {
-      width: 165px;
-      margin-right: 40px;
-      flex-shrink: 0;
-    }
-
-    @media (min-width: $screen-lg) {
-      margin-right: 0;
-    }
-  }
-
-  &__result-value {
-    display: inline;
-    font-family: #{$custom-fonts};
-    font-size: 24px;
-    line-height: 1;
-    text-transform: uppercase;
-
-    @media (min-width: $screen-md) {
-      font-size: 30px;
-    }
-  }
-
-  &__result-property {
-    position: absolute;
-    left: 50%;
-    bottom: 0;
-    transform: translate(-50%, 50%);
-    padding: 0 15px;
-    font-size: 12px;
-    line-height: 1;
-    text-transform: lowercase;
-    background-color: $gray;
-
-    @media (min-width: $screen-md) {
-      padding: 0 10px;
-      white-space: nowrap;
-    }
-
-    @media (min-width: $screen-md) and (max-width: $screen-lg - 1) {
-      background-color: $white;
-    }
-
-    @media (min-width: $screen-md) {
-      font-size: 14px;
-    }
-  }
-
-  &__cost {
-    display: block;
-    width: 100%;
-    margin-top: 35px;
-    font-family: #{$custom-fonts};
-    font-size: 14px;
-    line-height: 20px;
-    text-align: center;
-    text-transform: uppercase;
-
-    @media (min-width: $screen-md) and (max-width: $screen-lg - 1) {
-      width: auto;
-      margin: 0;
-      margin-left: auto;
-      font-size: 20px;
-    }
-
-    @media (min-width: $screen-lg) {
-      display: flex;
-      flex-direction: row;
       flex-wrap: nowrap;
-      justify-content: space-between;
-      margin-top: 55px;
-      font-size: 20px;
+      justify-content: flex-start;
+      align-items: center;
     }
   }
+}
 
-  &__cost-property {
-    display: inline;
+.client-example__result-item {
+  box-sizing: border-box;
+  position: relative;
+  display: block;
+  width: 125px;
+  padding: 16px 5px;
+  border: 1px solid $gray-darken;
+  border-radius: 3px;
+  text-align: center;
 
-    @media (min-width: $screen-md) {
-      display: block;
-    }
+  @media (min-width: $screen-md) {
+    width: 165px;
+    margin-right: 40px;
+    flex-shrink: 0;
   }
 
-  &__cost-value {
-    display: inline;
+  @media (min-width: $screen-lg) {
+    margin-right: 0;
+  }
+}
 
-    @media (min-width: $screen-md) {
-      display: block;
-      text-align: right;
-    }
+.client-example__result-value {
+  display: inline;
+  font-family: #{$custom-fonts};
+  font-size: 24px;
+  line-height: 1;
+  text-transform: uppercase;
 
-    @media (min-width: $screen-lg) {
-      width: 165px;
-      text-align: center;
-    }
+  @media (min-width: $screen-md) {
+    font-size: 30px;
+  }
+}
+
+.client-example__result-property {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translate(-50%, 50%);
+  padding: 0 15px;
+  font-size: 12px;
+  line-height: 1;
+  text-transform: lowercase;
+  background-color: $gray;
+
+  @media (min-width: $screen-md) {
+    padding: 0 10px;
+    white-space: nowrap;
   }
 
-  .js &__photos {
-    margin: 0 -20px;
+  @media (min-width: $screen-md) and (max-width: $screen-lg - 1) {
+    background-color: $white;
+  }
 
-    @media (min-width: $screen-md) and (max-width: $screen-lg - 1) {
-      margin: 0 -30px;
-    }
+  @media (min-width: $screen-md) {
+    font-size: 14px;
+  }
+}
 
-    @media (min-width: $screen-lg) {
-      width: 800px;
-      margin: 0;
-      margin-top: -240px;
-    }
+.client-example__cost {
+  display: block;
+  width: 100%;
+  margin-top: 35px;
+  font-family: #{$custom-fonts};
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+  text-transform: uppercase;
+
+  @media (min-width: $screen-md) and (max-width: $screen-lg - 1) {
+    width: auto;
+    margin: 0;
+    margin-left: auto;
+    font-size: 20px;
+  }
+
+  @media (min-width: $screen-lg) {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    margin-top: 55px;
+    font-size: 20px;
+  }
+}
+
+.client-example__cost-property {
+  display: inline;
+
+  @media (min-width: $screen-md) {
+    display: block;
+  }
+}
+
+.client-example__cost-value {
+  display: inline;
+
+  @media (min-width: $screen-md) {
+    display: block;
+    text-align: right;
+  }
+
+  @media (min-width: $screen-lg) {
+    width: 165px;
+    text-align: center;
+  }
+}
+
+.js .client-example__photos {
+  margin: 0 -20px;
+
+  @media (min-width: $screen-md) and (max-width: $screen-lg - 1) {
+    margin: 0 -30px;
+  }
+
+  @media (min-width: $screen-lg) {
+    width: 800px;
+    margin: 0;
+    margin-top: -240px;
   }
 }

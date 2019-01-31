@@ -6,107 +6,107 @@
     margin-left: 40px;
     margin-right: 35px;
   }
+}
 
-  &__title {
-    margin: 0;
-    margin-bottom: 40px;
-    font-family: #{$custom-fonts};
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 1.29;
-    text-transform: uppercase;
-    color: $title-color;
+.program-form__title {
+  margin: 0;
+  margin-bottom: 40px;
+  font-family: #{$custom-fonts};
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.29;
+  text-transform: uppercase;
+  color: $title-color;
 
-    @media (min-width: $screen-md) {
-      margin-bottom: 65px;
-      font-size: 20px;
-      line-height: 1.5;
-    }
+  @media (min-width: $screen-md) {
+    margin-bottom: 65px;
+    font-size: 20px;
+    line-height: 1.5;
+  }
+}
+
+.program-form__field {
+  box-sizing: border-box;
+  margin: 0;
+  margin-bottom: 30px;
+  padding: 0;
+  border: none;
+
+  @media (min-width: $screen-md) {
+    margin-bottom: 70px;
   }
 
-  &__field {
-    box-sizing: border-box;
-    margin: 0;
-    margin-bottom: 30px;
-    padding: 0;
-    border: none;
-
-    @media (min-width: $screen-md) {
-      margin-bottom: 70px;
-    }
-
-    &--border {
-      padding: 20px;
-      border: 1px solid #ededed;
-
-      @media (max-width: $screen-md - 1) {
-        margin-left: -20px;
-        margin-right: -20px;
-      }
-    }
-  }
-
-  &__input-wrap {
-    box-sizing: border-box;
-    margin: 0;
-    margin-bottom: 14px;
-
-    &:last-child {
-      margin-bottom: 0;
-    }
-
-    @media (min-width: $screen-md) {
-      margin-bottom: 20px;
-    }
-  }
-
-  &__legend {
-    margin-bottom: 30px;
-
-    @media (min-width: $screen-md) and (max-width: $screen-lg - 1) {
-      //для компенсации дополнительного отступа вокруг формы на планшетах
-      margin-left: -40px;
-    }
-
-    @media (min-width: $screen-md) {
-      margin-bottom: 70px;
-    }
-  }
-
-  &__submit-wrap {
-    margin-top: 35px;
-
-    @media (min-width: $screen-md) {
-      margin-top: -10px;
-    }
-  }
-
-  &__info {
-    margin: 0;
-    font-size: 14px;
-    line-height: 1.14;
-    text-align: center;
-    color: $text-color;
-
-    @media (min-width: $screen-md) {
-      align-self: center;
-      font-size: 16px;
-      line-height: 1;
-      text-align: left;
-    }
-  }
-
-  &__btn-submit {
-    order: -1;
-    margin-bottom: 20px;
+  &--border {
+    padding: 20px;
+    border: 1px solid #ededed;
 
     @media (max-width: $screen-md - 1) {
-      width: 100%;
+      margin-left: -20px;
+      margin-right: -20px;
     }
+  }
+}
 
-    @media (min-width: $screen-md) {
-      margin-bottom: 0;
-      font-size: 20px;
-    }
+.program-form__input-wrap {
+  box-sizing: border-box;
+  margin: 0;
+  margin-bottom: 14px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  @media (min-width: $screen-md) {
+    margin-bottom: 20px;
+  }
+}
+
+.program-form__legend {
+  margin-bottom: 30px;
+
+  @media (min-width: $screen-md) and (max-width: $screen-lg - 1) {
+    //для компенсации дополнительного отступа вокруг формы на планшетах
+    margin-left: -40px;
+  }
+
+  @media (min-width: $screen-md) {
+    margin-bottom: 70px;
+  }
+}
+
+.program-form__submit-wrap {
+  margin-top: 35px;
+
+  @media (min-width: $screen-md) {
+    margin-top: -10px;
+  }
+}
+
+.program-form__info {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.14;
+  text-align: center;
+  color: $text-color;
+
+  @media (min-width: $screen-md) {
+    align-self: center;
+    font-size: 16px;
+    line-height: 1;
+    text-align: left;
+  }
+}
+
+.program-form__btn-submit {
+  order: -1;
+  margin-bottom: 20px;
+
+  @media (max-width: $screen-md - 1) {
+    width: 100%;
+  }
+
+  @media (min-width: $screen-md) {
+    margin-bottom: 0;
+    font-size: 20px;
   }
 }

@@ -8,176 +8,174 @@
   @media (min-width: $screen-lg) {
     margin-bottom: 86px;
   }
+}
 
-  &__title-wrap {
-    margin-bottom: 35px;
+.extra-products__title-wrap {
+  margin-bottom: 35px;
 
-    @media (min-width: $screen-md) {
-      margin-bottom: 70px;
-    }
+  @media (min-width: $screen-md) {
+    margin-bottom: 70px;
   }
+}
 
-  &__desc {
+.extra-products__desc {
 
-    @media (min-width: $screen-lg) {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-    }
-  }
-
-  &__table {
-    display: block;
-    margin-bottom: 40px;
-    font-family: #{$main-fonts};
-    font-size: 14px;
-    line-height: 1;
-    color: $text-color;
-
-    @media (min-width: $screen-md) {
-      margin-bottom: 70px;
-      font-size: 16px;
-      line-height: 1.25;
-    }
-
-    @media (min-width: $screen-lg) {
-      display: table;
-      width: 900px;
-      margin-bottom: 0;
-      border-collapse: collapse;
-
-      & > tbody {
-        display: table-row-group;
-      }
-
-      & td {
-        display: table-cell;
-      }
-    }
-
-    & > tbody {
-      display: block;
-    }
-
-    //для исправления изменения таблицы с помощью flex на IE11
-    & td {
-      display: block;
-    }
-  }
-
-  &__table-row {
+  @media (min-width: $screen-lg) {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
     justify-content: space-between;
-    padding-top: 10px;
-    padding-bottom: 17px;
-    border-top: 1px solid $gray-darken;
-
-    &:last-child {
-      border-bottom: 1px solid $gray-darken;
-    }
-
-    @media (min-width: $screen-md) and (max-width: $screen-lg - 1) {
-      padding: 25px 40px;
-      border: 1px solid $gray-darken;
-
-      &:not(:last-child) {
-        border-bottom: none;
-      }
-    }
-
-    @media (min-width: $screen-lg) {
-      display: table-row;
-    }
   }
+}
 
-  &__product-name {
-    width: 100%;
-    margin-bottom: 13px;
-    font-family: #{$custom-fonts};
+.extra-products__table {
+  display: block;
+  margin-bottom: 40px;
+  font-family: #{$main-fonts};
+  font-size: 14px;
+  line-height: 1;
+  color: $text-color;
+
+  @media (min-width: $screen-md) {
+    margin-bottom: 70px;
     font-size: 16px;
-    line-height: 1;
-    text-transform: uppercase;
-    color: $menu-header-color;
+    line-height: 1.25;
+  }
 
-    @media (min-width: $screen-md) {
-      width: auto;
-      margin-right: auto;
-      margin-bottom: 25px;
-      font-size: 20px;
+  @media (min-width: $screen-lg) {
+    display: table;
+    width: 900px;
+    margin-bottom: 0;
+    border-collapse: collapse;
+
+    & > tbody {
+      display: table-row-group;
     }
 
-    @media (min-width: $screen-lg) {
-      width: 330px;
-      margin-bottom: 0;
+    & td {
+      display: table-cell;
     }
   }
 
-  &__product-price {
-    margin-bottom: 13px;
-    text-transform: uppercase;
-
-    @media (min-width: $screen-md) {
-      margin-left: 55px;
-    }
-
-    @media (min-width: $screen-lg) {
-      width: 80px;
-      margin: 0;
-    }
-  }
-
-  &__product-buy {
-    width: 100%;
-
-    @media (min-width: $screen-lg) {
-      width: 245px;
-      padding: 15px 0;
-    }
-  }
-
-  &__buy-link {
+  & > tbody {
     display: block;
-    padding: 10px;
-    font-size: 16px;
-    line-height: 1.25;
+  }
+  //для исправления изменения таблицы с помощью flex на IE11
+  & td {
+    display: block;
+  }
+}
+
+.extra-products__table-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding-top: 10px;
+  padding-bottom: 17px;
+  border-top: 1px solid $gray-darken;
+
+  &:last-child {
+    border-bottom: 1px solid $gray-darken;
   }
 
-  &__gift {
-    box-sizing: border-box;
-    height: 290px;
+  @media (min-width: $screen-md) and (max-width: $screen-lg - 1) {
+    padding: 25px 40px;
+    border: 1px solid $gray-darken;
+
+    &:not(:last-child) {
+      border-bottom: none;
+    }
+  }
+
+  @media (min-width: $screen-lg) {
+    display: table-row;
+  }
+}
+
+.extra-products__product-name {
+  width: 100%;
+  margin-bottom: 13px;
+  font-family: #{$custom-fonts};
+  font-size: 16px;
+  line-height: 1;
+  text-transform: uppercase;
+  color: $menu-header-color;
+
+  @media (min-width: $screen-md) {
+    width: auto;
+    margin-right: auto;
+    margin-bottom: 25px;
+    font-size: 20px;
+  }
+
+  @media (min-width: $screen-lg) {
+    width: 330px;
+    margin-bottom: 0;
+  }
+}
+
+.extra-products__product-price {
+  margin-bottom: 13px;
+  text-transform: uppercase;
+
+  @media (min-width: $screen-md) {
+    margin-left: 55px;
+  }
+
+  @media (min-width: $screen-lg) {
+    width: 80px;
     margin: 0;
-    padding: 10px 50px;
-    padding-top: 190px;
-    font-size: 16px;
-    line-height: 1.25;
+  }
+}
+
+.extra-products__product-buy {
+  width: 100%;
+
+  @media (min-width: $screen-lg) {
+    width: 245px;
+    padding: 15px 0;
+  }
+}
+
+.extra-products__buy-link {
+  display: block;
+  padding: 10px;
+  font-size: 16px;
+  line-height: 1.25;
+}
+
+.extra-products__gift {
+  box-sizing: border-box;
+  height: 290px;
+  margin: 0;
+  padding: 190px 50px 10px;
+  font-size: 16px;
+  line-height: 1.25;
+  text-align: center;
+  color: $white;
+  background-color: $icon-background;
+  background-image: svg-load('../blocks/extra-products/img_to_bgn/gift.svg'), url('../img/gift-photo-mobile.jpg');
+  background-repeat: no-repeat;
+  background-size: 55px, cover;
+  background-position: center 65px, 0;
+
+  @media (min-width: $screen-md) and (max-width: $screen-lg - 1) {
+    height: 200px;
+    padding-top: 75px;
+    padding-left: 425px;
+    padding-right: 125px;
+    text-align: left;
+    background-image: svg-load('../blocks/extra-products/img_to_bgn/gift.svg'), url('../img/gift-photo-tablet.jpg');
+    background-position: 90px center, 0;
+  }
+
+  @media (min-width: $screen-lg) {
+    width: 250px;
+    min-height: 280px;
+    height: auto;
+    padding-left: 40px;
+    padding-right: 40px;
     text-align: center;
-    color: $white;
-    background-color: $icon-background;
-    background-image: svg-load('../blocks/extra-products/img_to_bgn/gift.svg'), url(../img/gift-photo-mobile.jpg);
-    background-repeat: no-repeat;
-    background-size: 55px, cover;
-    background-position: center 65px, 0;
-
-    @media (min-width: $screen-md) and (max-width: $screen-lg - 1) {
-      height: 200px;
-      padding-top: 75px;
-      padding-left: 425px;
-      padding-right: 125px;
-      text-align: left;
-      background-image: svg-load('../blocks/extra-products/img_to_bgn/gift.svg'), url(../img/gift-photo-tablet.jpg);
-      background-position: 90px center, 0;
-    }
-
-    @media (min-width: $screen-lg) {
-      width: 250px;
-      min-height: 280px;
-      height: auto;
-      padding-left: 40px;
-      padding-right: 40px;
-      text-align: center;
-      background-image: svg-load('../blocks/extra-products/img_to_bgn/gift.svg'), url(../img/gift-photo-desktop.jpg);
-    }
+    background-image: svg-load('../blocks/extra-products/img_to_bgn/gift.svg'), url('../img/gift-photo-desktop.jpg');
   }
 }

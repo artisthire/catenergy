@@ -1,91 +1,91 @@
 .main-contacts {
   position: relative;
+}
 
-  &__header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 30px 20px;
+.main-contacts__header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 30px 20px;
 
-    @media (min-width: $screen-md) {
-      padding: 65px 70px;
-    }
-
-    @media (min-width: $screen-lg) {
-      position: absolute;
-      left: 147px;
-      top: 95px;
-      width: 570px;
-      z-index: 2;
-      background-color: $white;
-    }
-
-    .inner-page & {
-
-      @media (max-width: $screen-lg - 1) {
-        background-color: $gray;
-      }
-    }
+  @media (min-width: $screen-md) {
+    padding: 65px 70px;
   }
 
-  &__title {
-    max-width: 140px;
-    margin: 0;
-    font-family: #{$custom-fonts};
-    font-size: 16px;
-    font-weight: $font-weight--normal;
-    line-height: 20px;
-    text-transform: uppercase;
-
-    @media (min-width: $screen-md) {
-      font-size: 20px;
-      line-height: 25px;
-    }
-  }
-
-  &__address {
-    margin: 0;
-    line-height: 20px;
-  }
-
-  &__address-br {
-
-    @media (max-width: $screen-md - 1) {
-      display: none;
-    }
-  }
-
-  &__map-wrap {
-    position: relative;
-    height: 360px;
-    overflow: hidden;
-    background-color: $gray;
-    z-index: 1;
-
-    @media (min-width: $screen-md) {
-      height: 400px;
-    }
-  }
-
-  // для добавления интерактивной карты
-  &__map-container {
-    height: 100%;
-  }
-
-  &__map-img {
-    display: block;
+  @media (min-width: $screen-lg) {
     position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    min-width: 100%;
-    max-width: none;
-    height: auto;
+    left: 147px;
+    top: 95px;
+    width: 570px;
+    z-index: 2;
+    background-color: $white;
+  }
 
-    @media (min-width: $screen-md) {
-      left: auto;
-      right: 0;
-      transform: translate(0, -50%);
+  .inner-page & {
+
+    @media (max-width: $screen-lg - 1) {
+      background-color: $gray;
     }
+  }
+}
+
+.main-contacts__title {
+  max-width: 140px;
+  margin: 0;
+  font-family: #{$custom-fonts};
+  font-size: 16px;
+  font-weight: $font-weight--normal;
+  line-height: 20px;
+  text-transform: uppercase;
+
+  @media (min-width: $screen-md) {
+    font-size: 20px;
+    line-height: 25px;
+  }
+}
+
+.main-contacts__address {
+  margin: 0;
+  line-height: 20px;
+}
+
+.main-contacts__address-br {
+
+  @media (max-width: $screen-md - 1) {
+    display: none;
+  }
+}
+
+.main-contacts__map-wrap {
+  position: relative;
+  height: 360px;
+  overflow: hidden;
+  background-color: $gray;
+  z-index: 1;
+
+  @media (min-width: $screen-md) {
+    height: 400px;
+  }
+}
+
+// для добавления интерактивной карты
+.main-contacts__map-container {
+  height: 100%;
+}
+
+.main-contacts__map-img {
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 100%;
+  max-width: none;
+  height: auto;
+
+  @media (min-width: $screen-md) {
+    left: auto;
+    right: 0;
+    transform: translate(0, -50%);
   }
 }

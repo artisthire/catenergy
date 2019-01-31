@@ -9,61 +9,63 @@
     font-size: 20px;
     line-height: 1;
   }
+}
 
-  //скрываем "правильно" для скринридеров
-  &__input {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    margin: -1px;
-    padding: 0;
-    border: 0;
-    white-space: nowrap;
-    clip-path: inset(100%);
-    clip: rect(0 0 0 0);
-    overflow: hidden;
-  }
+//скрываем "правильно" для скринридеров
+.form-radio-btn__input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
 
-  &__input:checked ~ &__label > &__pseudo-icon {
+  &:checked ~ .form-radio-btn__label > .form-radio-btn__pseudo-icon {
     background-color: $icon-background;
   }
 
-  &__input:focus ~ &__label > &__pseudo-icon {
+  //передаем фокус по умолчанию на псевдоиконку
+  &:focus ~ .form-radio-btn__label > .form-radio-btn__pseudo-icon {
     border-color: #663d15;
     outline: thin dotted;
     outline: 5px auto -webkit-focus-ring-color;
   }
+}
 
-  &__label {
-    display: inline-block;
-    vertical-align: middle;
-  }
 
-  &__label:hover > &__pseudo-icon {
+.form-radio-btn__label {
+  display: inline-block;
+  vertical-align: middle;
+
+  &:hover > .form-radio-btn__pseudo-icon {
     border-color: #bababa;
   }
 
-  &__label:active {
+  &:active {
     opacity: 0.3;
   }
+}
 
-  &__pseudo-icon {
-    position: relative;
-    box-sizing: border-box;
-    display: inline-block;
-    vertical-align: middle;
-    width: 30px;
-    height: 30px;
-    margin-right: 20px;
-    padding: 8px;
-    border: 1px solid #cdcdcd;
-    border-radius: 50%;
-    background-clip: content-box;
+.form-radio-btn__pseudo-icon {
+  position: relative;
+  box-sizing: border-box;
+  display: inline-block;
+  vertical-align: middle;
+  width: 30px;
+  height: 30px;
+  margin-right: 20px;
+  padding: 8px;
+  border: 1px solid #cdcdcd;
+  border-radius: 50%;
+  background-clip: content-box;
 
-    @media (min-width: $screen-md) {
-      width: 40px;
-      height: 40px;
-      padding: 10px;
-    }
+  @media (min-width: $screen-md) {
+    width: 40px;
+    height: 40px;
+    padding: 10px;
   }
 }

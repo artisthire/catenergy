@@ -9,69 +9,70 @@
     font-size: 20px;
     line-height: 1;
   }
+}
 
+.form-checkbox-btn__input {
   //скрываем "правильно" для скринридеров
-  &__input {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    margin: -1px;
-    padding: 0;
-    border: 0;
-    white-space: nowrap;
-    clip-path: inset(100%);
-    clip: rect(0 0 0 0);
-    overflow: hidden;
-  }
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
 
-  &__input:checked ~ &__label > &__pseudo-icon::after {
+  &:checked ~ .form-checkbox-btn__label > .form-checkbox-btn__pseudo-icon::after {
     border-bottom-color: $icon-background;
     border-left-color: $icon-background;
   }
 
-  &__input:focus ~ &__label > &__pseudo-icon {
+  &:focus ~ .form-checkbox-btn__label > .form-checkbox-btn__pseudo-icon {
     border-color: #663d15;
     outline: thin dotted;
     outline: 5px auto -webkit-focus-ring-color;
   }
+}
 
-  &__label {
-    display: inline-block;
-    vertical-align: middle;
-  }
 
-  &__label:hover > &__pseudo-icon {
+.form-checkbox-btn__label {
+  display: inline-block;
+  vertical-align: middle;
+
+  &:hover > .form-checkbox-btn__pseudo-icon {
     border-color: #bababa;
   }
 
-  &__label:active {
+  &:active {
     opacity: 0.3;
   }
+}
 
-  &__pseudo-icon {
-    position: relative;
-    box-sizing: border-box;
-    display: inline-block;
-    vertical-align: middle;
-    width: 30px;
-    height: 30px;
-    margin-right: 20px;
-    border: 1px solid #cdcdcd;
+.form-checkbox-btn__pseudo-icon {
+  position: relative;
+  box-sizing: border-box;
+  display: inline-block;
+  vertical-align: middle;
+  width: 30px;
+  height: 30px;
+  margin-right: 20px;
+  border: 1px solid #cdcdcd;
 
-    @media (min-width: $screen-md) {
-      width: 40px;
-      height: 40px;
-    }
+  @media (min-width: $screen-md) {
+    width: 40px;
+    height: 40px;
+  }
 
-    &::after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-45%, -80%) rotate(-45deg);
-      width: 19px;
-      height: 9px;
-      border: 2px solid transparent;
-    }
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-45%, -80%) rotate(-45deg);
+    width: 19px;
+    height: 9px;
+    border: 2px solid transparent;
   }
 }
