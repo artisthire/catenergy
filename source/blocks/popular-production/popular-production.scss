@@ -5,13 +5,6 @@
     margin-bottom: 50px;
   }
 
-  @media (min-width: $screen-lg) {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    flex-wrap: wrap;
-  }
-
   &__card {
     margin-bottom: 20px;
     padding: 22px 20px;
