@@ -1,8 +1,8 @@
 .program-form {
-  $block: &;
   margin: 0;
 
   @media (min-width: $screen-md) and (max-width: $screen-lg - 1) {
+    //доп. отступ вокруг формы на планшетах (так в дизайне)
     margin-left: 40px;
     margin-right: 35px;
   }
@@ -62,6 +62,11 @@
 
   &__legend {
     margin-bottom: 30px;
+
+    @media (min-width: $screen-md) and (max-width: $screen-lg - 1) {
+      //для компенсации дополнительного отступа вокруг формы на планшетах
+      margin-left: -40px;
+    }
 
     @media (min-width: $screen-md) {
       margin-bottom: 70px;

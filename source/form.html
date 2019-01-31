@@ -9,7 +9,7 @@
 
   <title>Подбор программы</title>
 </head>
-<body class="page-form">
+<body class="inner-page">
   <!-- @@include("img/sprite-svg/img/sprite-svg.svg") -->
 
   @@include("html_templates/main-header.html", {
@@ -64,10 +64,8 @@
       </div>
 
       <fieldset class="program-form__field">
-        <div class="title-back-line">
-          <legend class="title-back-line__text program-form__legend">Контактные данные <br> (владельца кота)</legend>
-        </div>
-        <div class="program-form__wrapper">
+        <legend class="title-back-line program-form__legend">Контактные данные <br> (владельца кота)</legend>
+        <div class="colums colums--lg-2">
           <p class="form-input-text form-input-text--add-icon program-form__input-wrap">
             <label for="email" class="form-input-text__label">E-mail:*</label>
             <input id="email" name="email" type="email" class="form-input-text__input" placeholder="kuklachev@gmail.com" required/>
@@ -86,16 +84,12 @@
       </fieldset>
 
       <fieldset class="program-form__field">
-        <div class="title-back-line">
-          <legend class="title-back-line__text program-form__legend">Коментарии</legend>
-        </div>
+        <legend class="title-back-line program-form__legend">Коментарии</legend>
         <textarea name="comments" cols="35" rows="10" class="form-textfield program-form__input-textarea" placeholder="Расскажите обо всех повадках кота"></textarea>
       </fieldset>
 
       <fieldset class="program-form__field">
-        <div class="title-back-line">
-          <legend class="title-back-line__text program-form__legend">Дополнительно</legend>
-        </div>
+        <legend class="title-back-line program-form__legend">Дополнительно</legend>
         <div class="colums colums--md-2 colums--lg-4">
           <p class="form-checkbox-btn program-form__input-wrap">
             <input class="form-checkbox-btn__input" id="sweetener" name="sweetener" type="checkbox" checked/>

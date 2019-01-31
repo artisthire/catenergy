@@ -9,13 +9,13 @@
 
   <title>Каталог продуктов нашего магазина</title>
 </head>
-<body>
+<body class="inner-page">
   <!-- @@include("img/sprite-svg/img/sprite-svg.svg") -->
 
   @@include("html_templates/main-header.html", {
     "current_page": "catalog_html"
   })
-  <main>
+  <main class="wrapper">
     <section class="product-catalog">
       <h1 class="product-catalog__title">Каталог продукции</h1>
 
@@ -220,9 +220,9 @@
     </section>
 
     <section class="extra-products">
-      <div class="title-back-line extra-products__title-wrap">
-        <h2 class="title-back-line__text">Дополнительные товары</h2>
-      </div>
+      <h2 class="title-back-line extra-products__title-wrap">
+        Дополнительные товары
+      </h2>
 
       <div class="extra-products__desc">
         <table class="extra-products__table">

@@ -1,14 +1,4 @@
 .client-example {
-  $block: &;
-  padding: 0 20px;
-
-  @media (min-width: $screen-md) {
-    padding: 0 30px;
-  }
-
-  @media (min-width: $screen-lg) {
-    padding: 0 110px;
-  }
 
   @media (max-width: $screen-md - 1) {
     background-color: $gray;

@@ -1,10 +1,8 @@
 .popular-production {
   margin-bottom: 30px;
-  padding: 0 20px;
 
   @media (min-width: $screen-md) {
     margin-bottom: 50px;
-    padding: 0 30px;
   }
 
   @media (min-width: $screen-lg) {
@@ -12,7 +10,6 @@
     flex-direction: row;
     justify-content: space-between;
     flex-wrap: wrap;
-    padding: 0 110px;
   }
 
   &__card {

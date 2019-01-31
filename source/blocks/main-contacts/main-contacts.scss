@@ -20,7 +20,7 @@
       background-color: $white;
     }
 
-    .page-form & {
+    .inner-page & {
 
       @media (max-width: $screen-lg - 1) {
         background-color: $gray;
