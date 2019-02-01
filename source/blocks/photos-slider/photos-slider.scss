@@ -12,203 +12,212 @@
   }
 }
 
-.no-js .photos-slider__img-wrap {
-  display: block;
-  margin: 10px 0;
-}
+.no-js {
 
-.no-js .photos-slider__img-title {
-  padding: 0 20px;
-  text-align: center;
-
-  @media (min-width: $screen-md) {
-    padding: 0 30px;
+  .photos-slider__img-wrap {
+    display: block;
+    margin: 10px 0;
   }
 
-  @media (min-width: $screen-lg) {
-    padding: 0 110px;
-  }
-}
+  .photos-slider__img-title {
+    padding: 0 20px;
+    text-align: center;
 
-.js .photos-slider {
-  position: relative;
-}
-
-.js .photos-slider__img-container {
-  position: relative;
-  overflow: hidden;
-
-  @media (min-width: $screen-md) {
-    // z-index: 2;
-    height: 100%;
-    background-image: linear-gradient(to bottom, $white 170px, transparent 170px), linear-gradient(to right, $gray 50%, #eaeaea 50%);
-  }
-}
-
-.js .photos-slider__img-wrap {
-  max-width: 700px;
-  margin: 0 auto;
-  padding-bottom: 88px;
-
-  @media (max-width: $screen-md - 1) {
-
-    &--next {
-      display: none;
-    }
-  }
-
-  @media (min-width: $screen-md) {
-    padding-bottom: 115px;
-
-    &--prev {
-      position: absolute;
-      left: 0;
-      right: 0;
-      top: 0;
-      clip: rect(auto, 350px, auto, 0);
-      background-image: linear-gradient(to bottom, $white 170px, $gray 170px);
+    @media (min-width: $screen-md) {
+      padding: 0 30px;
     }
 
-    &--next {
-      background-image: linear-gradient(to bottom, $white 170px, #eaeaea 170px);
+    @media (min-width: $screen-lg) {
+      padding: 0 110px;
     }
   }
 }
 
-.js .photos-slider__img-title {
-  display: none;
-}
+.js {
 
-.js .photos-slider__controls {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 240px + 35px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-
-  @media (min-width: $screen-md) {
-    top: 499px + 35px;
+  .photos-slider {
+    position: relative;
   }
-}
 
-.js .photos-slider__label {
-  position: relative;
-  display: block;
-  padding: 0 15px;
-  border: none;
-  font-family: #{$custom-fonts};
-  font-size: 16px;
-  line-height: 1.25;
-  text-transform: uppercase;
-  color: $title-color;
-  background-color: transparent;
+  .photos-slider__img-container {
+    position: relative;
+    overflow: hidden;
 
-  @media (min-width: $screen-md) {
-    margin: 0 10px;
-    font-size: 20px;
-    // outline: none;
-    cursor: pointer;
-
-    &::after {
-      content: '';
-      position: absolute;
-      left: 15px;
-      right: 15px;
-      bottom: -3px;
-      height: 1px;
-      border-bottom: 1px dashed #bebebe;
-    }
-
-    &:hover::after,
-    &:focus::after {
-      border-bottom-style: solid;
-    }
-
-    &--active {
-      cursor: auto;
-      pointer-events: none;
-    }
-
-    &--active::after,
-    &:active::after {
-      border-bottom-color: transparent;
+    @media (min-width: $screen-md) {
+      // z-index: 2;
+      // height: 100%;
+      background-image: linear-gradient(to bottom, $white 170px, transparent 170px), linear-gradient(to right, $gray 50%, #eaeaea 50%);
     }
   }
-}
 
-.js .photos-slider__control-background {
+  .photos-slider__img-wrap {
+    max-width: 700px;
+    margin: 0 auto;
+    padding-bottom: 88px;
 
-  @media (min-width: $screen-md) {
+    @media (max-width: $screen-md - 1) {
+
+      //на мобильной версии слайды отображаются почереди
+      &--next {
+        display: none;
+      }
+    }
+
+    @media (min-width: $screen-md) {
+      padding-bottom: 115px;
+
+      &--prev {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        width: 100%;
+        margin-left: -350px;
+        clip: rect(auto, 350px, auto, auto);
+        clip-path: inset(0 350px 0 0);
+        background-image: linear-gradient(to bottom, $white 170px, $gray 170px);
+      }
+
+      &--next {
+        background-image: linear-gradient(to bottom, $white 170px, #eaeaea 170px);
+      }
+    }
+  }
+
+  .photos-slider__img-title {
+    display: none;
+  }
+
+  .photos-slider__controls {
+    position: absolute;
+    top: 240px + 35px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    @media (min-width: $screen-md) {
+      width: 700px;
+      top: 499px + 35px;
+    }
+  }
+
+  .photos-slider__label {
     position: relative;
     display: block;
-    width: 428px;
-    height: 6px;
+    padding: 0 15px;
     border: none;
-    border-radius: 3px;
-    background-color: #dcdcdc;
+    font-family: #{$custom-fonts};
+    font-size: 16px;
+    line-height: 1.25;
+    text-transform: uppercase;
+    color: $title-color;
+    background-color: transparent;
+
+    @media (min-width: $screen-md) {
+      margin: 0 10px;
+      font-size: 20px;
+      // outline: none;
+      cursor: pointer;
+
+      &::after {
+        content: '';
+        position: absolute;
+        left: 15px;
+        right: 15px;
+        bottom: -3px;
+        height: 1px;
+        border-bottom: 1px dashed #bebebe;
+      }
+
+      &:hover::after,
+      &:focus::after {
+        border-bottom-style: solid;
+      }
+
+      &--current {
+        cursor: auto;
+      }
+
+      &--current::after,
+      &:active::after {
+        border-bottom-color: transparent;
+      }
+    }
   }
-}
 
-.js .photos-slider__control {
-  box-sizing: border-box;
-  display: block;
-  margin: 0;
-  padding: 0;
-  font-size: 0;
-  cursor: pointer;
+  .photos-slider__control-background {
 
-  @media (max-width: $screen-md - 1) {
-    position: relative;
-    height: 14px;
-    width: 84px;
-    border: 1px solid $gray-darken;
-    border-radius: 6px;
-    background-color: $white;
-    transition: all 0.3s linear;
+    @media (min-width: $screen-md) {
+      position: relative;
+      display: block;
+      width: 428px;
+      height: 6px;
+      border: none;
+      border-radius: 3px;
+      background-color: #dcdcdc;
+    }
+  }
 
-    &::after {
-      content: '';
+  .photos-slider__control {
+    box-sizing: border-box;
+    display: block;
+    margin: 0;
+    padding: 0;
+    font-size: 0;
+    cursor: pointer;
+
+    @media (max-width: $screen-md - 1) {
+      position: relative;
+      height: 14px;
+      width: 84px;
+      border: 1px solid $gray-darken;
+      border-radius: 6px;
+      background-color: $white;
+      transition: all 0.3s linear;
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 6px;
+        width: 35px;
+        height: 6px;
+        padding: 0;
+        border-radius: inherit;
+        margin: 0;
+        margin-top: -3px;
+        background-color: $icon-background;
+      }
+
+      &--right::after {
+        left: 43px;
+      }
+    }
+
+    @media (min-width: $screen-md) {
       position: absolute;
       top: 50%;
-      left: 6px;
-      width: 35px;
-      height: 6px;
-      padding: 0;
-      border-radius: inherit;
-      margin: 0;
-      margin-top: -3px;
+      left: 50%;
+      width: 32px;
+      height: 32px;
+      margin-left: -14px;
+      margin-top: -16px;
+      border: 12px solid $white;
+      border-radius: 50%;
       background-color: $icon-background;
-    }
+      box-shadow: 0 0 0 1px #cdcdcd, 0 3px 5px 0 rgba(0, 0, 0, 0.15);
 
-    &--right::after {
-      left: 43px;
-    }
-  }
+      &:hover,
+      &:focus {
+        // outline: none;
+        box-shadow: 0 0 0 1px #cdcdcd, 0 3px 5px 0 rgba(0, 0, 0, 0.25);
+      }
 
-  @media (min-width: $screen-md) {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 32px;
-    height: 32px;
-    margin-left: -14px;
-    margin-top: -16px;
-    border: 12px solid $white;
-    border-radius: 50%;
-    background-color: $icon-background;
-    box-shadow: 0 0 0 1px #cdcdcd, 0 3px 5px 0 rgba(0, 0, 0, 0.15);
-
-    &:hover,
-    &:focus {
-      // outline: none;
-      box-shadow: 0 0 0 1px #cdcdcd, 0 3px 5px 0 rgba(0, 0, 0, 0.25);
-    }
-
-    &:active {
-      box-shadow: 0 0 0 2px $icon-background, 0 5px 5px 0 rgba(0, 0, 0, 0.3);
+      &:active {
+        box-shadow: 0 0 0 2px $icon-background, 0 5px 5px 0 rgba(0, 0, 0, 0.3);
+      }
     }
   }
 }
