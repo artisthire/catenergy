@@ -28,7 +28,10 @@
   }
 
   &::placeholder {
-    font: inherit;
-    color: inherit;
+    //повторил все свойства, поскольку в IE11 через inherit не применилось
+    font-family: #{$custom-fonts};
+    font-size: 16px;
+    line-height: 1.13;
+    color: $text-color;
   }
 }
