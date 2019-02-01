@@ -45,7 +45,9 @@ var source_scss = source_root_dir + 'scss/*.scss';
 var source_scss_file = source_root_dir + 'scss/style.scss';
 //ссылка на scss файлы в блоках для слежения в gulp.watch
 var source_blocks = source_root_dir + 'blocks/**/*.scss';
-var source_img = source_root_dir + 'img/*.{jpg,jpeg,gif,svg,png,webp}';
+var source_img = source_root_dir + 'img/';
+var source_img_optim = source_root_dir + 'img/img-optim/';
+var source_img_webp = source_root_dir + 'img/img-webp/';
 var source_favicon = source_root_dir + 'img/favicon/*';
 var source_js = source_root_dir + 'js/*.js';
 var source_font = source_root_dir + 'font/*.{woff,woff2}';
@@ -216,45 +218,50 @@ gulp.task('js:copy', function() {
 
 // Ручная оптимизация изображений
 // Использование: folder=source/img npm start img:opt
-var folder = process.env.folder;
+// var folder = process.env.folder;
+// Оптимизация изображений
 gulp.task('img:opt', function () {
   var imagemin = require('gulp-imagemin');
   var gulpPngquant = require('gulp-pngquant');
   //var pngquant = require('imagemin-pngquant');
-  if(folder){
-    console.log('---------- Оптимизация картинок');
-    gulp.src(folder + '/*.{jpg,jpeg,gif,svg}')
-      .pipe(imagemin([
-		imagemin.gifsicle({interlaced: true}),
-		imagemin.jpegtran({progressive: true}),
-		imagemin.svgo()
-	  ]))
+  console.log('---------- Оптимизация картинок');
+  gulp.src(source_img + "*.{jpg,jpeg,gif,svg}")
+    .pipe(newer(source_img_optim))
+    .pipe(imagemin([
+  	imagemin.gifsicle({interlaced: true}),
+  	imagemin.jpegtran({progressive: true}),
+  	imagemin.svgo()
+    ]))
       //.pipe(rename({suffix: '.min'}))
-      .pipe(gulp.dest(folder));
+  .pipe(gulp.dest(source_img_optim));
 
-    gulp.src(folder + '/*.png')
-      .pipe(gulpPngquant({
-          quality: '65-80'
-      }))
-      .pipe(gulp.dest(folder));
-
-    return true;
-  }
-  else {
-    console.log('---------- Оптимизация картинок: ошибка (не указана папка)');
-    console.log('---------- Пример вызова команды: folder=source/img npm start img:opt');
-  }
+  gulp.src(source_img + "*.png")
+    .pipe(gulpPngquant({
+        quality: '65-80'
+    }))
+    .pipe(gulp.dest(source_img_optim));
 });
+
+//создание изображений в формате webp
+gulp.task('img:webp', function() {
+  // var webp = require('gulp-webp');
+  var imagemin1 = require('imagemin');
+  var imageminWebp = require('imagemin-webp');
+  console.log('---------- Создание картинок webp');
+  gulp.src(source_img + "*.{jpg,jpeg,gif,png}")
+  // .pipe(newer(source_img_webp))
+  .pipe(imagemin1([
+      imageminWebp ({quality: 90})
+    ]))
+  // .pipe(rename({suffix: '.webp'}))
+  .pipe(gulp.dest(source_img_webp));
+});
+
 
 gulp.task('img', function() {
   console.log('---------- Копирование картинок');
-  gulp.src(source_img)
+  gulp.src([source_img_webp + '*', source_img_optim + '*'])
   .pipe(newer(build_img))
-  .pipe(size({
-    title: 'Размер',
-    showFiles: true,
-    showTotal: false,
-  }))
   .pipe(gulp.dest(build_img));
 });
 
