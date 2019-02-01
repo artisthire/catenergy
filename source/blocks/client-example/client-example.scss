@@ -193,11 +193,6 @@
 }
 
 .js .client-example__photos {
-  margin: 0 -20px;
-
-  @media (min-width: $screen-md) and (max-width: $screen-lg - 1) {
-    margin: 0 -30px;
-  }
 
   @media (min-width: $screen-lg) {
     width: 800px;

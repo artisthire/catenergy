@@ -156,7 +156,7 @@
   background-color: $icon-background;
   background-image: svg-load('../blocks/extra-products/img_to_bgn/gift.svg'), url('../img/gift-photo-mobile.jpg');
   background-repeat: no-repeat;
-  background-size: 55px, cover;
+  background-size: 55px auto, cover;
   background-position: center 65px, 0;
 
   @media (min-width: $screen-md) and (max-width: $screen-lg - 1) {
