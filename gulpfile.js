@@ -3,7 +3,8 @@ var plumber = require('gulp-plumber');
 var gulpSequence = require('gulp-sequence');
 var gulpIf = require('gulp-if');
 var size = require('gulp-size');
-var newer = require('gulp-newer');
+// var newer = require('gulp-newer');
+var changed = require('gulp-changed');
 var debug = require('gulp-debug');
 var notify = require('gulp-notify');
 var rename = require('gulp-rename');
@@ -73,7 +74,7 @@ var isDev = true;
 
 // Плагины postCSS, которыми обрабатываются все стилевые файлы
 var postCssPlugins = [
-  autoprefixer({browsers: ["ie >= 11", "last 2 versions", "not dead"]}),
+  autoprefixer({browsers: ["ie >= 11", "last 2 versions"]}),
   mqpacker({
     sort: true
   }),
@@ -85,16 +86,8 @@ var postCssPlugins = [
   cssnano()
 ];
 
-// atImport(),
-// inlineSVG(),
-// objectFitImages(),
-// imageInliner({
-//   assetPaths: ['src/blocks/**/img_to_bg/'],
-//   maxFileSize: 10240
-// })
-
 //обработка файлов html
-gulp.task('html',function() {
+gulp.task('html', function (done) {
   console.log('---------- Компиляция HTML');
   gulp.src(source_html)
   .pipe(plumber({
@@ -108,20 +101,17 @@ gulp.task('html',function() {
     basepath: '@file',
     indent: true
   }))
-  .pipe(size({
-    title: 'Размер',
-    showFiles: true,
-    showTotal: false,
-  }))
   .pipe(gulp.dest(build_root_dir))
   .pipe(browserSync.reload({stream:true}));
+
+  done();
 });
 
 //сортировка атрибутов в тегах html
 //выполняется один раз для исходных файлов, чтобы атрибут класса был в начале тега
 gulp.task('html-sort',function() {
   console.log('---------- Сортировка атрибутов в тегах (делается в исходниках)');
-  gulp.src([source_root_dir + '*.html', source_root_dir +'blocks/**/*.html'])
+  return gulp.src([source_root_dir + '*.html', source_root_dir +'blocks/**/*.html'])
   .pipe(posthtml([
     posthtmlAttrSort(
       {
@@ -144,7 +134,7 @@ gulp.task('html-sort',function() {
 //обработка стилевых файлов
 gulp.task('style', function() {
   console.log('---------- Компиляция стилей');
-  gulp.src(source_scss_file)
+  return gulp.src(source_scss_file)
   .pipe(plumber({
     errorHandler: function(err) {
       notify.onError({
@@ -155,34 +145,25 @@ gulp.task('style', function() {
     }
   }))
   .pipe(gulpIf(isDev, sourcemaps.init()))
-  .pipe(debug({title: "Style:"}))
+  // .pipe(debug({title: "Style:"}))
   .pipe(sass())
   .pipe(postcss(postCssPlugins))
   .pipe(rename({suffix: '.min'}))
   .pipe(gulpIf(isDev, sourcemaps.write('/')))
-  .pipe(size({
-    title: 'Размер',
-    showFiles: true,
-    showTotal: false,
-  }))
   .pipe(gulp.dest(build_css))
   .pipe(browserSync.stream());
 });
 
 gulp.task('style:copy', function() {
   console.log('---------- Копирование стилей');
-  gulp.src(source_libs_css)
-  .pipe(size({
-    title: 'Размер',
-    showFiles: true,
-    showTotal: false,
-  }))
-  .pipe(gulp.dest(build_css));
+  return gulp.src(source_libs_css)
+  .pipe(gulp.dest(build_css))
+  .pipe(browserSync.stream());
 });
 
 gulp.task('js', function() {
   console.log('---------- Компиляция JS');
-  gulp.src(source_js)
+  return gulp.src(source_js)
   .pipe(plumber({
     errorHandler: function(err) {
       notify.onError({
@@ -196,86 +177,73 @@ gulp.task('js', function() {
   .pipe(uglify())
   .pipe(rename({suffix: '.min'}))
   .pipe(gulpIf(isDev, sourcemaps.write('/')))
-  .pipe(size({
-    title: 'Размер',
-    showFiles: true,
-    showTotal: false,
-  }))
   .pipe(gulp.dest(build_js))
-  .pipe(browserSync.stream());
+  .pipe(browserSync.reload({stream:true}));
 });
 
 gulp.task('js:copy', function() {
   console.log('---------- Копирование JS файлов');
-  gulp.src(source_libs_js)
-  .pipe(size({
-    title: 'Размер',
-    showFiles: true,
-    showTotal: false,
-  }))
-  .pipe(gulp.dest(build_js));
+  return gulp.src(source_libs_js)
+  .pipe(gulp.dest(build_js))
+  .pipe(browserSync.reload({stream:true}));
 });
 
 // Ручная оптимизация изображений
 // Использование: folder=source/img npm start img:opt
 // var folder = process.env.folder;
 // Оптимизация изображений
-gulp.task('img:opt', function () {
+gulp.task('img:opt', function (done) {
   var imagemin = require('gulp-imagemin');
   var gulpPngquant = require('gulp-pngquant');
   //var pngquant = require('imagemin-pngquant');
+
   console.log('---------- Оптимизация картинок');
   gulp.src(source_img + "*.{jpg,jpeg,gif,svg}")
-    .pipe(newer(source_img_optim))
+    .pipe(changed(source_img_optim))
     .pipe(imagemin([
   	imagemin.gifsicle({interlaced: true}),
   	imagemin.jpegtran({progressive: true}),
-  	imagemin.svgo()
+  	imagemin.svgo({removeViewBox: false})
     ]))
-      //.pipe(rename({suffix: '.min'}))
-  .pipe(gulp.dest(source_img_optim));
+    .pipe(gulp.dest(source_img_optim));
 
   gulp.src(source_img + "*.png")
+    .pipe(changed(source_img_optim))
     .pipe(gulpPngquant({
         quality: '65-80'
     }))
     .pipe(gulp.dest(source_img_optim));
+
+    done();
 });
 
-//создание изображений в формате webp
-gulp.task('img:webp', function() {
-  // var webp = require('gulp-webp');
-  var imagemin1 = require('imagemin');
-  var imageminWebp = require('imagemin-webp');
+gulp.task("img:webp", function () {
+  var webp = require('gulp-webp');
+
   console.log('---------- Создание картинок webp');
-  gulp.src(source_img + "*.{jpg,jpeg,gif,png}")
-  // .pipe(newer(source_img_webp))
-  .pipe(imagemin1([
-      imageminWebp ({quality: 90})
-    ]))
-  // .pipe(rename({suffix: '.webp'}))
+  return gulp.src(source_img + "*.{jpg,jpeg,gif,png}")
+  .pipe(changed(source_img_webp, {extension: '.webp'}))
+  .pipe(debug({'title':' image:webp'}))
+  .pipe(webp({quality: 90}))
   .pipe(gulp.dest(source_img_webp));
 });
 
 
 gulp.task('img', function() {
   console.log('---------- Копирование картинок');
-  gulp.src([source_img_webp + '*', source_img_optim + '*'])
-  .pipe(newer(build_img))
-  .pipe(gulp.dest(build_img));
+  return gulp.src([source_img_webp + '*', source_img_optim + '*'])
+  .pipe(changed(build_img))
+  .pipe(gulp.dest(build_img))
+  .pipe(browserSync.reload({stream:true}));
 });
 
 //копирование фавиконок в корень директории сайта
 gulp.task('favicon', function() {
   console.log('---------- Копирование фавиконок');
-  gulp.src(source_favicon)
-  .pipe(newer('build/'))
-  .pipe(size({
-    title: 'Размер',
-    showFiles: true,
-    showTotal: false,
-  }))
-  .pipe(gulp.dest(build_favicon));
+  return gulp.src(source_favicon)
+  .pipe(changed(build_favicon))
+  .pipe(gulp.dest(build_favicon))
+  .pipe(browserSync.reload({stream:true}));
 });
 
 gulp.task('sprite:svg', function() {
@@ -316,51 +284,51 @@ gulp.task('sprite:svg', function() {
 
 gulp.task('font', function() {
   console.log('---------- Копирование шрифтов');
-  gulp.src(source_font)
-  .pipe(newer(build_font))
-  .pipe(size({
-    title: 'Размер',
-    showFiles: true,
-    showTotal: false,
-  }))
-  .pipe(gulp.dest(build_font));
+  return gulp.src(source_font)
+  .pipe(changed(build_font))
+  .pipe(gulp.dest(build_font))
+  .pipe(browserSync.reload({stream:true}));
 });
 
-gulp.task('clean', function() {
+gulp.task('clean', function(done) {
   console.log('---------- Очистка рабочей директории');
   del.sync(build_root_dir);
+  done();
 });
 
-gulp.task('serve', ['sprite:svg', 'html', 'style', 'style:copy', 'js', 'js:copy', 'img', 'favicon', 'font'], function() {
+gulp.task('watch', function(done) {
+  gulp.watch([source_html, source_html_templates],gulp.series('html'));
+  gulp.watch([source_scss, source_blocks], gulp.series('style'));
+  gulp.watch(source_libs_css, gulp.series('style:copy'));
+  gulp.watch(source_js, gulp.series('js'));
+  gulp.watch(source_libs_js, gulp.series('js:copy'));
+  gulp.watch(source_img + '*.{jpg,jpeg,gif,png,svg}', gulp.series('img:opt', 'img:webp', 'img'));
+  gulp.watch(source_favicon, gulp.series('favicon'));
+  gulp.watch(source_font, gulp.series('font'));
+  gulp.watch(source_img_to_bg + '*', gulp.series('style'));
+  // gulp.watch(source_svg_sprite + '*.svg', ['sprite:svg', 'html']);
+  gulp.watch(source_svg_sprite + '*.svg', gulp.series('sprite:svg', 'html'));
+  done();
+});
+
+gulp.task('serve', gulp.series(
+  'sprite:svg', 'html',
+  gulp.parallel('style', 'style:copy', 'js', 'js:copy', 'favicon', 'font'),
+  'img:opt', 'img:webp','img',
+  'watch',
+  function (done) {
     browserSync.init({
         server: build_root_dir,
         open: false,
         port: 8080,
         ui: false
     });
+    done();
+}));
 
-    gulp.watch([source_html, source_html_templates], ['html']);
-    gulp.watch([source_scss, source_blocks], ['style']);
-    gulp.watch(source_libs_css, ['style:copy']);
-    gulp.watch(source_js, ['js']);
-    gulp.watch(source_libs_js, ['js:copy']);
-    gulp.watch(source_img , function() {
-      gulpSequence('img', 'browserReload');
-    });
-    gulp.watch(source_favicon, ['favicon']);
-    gulp.watch(source_font, ['font']);
-    gulp.watch(source_img_to_bg + '*', ['style']);
-    // gulp.watch(source_svg_sprite + '*.svg', ['sprite:svg', 'html']);
-    gulp.watch(source_svg_sprite + '*.svg', function() {
-      gulpSequence('sprite:svg', 'html');
-    });
-});
-
-gulp.task('default', gulpSequence('clean', 'serve'));
-
-function browserReload () {
-  browserSync.reload({stream:true});
-}
+gulp.task('default', gulp.series('clean', 'serve', function(done) {
+  done();
+}));
 
 /**
  * Проверка существования файла или папки
