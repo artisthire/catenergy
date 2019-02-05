@@ -70,7 +70,7 @@ var build_font = build_root_dir + 'font/';
 var build_js = build_root_dir + 'js/';
 
 //флаг, устанавливающий разработка это или сборка для продакшина
-var isDev = true;
+var isDev = !process.env.NODE_ENV || process.env.NODE_ENV == 'development';
 
 // Плагины postCSS, которыми обрабатываются все стилевые файлы
 var postCssPlugins = [
@@ -87,13 +87,16 @@ var postCssPlugins = [
 ];
 
 //обработка файлов html
-gulp.task('html', function (done) {
+gulp.task('html', function () {
   console.log('---------- Компиляция HTML');
-  gulp.src(source_html)
+  return gulp.src(source_html)
   .pipe(plumber({
-    handleError: function (err) {
-        console.log(err);
-        this.emit('end');
+    errorHandler: function(err) {
+      notify.onError({
+        title: 'HTML compilation error',
+        message: err.message
+      })(err);
+      this.emit('end');
     }
   }))
   .pipe(fileinclude({
@@ -103,8 +106,6 @@ gulp.task('html', function (done) {
   }))
   .pipe(gulp.dest(build_root_dir))
   .pipe(browserSync.reload({stream:true}));
-
-  done();
 });
 
 //сортировка атрибутов в тегах html
@@ -167,7 +168,7 @@ gulp.task('js', function() {
   .pipe(plumber({
     errorHandler: function(err) {
       notify.onError({
-        title: 'Javascript concat/uglify error',
+        title: 'Javascript compilation error',
         message: err.message
       })(err);
       this.emit('end');
@@ -192,29 +193,39 @@ gulp.task('js:copy', function() {
 // Использование: folder=source/img npm start img:opt
 // var folder = process.env.folder;
 // Оптимизация изображений
-gulp.task('img:opt', function (done) {
+gulp.task('img:opt', function () {
   var imagemin = require('gulp-imagemin');
   var gulpPngquant = require('gulp-pngquant');
   //var pngquant = require('imagemin-pngquant');
-
+  //Для минимизации используется отдельный плагин pngquant, поскольку imagemin-pngquant выдает ошибку
   console.log('---------- Оптимизация картинок');
-  gulp.src(source_img + "*.{jpg,jpeg,gif,svg}")
+  return gulp.src(source_img + "*.{jpg,jpeg,gif,svg,png}")
     .pipe(changed(source_img_optim))
-    .pipe(imagemin([
-  	imagemin.gifsicle({interlaced: true}),
-  	imagemin.jpegtran({progressive: true}),
-  	imagemin.svgo({removeViewBox: false})
-    ]))
+    .pipe(gulpIf(function (file) {
+      return file.extname == '.png';},
+      gulpPngquant({quality: '65-80'}),
+      imagemin([
+    	imagemin.gifsicle({interlaced: true}),
+    	imagemin.jpegtran({progressive: true}),
+    	imagemin.svgo({removeViewBox: false})
+      ])))
     .pipe(gulp.dest(source_img_optim));
 
-  gulp.src(source_img + "*.png")
-    .pipe(changed(source_img_optim))
-    .pipe(gulpPngquant({
-        quality: '65-80'
-    }))
-    .pipe(gulp.dest(source_img_optim));
-
-    done();
+  //   .pipe(imagemin([
+  // 	imagemin.gifsicle({interlaced: true}),
+  // 	imagemin.jpegtran({progressive: true}),
+  // 	imagemin.svgo({removeViewBox: false})
+  //   ]))
+  //   .pipe(gulp.dest(source_img_optim));
+  //
+  // gulp.src(source_img + "*.png")
+  //   .pipe(changed(source_img_optim))
+  //   .pipe(gulpPngquant({
+  //       quality: '65-80'
+  //   }))
+  //   .pipe(gulp.dest(source_img_optim));
+  //
+  //   done();
 });
 
 gulp.task("img:webp", function () {
@@ -296,7 +307,16 @@ gulp.task('clean', function(done) {
   done();
 });
 
-gulp.task('watch', function(done) {
+gulp.task('serve', function () {
+    browserSync.init({
+        server: build_root_dir,
+        open: false,
+        port: 8080,
+        ui: false
+    });
+});
+
+gulp.task('watch', function() {
   gulp.watch([source_html, source_html_templates],gulp.series('html'));
   gulp.watch([source_scss, source_blocks], gulp.series('style'));
   gulp.watch(source_libs_css, gulp.series('style:copy'));
@@ -308,27 +328,14 @@ gulp.task('watch', function(done) {
   gulp.watch(source_img_to_bg + '*', gulp.series('style'));
   // gulp.watch(source_svg_sprite + '*.svg', ['sprite:svg', 'html']);
   gulp.watch(source_svg_sprite + '*.svg', gulp.series('sprite:svg', 'html'));
-  done();
 });
 
-gulp.task('serve', gulp.series(
-  'sprite:svg', 'html',
-  gulp.parallel('style', 'style:copy', 'js', 'js:copy', 'favicon', 'font'),
-  'img:opt', 'img:webp','img',
-  'watch',
-  function (done) {
-    browserSync.init({
-        server: build_root_dir,
-        open: false,
-        port: 8080,
-        ui: false
-    });
-    done();
-}));
+gulp.task('build', gulp.series(
+  'clean', 'sprite:svg', 'img:opt', 'img:webp', 'img',
+  gulp.parallel('html', 'style', 'style:copy', 'js', 'js:copy', 'favicon', 'font')
+));
 
-gulp.task('default', gulp.series('clean', 'serve', function(done) {
-  done();
-}));
+gulp.task('default', gulp.series('build', gulp.parallel('watch', 'serve')));
 
 /**
  * Проверка существования файла или папки
