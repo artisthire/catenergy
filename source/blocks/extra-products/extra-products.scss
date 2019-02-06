@@ -155,6 +155,11 @@
   color: $white;
   background-color: $icon-background;
   background-image: svg-load('../blocks/extra-products/img_to_bgn/gift.svg'), url('../img/gift-photo-mobile.jpg');
+
+  @supports (background-image: url('../img/gift-photo-mobile.webp')) {
+    background-image: svg-load('../blocks/extra-products/img_to_bgn/gift.svg'), url('../img/gift-photo-mobile.webp');
+  }
+
   background-repeat: no-repeat;
   background-size: 55px auto, cover;
   background-position: center 65px, 0;
@@ -166,6 +171,11 @@
     padding-right: 125px;
     text-align: left;
     background-image: svg-load('../blocks/extra-products/img_to_bgn/gift.svg'), url('../img/gift-photo-tablet.jpg');
+
+    @supports (background-image: url('../img/gift-photo-tablet.webp')) {
+      background-image: svg-load('../blocks/extra-products/img_to_bgn/gift.svg'), url('../img/gift-photo-tablet.webp');
+    }
+
     background-position: 90px center, 0;
   }
 
@@ -177,5 +187,9 @@
     padding-right: 40px;
     text-align: center;
     background-image: svg-load('../blocks/extra-products/img_to_bgn/gift.svg'), url('../img/gift-photo-desktop.jpg');
+
+    @supports (background-image: url('../img/gift-photo-desktop.webp')) {
+      background-image: svg-load('../blocks/extra-products/img_to_bgn/gift.svg'), url('../img/gift-photo-desktop.webp');
+    }
   }
 }
