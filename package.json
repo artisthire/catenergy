@@ -30,8 +30,6 @@
     "gulp-posthtml": "^3.0.4",
     "gulp-rename": "^1.4.0",
     "gulp-sass": "^4.0.2",
-    "gulp-sequence": "^1.0.0",
-    "gulp-size": "^3.0.0",
     "gulp-sourcemaps": "^2.6.4",
     "gulp-svgmin": "^2.1.0",
     "gulp-svgstore": "^7.0.0",

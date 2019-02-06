@@ -1,9 +1,8 @@
 var gulp = require('gulp');
 var plumber = require('gulp-plumber');
-var gulpSequence = require('gulp-sequence');
+// var gulpSequence = require('gulp-sequence');
 var gulpIf = require('gulp-if');
-var size = require('gulp-size');
-// var newer = require('gulp-newer');
+// var size = require('gulp-size');
 var changed = require('gulp-changed');
 var debug = require('gulp-debug');
 var notify = require('gulp-notify');
@@ -30,6 +29,7 @@ var cssnano = require('cssnano');
 //var gcmq = require('gulp-group-css-media-queries');
 //var csso = require('gulp-csso');
 
+//var realFavicon = require ('gulp-real-favicon'); - генерация фавиконок
 var imagemin = require('gulp-imagemin');
 var gulpPngquant = require('gulp-pngquant');
 //var pngquant = require('imagemin-pngquant');
@@ -243,17 +243,6 @@ gulp.task('favicon', function() {
   console.log('---------- Копирование фавиконок');
   return gulp.src(source_favicon)
   .pipe(changed(build_favicon))
-  .pipe(
-    gulpIf(function (file) { return file.extname == '.png';},
-
-    gulpPngquant({quality: '65-80'}),
-
-    imagemin([
-    imagemin.gifsicle({interlaced: true}),
-    imagemin.jpegtran({progressive: true}),
-    imagemin.svgo({removeViewBox: false})
-    ])
-  ))
   .pipe(gulp.dest(build_favicon))
   .pipe(browserSync.reload({stream:true}));
 });
@@ -282,11 +271,11 @@ gulp.task('sprite:svg', function() {
          }
        }))
        .pipe(rename('sprite-svg.svg'))
-       .pipe(size({
-         title: 'Размер',
-         showFiles: true,
-         showTotal: false,
-       }))
+       // .pipe(size({
+       //   title: 'Размер',
+       //   showFiles: true,
+       //   showTotal: false,
+       // }))
        .pipe(gulp.dest(build_svg_sprite));
    }
    else {
