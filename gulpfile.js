@@ -115,9 +115,9 @@ gulp.task('html', function () {
 
 //сортировка атрибутов в тегах html
 //выполняется один раз для исходных файлов, чтобы атрибут класса был в начале тега
-gulp.task('html-sort',function() {
+gulp.task('html:sort',function() {
   console.log('---------- Сортировка атрибутов в тегах (делается в исходниках)');
-  return gulp.src([source_root_dir + '*.html', source_root_dir +'blocks/**/*.html'])
+  return gulp.src([source_html ,source_html_templates])
   .pipe(posthtml([
     posthtmlAttrSort(
       {
@@ -331,12 +331,14 @@ gulp.task('watch', function() {
   gulp.watch(source_svg_sprite + '*.svg', gulp.series('sprite:svg', 'html'));
 });
 
-gulp.task('build', gulp.series(
+//по умолчанию запускаются задачи необходимые для продакшина
+gulp.task('default', gulp.series(
   'clean', 'sprite:svg', 'img:opt', 'img:webp',
   gulp.parallel('html', 'style', 'style:copy', 'js', 'js:copy', 'favicon', 'font')
 ));
 
-gulp.task('default', gulp.series('build', gulp.parallel('watch', 'serve')));
+//отдельная задача под разработку с ватчером и сервером
+gulp.task('build', gulp.series('html:sort', 'default', gulp.parallel('watch', 'serve')));
 
 /**
  * Проверка существования файла или папки

@@ -2,17 +2,23 @@
 
   @@if (current_page === "index_html") {
   <a class="main-header__logo">
-  }
-
-  @@if (current_page !== "index_html") {
-  <a href="index.html" class="main-header__logo">
-  }
     <picture>
       <source media="(min-width: 1440px)" srcset="img/header-logo--lg.svg">
       <source media="(min-width: 768px)" srcset="img/header-logo--md.svg">
-      <img src="img/header-logo--sm.svg" alt="Логотип Cat Energy" width="192" height="38"/>
+      <img src="img/header-logo--sm.svg" alt="Логотип Cat Energy" width="192" height="38">
     </picture>
   </a>
+  }
+
+  @@if (current_page !== "index_html") {
+  <a class="main-header__logo" href="index.html">
+    <picture>
+      <source media="(min-width: 1440px)" srcset="img/header-logo--lg.svg">
+      <source media="(min-width: 768px)" srcset="img/header-logo--md.svg">
+      <img src="img/header-logo--sm.svg" alt="Логотип Cat Energy" width="192" height="38">
+    </picture>
+  </a>
+  }
 
   <nav class="site-navigation">
 

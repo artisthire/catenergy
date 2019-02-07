@@ -84,7 +84,7 @@
   margin-bottom: 26px;
   padding: 7px 0;
   padding-left: 70px;
-  font-family: #{$custom-fonts};
+  font-family: $custom-fonts;
   font-size: 24px;
   font-weight: $font-weight--normal;
   line-height: $line-height-header;
@@ -123,7 +123,7 @@
 .popular-production__catalog-link {
   display: inline-block;
   margin: 0;
-  font-family: #{$custom-fonts};
+  font-family: $custom-fonts;
   font-size: 16px;
   line-height: 1;
   text-decoration: none;

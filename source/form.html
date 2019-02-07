@@ -27,36 +27,36 @@
         <fieldset class="program-form__field">
           <legend class="visually-hidden">Основные данные о вашем коте</legend>
           <p class="form-input-text program-form__input-wrap">
-            <label for="name" class="form-input-text__label">Имя:*</label>
-            <input id="name" name="name" type="text" class="form-input-text__input" placeholder="Барсик" required/>
+            <label class="form-input-text__label" for="name">Имя:*</label>
+            <input class="form-input-text__input" id="name" name="name" type="text" placeholder="Барсик" required>
           </p>
           <p class="form-input-text program-form__input-wrap">
-            <label for="weight" class="form-input-text__label">Вес (кг):*</label>
-            <input id="weight" name="weight" type="number" min="0.5" max="20"  step="0.1" class="form-input-text__input" placeholder="7" required/>
+            <label class="form-input-text__label" for="weight">Вес (кг):*</label>
+            <input class="form-input-text__input" id="weight" name="weight" type="number" min="0.5" max="20" step="0.1" placeholder="7" required>
           </p>
           <p class="form-input-text program-form__input-wrap">
-            <label for="age" class="form-input-text__label">Возраст (лет):</label>
-            <input id="age" name="age" type="number" min="1" max="20" step="1" class="form-input-text__input" placeholder="7"/>
+            <label class="form-input-text__label" for="age">Возраст (лет):</label>
+            <input class="form-input-text__input" id="age" name="age" type="number" min="1" max="20" step="1" placeholder="7">
           </p>
         </fieldset>
 
         <fieldset class="program-form__field program-form__field--border">
           <legend class="visually-hidden">Какую программу выбираете</legend>
           <p class="form-radio-btn program-form__input-wrap">
-            <input class="form-radio-btn__input" id="program-1" name="program" value="down_weight" type="radio" checked/>
-            <label for="program-1" class="form-radio-btn__label">
+            <input class="form-radio-btn__input" id="program-1" name="program" type="radio" value="down_weight" checked>
+            <label class="form-radio-btn__label" for="program-1">
               <span class="form-radio-btn__pseudo-icon" aria-hidden="true"></span>
               Похудение</label>
           </p>
           <p class="form-radio-btn program-form__input-wrap">
-            <input class="form-radio-btn__input" id="program-2" name="program" value="up_weight" type="radio"/>
-            <label for="program-2" class="form-radio-btn__label">
+            <input class="form-radio-btn__input" id="program-2" name="program" type="radio" value="up_weight">
+            <label class="form-radio-btn__label" for="program-2">
               <span class="form-radio-btn__pseudo-icon" aria-hidden="true"></span>
               Набор массы</label>
           </p>
           <p class="form-radio-btn program-form__input-wrap">
-            <input class="form-radio-btn__input" id="program-3" name="program" value="unknown" type="radio"/>
-            <label for="program-3" class="form-radio-btn__label">
+            <input class="form-radio-btn__input" id="program-3" name="program" type="radio" value="unknown">
+            <label class="form-radio-btn__label" for="program-3">
               <span class="form-radio-btn__pseudo-icon" aria-hidden="true"></span>
               Не знаю (Нужен ваш совет)</label>
           </p>
@@ -67,16 +67,16 @@
         <legend class="title-back-line program-form__legend">Контактные данные <br> (владельца кота)</legend>
         <div class="colums colums--lg-2">
           <p class="form-input-text program-form__input-wrap">
-            <label for="email" class="form-input-text__label">E-mail:*</label>
-            <input id="email" name="email" type="email" class="form-input-text__input" placeholder="kuklachev@gmail.com" required/>
-            <svg width="17" height="13" aria-hidden="true" class="form-input-text__input-icon">
+            <label class="form-input-text__label" for="email">E-mail:*</label>
+            <input class="form-input-text__input" id="email" name="email" type="email" placeholder="kuklachev@gmail.com" required>
+            <svg class="form-input-text__input-icon" aria-hidden="true" width="17" height="13">
               <use xlink:href="img/sprite-svg/sprite-svg.svg#icon-email"></use>
             </svg>
           </p>
           <p class="form-input-text program-form__input-wrap">
-            <label for="telephone" class="form-input-text__label">Телефон:*</label>
-            <input id="telephone" name="telephone" type="tel" class="form-input-text__input" placeholder="8 (960) 900-60-90" required/>
-            <svg width="20" height="20" aria-hidden="true" class="form-input-text__input-icon">
+            <label class="form-input-text__label" for="telephone">Телефон:*</label>
+            <input class="form-input-text__input" id="telephone" name="telephone" type="tel" placeholder="8 (960) 900-60-90" required>
+            <svg class="form-input-text__input-icon" aria-hidden="true" width="20" height="20">
               <use xlink:href="img/sprite-svg/sprite-svg.svg#icon-phone"></use>
             </svg>
           </p>
@@ -85,33 +85,33 @@
 
       <fieldset class="program-form__field">
         <legend class="title-back-line program-form__legend">Коментарии</legend>
-        <textarea name="comments" cols="35" rows="10" class="form-textfield program-form__input-textarea" placeholder="Расскажите обо всех повадках кота"></textarea>
+        <textarea class="form-textfield program-form__input-textarea" name="comments" cols="35" rows="10" placeholder="Расскажите обо всех повадках кота"></textarea>
       </fieldset>
 
       <fieldset class="program-form__field">
         <legend class="title-back-line program-form__legend">Дополнительно</legend>
         <div class="colums colums--md-2 colums--lg-4">
           <p class="form-checkbox-btn program-form__input-wrap">
-            <input class="form-checkbox-btn__input" id="sweetener" name="sweetener" type="checkbox" checked/>
-            <label for="sweetener" class="form-checkbox-btn__label">
+            <input class="form-checkbox-btn__input" id="sweetener" name="sweetener" type="checkbox" checked>
+            <label class="form-checkbox-btn__label" for="sweetener">
               <span class="form-checkbox-btn__pseudo-icon" aria-hidden="true"></span>
               Сахарозаменитель</label>
           </p>
           <p class="form-checkbox-btn program-form__input-wrap">
-            <input class="form-checkbox-btn__input" id="water" name="water" type="checkbox" />
-            <label for="water" class="form-checkbox-btn__label">
+            <input class="form-checkbox-btn__input" id="water" name="water" type="checkbox">
+            <label class="form-checkbox-btn__label" for="water">
               <span class="form-checkbox-btn__pseudo-icon" aria-hidden="true"></span>
               Питьевая вода</label>
           </p>
           <p class="form-checkbox-btn program-form__input-wrap">
-            <input class="form-checkbox-btn__input" id="milk" name="milk" type="checkbox" />
-            <label for="milk" class="form-checkbox-btn__label">
+            <input class="form-checkbox-btn__input" id="milk" name="milk" type="checkbox">
+            <label class="form-checkbox-btn__label" for="milk">
               <span class="form-checkbox-btn__pseudo-icon" aria-hidden="true"></span>
               Молоко</label>
           </p>
           <p class="form-checkbox-btn program-form__input-wrap">
-            <input class="form-checkbox-btn__input" id="vitamins" name="vitamins" type="checkbox" />
-            <label for="vitamins" class="form-checkbox-btn__label">
+            <input class="form-checkbox-btn__input" id="vitamins" name="vitamins" type="checkbox">
+            <label class="form-checkbox-btn__label" for="vitamins">
               <span class="form-checkbox-btn__pseudo-icon" aria-hidden="true"></span>
               Витамины</label>
           </p>
@@ -120,7 +120,7 @@
 
       <div class="colums colums--md-2 colums--lg-2 program-form__submit-wrap">
         <p class="program-form__info">* — Обязательные поля</p>
-        <button type="submit" class="btn program-form__btn-submit">Отправить заявку</button>
+        <button class="btn program-form__btn-submit" type="submit">Отправить заявку</button>
       </div>
     </form>
   </main>

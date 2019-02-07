@@ -1,16 +1,10 @@
 .btn {
-  $padding-v: 15px;
-  $padding-g: 25px;
-  $color: $white;
-  $color--active: rgba(255, 255, 255, 0.3);
-  $background-color: $icon-background;
-  $background-color--hover: #5eaa2f;
 
   box-sizing: border-box;
   display: inline-block;
-  padding: $padding-v $padding-g;
+  padding: 15px 25px;
   border: none;
-  font-family: #{$custom-fonts};
+  font-family: $custom-fonts;
   font-size: 14px;
   font-weight: $font-weight--normal;
   line-height: 1;
@@ -19,17 +13,17 @@
   text-transform: uppercase;
   text-align: center;
   text-decoration: none;
-  color: $color;
-  background-color: $background-color;
+  color: $white;
+  background-color: $icon-background;
   cursor: pointer;
 
   &:hover,
   &:focus {
-    background-color: $background-color--hover;
+    background-color: #5eaa2f;
   }
 
   &:active {
-    color: $color--active;
+    color: rgba(255, 255, 255, 0.3);
   }
 
   &--gray {
