@@ -154,10 +154,10 @@
   text-align: center;
   color: $white;
   background-color: $icon-background;
-  background-image: svg-load('../blocks/extra-products/img_to_bgn/gift.svg'), url('../img/gift-photo-mobile.jpg');
+  background-image: svg-load('../blocks/extra-products/img_to_bgn/gift.svg'), url('../img/gift-photo--sm.jpg');
 
-  @supports (background-image: url('../img/gift-photo-mobile.webp')) {
-    background-image: svg-load('../blocks/extra-products/img_to_bgn/gift.svg'), url('../img/gift-photo-mobile.webp');
+  @supports (background-image: url('../img/gift-photo--sm.webp')) {
+    background-image: svg-load('../blocks/extra-products/img_to_bgn/gift.svg'), url('../img/gift-photo--sm.webp');
   }
 
   background-repeat: no-repeat;
@@ -170,10 +170,10 @@
     padding-left: 425px;
     padding-right: 125px;
     text-align: left;
-    background-image: svg-load('../blocks/extra-products/img_to_bgn/gift.svg'), url('../img/gift-photo-tablet.jpg');
+    background-image: svg-load('../blocks/extra-products/img_to_bgn/gift.svg'), url('../img/gift-photo--md.jpg');
 
-    @supports (background-image: url('../img/gift-photo-tablet.webp')) {
-      background-image: svg-load('../blocks/extra-products/img_to_bgn/gift.svg'), url('../img/gift-photo-tablet.webp');
+    @supports (background-image: url('../img/gift-photo--md.webp')) {
+      background-image: svg-load('../blocks/extra-products/img_to_bgn/gift.svg'), url('../img/gift-photo--md.webp');
     }
 
     background-position: 90px center, 0;
@@ -186,10 +186,10 @@
     padding-left: 40px;
     padding-right: 40px;
     text-align: center;
-    background-image: svg-load('../blocks/extra-products/img_to_bgn/gift.svg'), url('../img/gift-photo-desktop.jpg');
+    background-image: svg-load('../blocks/extra-products/img_to_bgn/gift.svg'), url('../img/gift-photo--lg.jpg');
 
-    @supports (background-image: url('../img/gift-photo-desktop.webp')) {
-      background-image: svg-load('../blocks/extra-products/img_to_bgn/gift.svg'), url('../img/gift-photo-desktop.webp');
+    @supports (background-image: url('../img/gift-photo--lg.webp')) {
+      background-image: svg-load('../blocks/extra-products/img_to_bgn/gift.svg'), url('../img/gift-photo--lg.webp');
     }
   }
 }

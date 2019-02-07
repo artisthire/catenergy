@@ -15,7 +15,12 @@
       right: 0;
       height: 305px;
       background-color: #63a73a;
-      background-image: url(../img/header-bg--mobile.jpg);
+      background-image: url(../img/header-bg--sm.jpg);
+
+      @supports (background-image: url('url(../img/header-bg--sm.webp)')) {
+        background-image: url('url(../img/header-bg--sm.webp)');
+      }
+
       background-repeat: no-repeat;
       background-size: cover;
       background-position: center center;

@@ -29,7 +29,12 @@
       width: 50%;
       height: 696px;
       background-color: #63a73a;
-      background-image: url(../img/header-bg--desctop.jpg);
+      background-image: url(../img/header-bg--lg.jpg);
+
+      @supports (background-image: url('url(../img/header-bg--lg.webp)')) {
+        background-image: url('url(../img/header-bg--lg.webp)');
+      }
+
       background-repeat: no-repeat;
       background-position: center;
       background-size: cover;
