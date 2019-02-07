@@ -8,6 +8,8 @@ var debug = require('gulp-debug');
 var notify = require('gulp-notify');
 var rename = require('gulp-rename');
 var fileinclude = require('gulp-file-include');
+var rev = require('gulp-rev');
+var revReplace = require('gulp-rev-replace');
 //var gulpMerge = require('gulp-merge');
 var browserSync = require('browser-sync').create();
 var fs = require('fs');
@@ -150,11 +152,19 @@ gulp.task('style', function() {
   .pipe(sass())
   .pipe(postcss(postCssPlugins))
   .pipe(rename({suffix: '.min'}))
+  .pipe(gulpIf(!isDev, rev()))
   .pipe(gulpIf(isDev, sourcemaps.write('/')))
   .pipe(gulp.dest(patch.build.css))
+  .pipe(gulpIf(!isDev, rev.manifest(
+    patch.build.root + 'rev-manifest.json',
+    { base: patch.build.root,
+    merge: true
+  })))
+  .pipe(gulp.dest(patch.build.root))
   .pipe(browserSync.stream());
 });
 
+//// TODO: поправить версионирование. Генерирует файлы два раза
 gulp.task('style:copy', function() {
   console.log('---------- Копирование стилей');
   return gulp.src(patch.src.libs_css)
@@ -177,8 +187,15 @@ gulp.task('js', function() {
   .pipe(gulpIf(isDev, sourcemaps.init()))
   .pipe(uglify())
   .pipe(rename({suffix: '.min'}))
+  .pipe(gulpIf(!isDev, rev()))
   .pipe(gulpIf(isDev, sourcemaps.write('/')))
   .pipe(gulp.dest(patch.build.js))
+  .pipe(gulpIf(!isDev, rev.manifest(
+    patch.build.root + 'rev-manifest.json',
+    { base: patch.build.root,
+    merge: true
+  })))
+  .pipe(gulp.dest(patch.build.root))
   .pipe(browserSync.reload({stream:true}));
 });
 
@@ -297,6 +314,20 @@ gulp.task('font', function() {
   .pipe(browserSync.reload({stream:true}));
 });
 
+gulp.task("revreplace", function(done) {
+
+  if(fileExist(patch.build.root + "rev-manifest.json") !== false) {
+    var manifest = gulp.src(patch.build.root + "rev-manifest.json");
+    console.log('---------- Патчинг html для версионирования файлов');
+    return gulp.src(patch.build.root + "*.html")
+      .pipe(revReplace({manifest: manifest}))
+      .pipe(gulp.dest(patch.build.root));
+  }
+  else {
+    done();
+  }
+});
+
 gulp.task('clean', function(done) {
   console.log('---------- Очистка рабочей директории');
   del.sync(patch.build.root);
@@ -329,7 +360,8 @@ gulp.task('watch', function() {
 //по умолчанию запускаются задачи необходимые для продакшина
 gulp.task('build', gulp.series(
   'clean', 'sprite:svg', 'img:opt', 'img:webp',
-  gulp.parallel('html', 'style', 'style:copy', 'js', 'js:copy', 'favicon', 'font')
+  gulp.parallel('html', 'style', 'style:copy', 'js', 'js:copy', 'favicon', 'font'),
+  'revreplace'
 ));
 
 //отдельная задача под разработку с ватчером и сервером
