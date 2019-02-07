@@ -10,4 +10,4 @@ node_modules/
 ex_files
 Thumbs.db
 build/
-layouts
+layouts/
