@@ -13,9 +13,14 @@
     </header>
     <div class="main-contacts__map-wrap">
       <picture id="main_contacts_map_backup">
-        <source media="(min-width: 1440px)" srcset="img/map-backup--lg.jpg 1x, img/map-backup--lg-x2.jpg 2x, img/map-backup--lg-x3.jpg 3x">
-        <source media="(min-width: 768px)" srcset="img/map-backup--md.jpg 1x, img/map-backup--md-x2.jpg 2x, img/map-backup--md-x3.jpg 3x">
-        <img class="main-contacts__map-img" src="img/map-backup--sm.jpg" srcset="img/map-backup--sm-x2.jpg 2x, img/map-backup--sm-x3.jpg 3x" alt="Санкт-Петербург, ул. Большая Коннюшенная, д. 19/8" height="365">
+        <source type="image/webp" media="(min-width: 1440px)" srcset="img/map-backup--lg.webp 1x, img/map-backup--lg@2.webp 2x, img/map-backup--lg@3.webp 3x">
+        <source type="image/webp" media="(min-width: 768px)" srcset="img/map-backup--md.webp 1x, img/map-backup--md@2.webp 2x, img/map-backup--md@3.webp 3x">
+        <source type="image/webp" srcset="img/map-backup--sm.webp 1x, img/map-backup--sm@2.webp 2x, img/map-backup--sm@3.webp 3x">
+
+
+        <source media="(min-width: 1440px)" srcset="img/map-backup--lg.jpg 1x, img/map-backup--lg@2.jpg 2x, img/map-backup--lg@3.jpg 3x">
+        <source media="(min-width: 768px)" srcset="img/map-backup--md.jpg 1x, img/map-backup--md@2.jpg 2x, img/map-backup--md@3.jpg 3x">
+        <img class="main-contacts__map-img" src="img/map-backup--sm.jpg" srcset="img/map-backup--sm@2.jpg 2x, img/map-backup--sm@3.jpg 3x" alt="Санкт-Петербург, ул. Большая Коннюшенная, д. 19/8" height="365">
       </picture>
       <div class="main-contacts__map-container" id="main_contacts_map">
       </div>
