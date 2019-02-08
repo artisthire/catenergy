@@ -72,7 +72,7 @@ var patch = {
 };
 
 //флаг, устанавливающий разработка это или сборка для продакшина
-var isDev = !process.env.NODE_ENV || process.env.NODE_ENV == 'development';
+var isDev = !process.env.NODE_ENV || (process.env.NODE_ENV == 'development');
 
 // Плагины postCSS, которыми обрабатываются все стилевые файлы
 var postCssPlugins = [
@@ -84,8 +84,8 @@ var postCssPlugins = [
   imageInliner({
     assetPaths: [patch.src.img_to_bg],
     maxFileSize: 10240
-  }),
-  cssnano()
+  })
+  // cssnano()
 ];
 
 //обработка файлов html
@@ -134,6 +134,7 @@ gulp.task('html:sort',function() {
   }));
 });
 
+
 //обработка стилевых файлов
 gulp.task('style', function() {
   console.log('---------- Компиляция стилей');
@@ -147,20 +148,21 @@ gulp.task('style', function() {
       this.emit('end');
     }
   }))
-  .pipe(gulpIf(isDev, sourcemaps.init()))
   // .pipe(debug({title: "Style:"}))
   .pipe(sass())
+  .pipe(gulpIf(isDev, sourcemaps.init()))
   .pipe(postcss(postCssPlugins))
+  .pipe(gulpIf(!isDev, postcss([cssnano()])))
   .pipe(rename({suffix: '.min'}))
   .pipe(gulpIf(!isDev, rev()))
-  .pipe(gulpIf(isDev, sourcemaps.write('/')))
+  .pipe(gulpIf(isDev, sourcemaps.write('.')))
   .pipe(gulp.dest(patch.build.css))
   .pipe(gulpIf(!isDev, rev.manifest(
     patch.build.root + 'rev-manifest.json',
     { base: patch.build.root,
     merge: true
   })))
-  .pipe(gulp.dest(patch.build.root))
+  .pipe(gulpIf(!isDev, gulp.dest(patch.build.root)))
   .pipe(browserSync.stream());
 });
 
@@ -185,7 +187,7 @@ gulp.task('js', function() {
     }
   }))
   .pipe(gulpIf(isDev, sourcemaps.init()))
-  .pipe(uglify())
+  .pipe(gulpIf(!isDev, uglify()))
   .pipe(rename({suffix: '.min'}))
   .pipe(gulpIf(!isDev, rev()))
   .pipe(gulpIf(isDev, sourcemaps.write('/')))
@@ -195,7 +197,7 @@ gulp.task('js', function() {
     { base: patch.build.root,
     merge: true
   })))
-  .pipe(gulp.dest(patch.build.root))
+  .pipe(gulpIf(!isDev, gulp.dest(patch.build.root)))
   .pipe(browserSync.reload({stream:true}));
 });
 
@@ -330,7 +332,7 @@ gulp.task("revreplace", function(done) {
 
 gulp.task('clean', function(done) {
   console.log('---------- Очистка рабочей директории');
-  del.sync(patch.build.root);
+  del.sync(patch.build.root + "*");
   done();
 });
 
