@@ -297,12 +297,15 @@ gulp.task('sprite:svg', function() {
          }
        }))
        .pipe(rename('sprite-svg.svg'))
-       // .pipe(size({
-       //   title: 'Размер',
-       //   showFiles: true,
-       //   showTotal: false,
-       // }))
-       .pipe(gulp.dest(patch.build.svg_sprite));
+       .pipe(gulpIf(!isDev, rev()))
+       .pipe(gulp.dest(patch.build.svg_sprite))
+       .pipe(gulpIf(!isDev, rev.manifest(
+         patch.build.root + 'rev-manifest.json',
+         { base: patch.build.root,
+         merge: true
+       })))
+       .pipe(gulpIf(!isDev, gulp.dest(patch.build.root)));
+
    }
    else {
      console.log('---------- Сборка SVG спрайта: ОТМЕНА, нет папки с картинками');
