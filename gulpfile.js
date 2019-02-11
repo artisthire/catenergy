@@ -50,7 +50,7 @@ var patch = {
     html_templ: 'source/html_templates/*.html',
     scss: 'source/scss/*.scss',
     scss_file: 'source/scss/style.scss',
-    blocks: 'source/blocks/**/*.scss',
+    blocks: 'source/blocks/*.scss',
     img: 'source/img/',
     favicon: 'source/img/favicon/*',
     js: 'source/js/*.js',
@@ -58,7 +58,8 @@ var patch = {
     libs_css: 'source/libs/css/*.css',
     libs_js: 'source/libs/js/*.js',
     svg_sprite: 'source/img/sprite-svg/',
-    img_to_bg: 'source/blocks/**/img_bgn/'
+    img_to_bg: 'source/blocks/img_inline_css/',
+    svg_inline: 'source/blocks/svg_inline_css/'
   },
   build: {
     root: 'build/',
@@ -80,7 +81,7 @@ var postCssPlugins = [
   mqpacker({
     sort: true
   }),
-  inlineSVG(),
+  inlineSVG({path: patch.src.svg_inline}),
   imageInliner({
     assetPaths: [patch.src.img_to_bg],
     maxFileSize: 10240
