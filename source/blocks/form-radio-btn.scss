@@ -1,14 +1,7 @@
 .form-radio-btn {
   font-family: $custom-fonts;
-  font-size: 16px;
-  line-height: 1.13;
   text-transform: uppercase;
   color: $menu-header-color;
-
-  @media (min-width: $screen-md) {
-    font-size: 20px;
-    line-height: 1;
-  }
 }
 
 //скрываем "правильно" для скринридеров
@@ -38,8 +31,12 @@
 
 
 .form-radio-btn__label {
+  position: relative;
   display: inline-block;
   vertical-align: middle;
+  padding-left: 40px;
+  font-size: 16px;
+  line-height: 30px;
 
   &:hover > .form-radio-btn__pseudo-icon {
     border-color: #bababa;
@@ -48,16 +45,21 @@
   &:active {
     opacity: 0.3;
   }
+
+  @media (min-width: $screen-md) {
+    padding-left: 60px;
+    font-size: 20px;
+    line-height: 40px;
+  }
 }
 
 .form-radio-btn__pseudo-icon {
-  position: relative;
+  position: absolute;
+  left: 0;
+  top: 0;
   box-sizing: border-box;
-  display: inline-block;
-  vertical-align: middle;
   width: 30px;
   height: 30px;
-  margin-right: 20px;
   padding: 8px;
   border: 1px solid #cdcdcd;
   border-radius: 50%;

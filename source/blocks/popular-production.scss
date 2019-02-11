@@ -9,7 +9,6 @@
 .popular-production__card {
   margin-bottom: 20px;
   padding: 22px 20px;
-  overflow: hidden;
   background-color: $gray;
 
   &:last-child {
@@ -128,17 +127,18 @@
   line-height: 1;
   text-decoration: none;
   text-transform: uppercase;
-  white-space: nowrap;
-  overflow: hidden;
   color: $title-color;
 
   @keyframes stretch {
 
     0% {
+      //хук для включения рендеринга анимации на GPU
+      transform: translateZ(0);
       background-position: -10px center;
     }
 
     100% {
+      transform: translateZ(0);
       background-position: 0 center;
     }
   }

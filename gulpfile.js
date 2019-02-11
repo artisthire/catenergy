@@ -359,6 +359,7 @@ gulp.task('watch', function() {
   gulp.watch(patch.src.favicon, gulp.series('favicon'));
   gulp.watch(patch.src.font, gulp.series('font'));
   gulp.watch(patch.src.img_to_bg + '*', gulp.series('style'));
+  gulp.watch(patch.src.svg_inline + '*.svg', gulp.series('style'));
   // gulp.watch(source_svg_sprite + '*.svg', ['sprite:svg', 'html']);
   gulp.watch(patch.src.svg_sprite + '*.svg', gulp.series('sprite:svg', 'html'));
 });

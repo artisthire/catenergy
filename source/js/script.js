@@ -7,8 +7,8 @@ var map_container = document.querySelector('.js-map-container');
 var map_backup = document.querySelector('.js-map-backup');
 
 //начальная проверка доступности JavaScript
-document.querySelector('body').classList.remove('no-js');
-document.querySelector('body').classList.add('js');
+// document.documentElement.classList.remove('no-js');
+// document.documentElement.classList.add('js');
 //установка исходного состояния главного меню (закрыто)
 toggle_btn.classList.remove('menu-toggle-btn--open');
 toggle_menu.classList.add('site-navigation__list--close');
