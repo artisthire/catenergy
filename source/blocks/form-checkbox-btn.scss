@@ -21,7 +21,7 @@
   border: 0;
   white-space: nowrap;
   clip-path: inset(100%);
-  clip: rect(0 0 0 0);
+  clip: rect(0, 0, 0, 0);
   overflow: hidden;
 
   &:checked ~ .form-checkbox-btn__label > .form-checkbox-btn__pseudo-icon::after {
