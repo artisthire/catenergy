@@ -18,7 +18,7 @@
     padding: 41px 110px;
   }
 
-  .main-page &:before {
+  .main-page &::before {
 
     @media (min-width: $screen-lg) {
       content: '';
@@ -30,14 +30,16 @@
       height: 696px;
       background-color: #63a73a;
       background-image: url(../img/header-bg--lg.jpg);
-
-      @supports (background-image: url('../img/header-bg--lg.webp')) {
-        background-image: url('../img/header-bg--lg.webp');
-      }
-
       background-repeat: no-repeat;
       background-position: center;
       background-size: cover;
+    }
+  }
+
+  .webp .main-page &::before {
+
+    @media (min-width: $screen-lg) {
+      background-image: url(../img/header-bg--lg.webp);
     }
   }
 }

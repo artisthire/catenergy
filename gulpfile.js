@@ -41,6 +41,7 @@ var svgstore = require('gulp-svgstore');
 var svgmin = require('gulp-svgmin');
 var cheerio = require('gulp-cheerio');
 
+var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 
 var patch = {
@@ -55,8 +56,8 @@ var patch = {
     favicon: 'source/img/favicon/*',
     js: 'source/js/*.js',
     font: 'source/font/*.{woff,woff2}',
-    libs_css: 'source/libs/css/*.css',
-    libs_js: 'source/libs/js/*.js',
+    copy_css: '',
+    copy_js: 'source/libs/js/*.js',
     svg_sprite: 'source/img/sprite-svg/',
     img_to_bg: 'source/blocks/img_inline_css/',
     svg_inline: 'source/blocks/svg_inline_css/'
@@ -69,8 +70,18 @@ var patch = {
     favicon: 'build/favicon/',
     font: 'build/font/',
     js: 'build/js/'
+  },
+  libs: {
+    js: [
+      'node_modules/leaflet/dist/leaflet-src.js',
+      'node_modules/picturefill/dist/picturefill.js'
+    ]
   }
 };
+
+//используется для подключения и объединения в один JS файл внешних библиотек
+if (patch.libs.js) patch.src.js = patch.libs.js.concat(patch.src.js);
+
 
 //флаг, устанавливающий разработка это или сборка для продакшина
 var isDev = !process.env.NODE_ENV || (process.env.NODE_ENV == 'development');
@@ -168,11 +179,14 @@ gulp.task('style', function() {
 });
 
 //// TODO: поправить версионирование. Генерирует файлы два раза
-gulp.task('style:copy', function() {
-  console.log('---------- Копирование стилей');
-  return gulp.src(patch.src.libs_css)
-  .pipe(gulp.dest(patch.build.css))
-  .pipe(browserSync.stream());
+gulp.task('style:copy', function(done) {
+  if (patch.src.copy_css && patch.src.copy_css != '') {
+    console.log('---------- Копирование стилей');
+    return gulp.src(patch.src.copy_css)
+    .pipe(gulp.dest(patch.build.css))
+    .pipe(browserSync.stream());
+  }
+  else done();
 });
 
 gulp.task('js', function() {
@@ -188,8 +202,8 @@ gulp.task('js', function() {
     }
   }))
   .pipe(gulpIf(isDev, sourcemaps.init()))
+  .pipe(concat('script.min.js'))
   .pipe(gulpIf(!isDev, uglify()))
-  .pipe(rename({suffix: '.min'}))
   .pipe(gulpIf(!isDev, rev()))
   .pipe(gulpIf(isDev, sourcemaps.write('/')))
   .pipe(gulp.dest(patch.build.js))
@@ -202,11 +216,14 @@ gulp.task('js', function() {
   .pipe(browserSync.reload({stream:true}));
 });
 
-gulp.task('js:copy', function() {
-  console.log('---------- Копирование JS файлов');
-  return gulp.src(patch.src.libs_js)
-  .pipe(gulp.dest(patch.build.js))
-  .pipe(browserSync.reload({stream:true}));
+gulp.task('js:copy', function(done) {
+  if (patch.src.copy_js && patch.src.copy_js != '') {
+    console.log('---------- Копирование JS файлов');
+    return gulp.src(patch.src.copy_js)
+    .pipe(gulp.dest(patch.build.js))
+    .pipe(browserSync.reload({stream:true}));
+  }
+  else done();
 });
 
 // Оптимизация изображений
@@ -352,9 +369,9 @@ gulp.task('serve', function () {
 gulp.task('watch', function() {
   gulp.watch([patch.src.html, patch.src.html_templ],gulp.series('html'));
   gulp.watch([patch.src.scss, patch.src.blocks], gulp.series('style'));
-  gulp.watch(patch.src.libs_css, gulp.series('style:copy'));
+  gulp.watch(patch.src.copy_css, gulp.series('style:copy'));
   gulp.watch(patch.src.js, gulp.series('js'));
-  gulp.watch(patch.src.libs_js, gulp.series('js:copy'));
+  gulp.watch(patch.src.copy_js, gulp.series('js:copy'));
   gulp.watch(patch.src.img + '*.{jpg,jpeg,gif,png,svg}', gulp.series('img:opt', 'img:webp'));
   gulp.watch(patch.src.favicon, gulp.series('favicon'));
   gulp.watch(patch.src.font, gulp.series('font'));

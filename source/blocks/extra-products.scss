@@ -157,14 +157,13 @@
   color: $white;
   background-color: $icon-background;
   background-image: svg-load('gift.svg'), url('../img/gift-photo--sm.jpg');
-
-  @supports (background-image: url('../img/gift-photo--sm.webp')) {
-    background-image: svg-load('gift.svg'), url('../img/gift-photo--sm.webp');
-  }
-
   background-repeat: no-repeat;
   background-size: 55px auto, cover;
   background-position: center 65px, 0;
+
+  .webp & {
+    background-image: svg-load('gift.svg'), url('../img/gift-photo--sm.webp');
+  }
 
   @media (min-width: $screen-md) and (max-width: $screen-lg - 1) {
     height: 200px;
@@ -173,12 +172,11 @@
     padding-right: 125px;
     text-align: left;
     background-image: svg-load('gift.svg'), url('../img/gift-photo--md.jpg');
+    background-position: 90px center, 0;
 
-    @supports (background-image: url('../img/gift-photo--md.webp')) {
+    .webp & {
       background-image: svg-load('gift.svg'), url('../img/gift-photo--md.webp');
     }
-
-    background-position: 90px center, 0;
   }
 
   @media (min-width: $screen-lg) {
@@ -190,7 +188,7 @@
     text-align: center;
     background-image: svg-load('gift.svg'), url('../img/gift-photo--lg.jpg');
 
-    @supports (background-image: url('../img/gift-photo--lg.webp')) {
+    .webp & {
       background-image: svg-load('gift.svg'), url('../img/gift-photo--lg.webp');
     }
   }

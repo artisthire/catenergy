@@ -1,14 +1,7 @@
-
+(function(document) {
 var toggle_btn = document.querySelector('.js-menu-toggle-btn');
 var toggle_menu = document.querySelector('.js-site-menu');
 
-// для добавления интерактивной карты с контактами
-var map_container = document.querySelector('.js-map-container');
-var map_backup = document.querySelector('.js-map-backup');
-
-//начальная проверка доступности JavaScript
-// document.documentElement.classList.remove('no-js');
-// document.documentElement.classList.add('js');
 //установка исходного состояния главного меню (закрыто)
 toggle_btn.classList.remove('menu-toggle-btn--open');
 toggle_menu.classList.add('site-navigation__list--close');
@@ -120,9 +113,15 @@ function initMap() {
     attribution: '&copy; <a href="https://www.google.com/permissions/geoguidelines/">Google Maps</a> contributors'
   }).addTo(map);
 
+  var icon_url = '../img/map-pin.png';
+  if (document.documentElement.classList.contains('webp'))
+    icon_url='../img/map-pin.webp';
+
+
+
   //инициализация иконки с указанием адреса картинки
   var myIcon = L.icon({
-    iconUrl: '../img/map-pin.png',
+    iconUrl: icon_url,
     iconSize: [map_pin_width, map_pin_height],
     iconAnchor: [map_pin_anchor_g, map_pin_anchor_v]
   });
@@ -130,3 +129,4 @@ function initMap() {
   //добавление макера на карту
   layer = L.marker([lat, lng], {icon: myIcon}).addTo(map);
 }
+}(document));

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru" class="no-js">
+<html class="no-js no-webp" lang="ru">
 
 <head>
   @@include("html_templates/page-head.html", {
@@ -85,7 +85,8 @@
 
       <fieldset class="program-form__field">
         <legend class="title-back-line program-form__legend">Коментарии</legend>
-        <textarea class="form-textfield program-form__input-textarea" name="comments" cols="35" rows="10" placeholder="Расскажите обо всех повадках кота"></textarea>
+        <label class="visually-hidden" for="comments">Коментарии</label>
+        <textarea class="form-textfield program-form__input-textarea" id="comments" name="comments" cols="35" rows="10" placeholder="Расскажите обо всех повадках кота"></textarea>
       </fieldset>
 
       <fieldset class="program-form__field">

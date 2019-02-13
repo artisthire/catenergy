@@ -17,6 +17,7 @@
     "gulp-changed": "^3.2.0",
     "gulp-cheerio": "^0.6.3",
     "gulp-clean-css": "^4.0.0",
+    "gulp-concat": "^2.6.1",
     "gulp-csso": "^3.0.1",
     "gulp-debug": "^4.0.0",
     "gulp-file-include": "^2.0.1",
@@ -45,5 +46,11 @@
   "scripts": {
     "start": "cross-env NODE_ENV=development gulp",
     "build": "cross-env NODE_ENV=production gulp build"
+  },
+  "dependencies": {
+    "leaflet": "^1.4.0",
+    "normalize.css": "^8.0.1",
+    "picturefill": "^3.0.3",
+    "svgxuse": "^1.2.6"
   }
 }

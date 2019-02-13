@@ -15,8 +15,7 @@
 <link type="font/woff2" href="./font/oswald-v16-latin_cyrillic-regular.woff2" rel="preload" as="font" crossorigin="anonymous">
 <link type="font/woff2" href="./font/oswald-v16-latin_cyrillic-500.woff2" rel="preload" as="font" crossorigin="anonymous">
 
-<link href="css/leaflet.css" rel="stylesheet">
-<link href="css/normalize.min.css" rel="stylesheet">
+
 <link href="css/style.min.css" rel="stylesheet">
 @@if (add_style_file) {
   @@for (var i = 0; i < add_style_file.length; i++) {
@@ -24,13 +23,8 @@
   }
 }
 
-<script>
-  document.documentElement.classList.remove('no-js');
-  document.documentElement.classList.add('js');
-</script>
+<script src="js/start.js"></script>
 <script src="js/svgxuse.min.js" defer></script>
-<script src="js/picturefill.min.js" async></script>
-<script src="js/leaflet.js" async></script>
 @@if (add_head_script) {
   @@for (var i = 0; i < add_head_script.length; i++) {
 <script src="`+add_head_script[i]+`" async></script>
