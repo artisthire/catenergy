@@ -31,13 +31,13 @@
 
     @@if (current_page === "index_html") {
     <a class="main-footer__logo">
-      <img src="img/footer-logo.svg" alt="Логотип магазина Cat energy" width="128" height="38">
+      <img src="img/footer-logo.svg" alt="Магазин Cat energy" width="128" height="38">
     </a>
     }
 
     @@if (current_page !== "index_html") {
     <a class="main-footer__logo" href="index.html">
-      <img src="img/footer-logo.svg" alt="Логотип магазина Cat energy" width="128" height="38">
+      <img src="img/footer-logo.svg" alt="Магазин Cat energy" width="128" height="38">
     </a>
     }
 
@@ -45,7 +45,7 @@
       <li class="social-links__item">
         <a class="social-links__link social-links__link--vk" href="#">
           <span class="visually-hidden">Мы в Вконтакте</span>
-          <svg width="30" height="16">
+          <svg width="30" height="16" aria-hidden="true" role="presentation">
             <use xlink:href="img/sprite-svg/sprite-svg.svg#icon-vk"></use>
           </svg>
         </a>
@@ -53,7 +53,7 @@
       <li class="social-links__item">
         <a class="social-links__link social-links__link--tw" href="#">
           <span class="visually-hidden">Мы в Инстаграмме</span>
-          <svg width="23" height="23">
+          <svg width="23" height="23" aria-hidden="true" role="presentation">
             <use xlink:href="img/sprite-svg/sprite-svg.svg#icon-insta"></use>
           </svg>
         </a>
@@ -61,7 +61,7 @@
       <li class="social-links__item">
         <a class="social-links__link social-links__link--fb" href="#">
           <span class="visually-hidden">Мы в Фэйсбуке</span>
-          <svg width="14" height="28">
+          <svg width="14" height="28" aria-hidden="true" role="presentation">
             <use xlink:href="img/sprite-svg/sprite-svg.svg#icon-fc"></use>
           </svg>
         </a>
@@ -70,7 +70,7 @@
 
     <a class="main-footer__authors-link" href="#">
       HTML Academy
-      <svg width="27" height="34">
+      <svg width="27" height="34" aria-hidden="true" role="presentation">
         <use xlink:href="img/sprite-svg/sprite-svg.svg#icon-htmlacademy"></use>
       </svg>
     </a>
