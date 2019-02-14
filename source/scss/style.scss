@@ -1,5 +1,10 @@
+//отдельно подключаем файлы внешних библиотек
 @import '../../node_modules/normalize.css/normalize';
 @import '../../node_modules/leaflet/dist/leaflet';
+
+//подключается файл для поддержки png-спрайта
+//внутри файла миксины и переменные для стилизации
+@import 'mixins/sprite-png.scss';
 
 @import 'variables.scss';
 @import 'scaffolding.scss';
