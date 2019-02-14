@@ -13,6 +13,7 @@
 
 .main-footer__logo {
   display: block;
+  text-align: center;
 
   @media (max-width: $screen-md - 1) {
     padding-top: 40px;
@@ -21,7 +22,6 @@
   }
 
   & > img {
-    display: block;
     width: 128px;
     height: 38px;
     margin: 0 auto;
