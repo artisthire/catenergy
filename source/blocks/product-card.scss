@@ -1,6 +1,6 @@
 .product-card {
   box-sizing: border-box;
-  width: 280px;
+  max-width: 500px;
   min-height: 185px;
   margin: 0 auto;
 
@@ -27,8 +27,7 @@
 .product-card__img-wrap {
   float: left;
   display: block;
-  width: 140px;
-  height: 144px;
+  width: 50%;
   overflow: hidden;
 
   @media (min-width: $screen-md) {
@@ -42,6 +41,7 @@
 
 .product-card__img {
   display: block;
+  width: 90%;
   margin: 0 auto;
 
   @media (min-width: $screen-md) {
@@ -49,14 +49,15 @@
     left: 0;
     right: 0;
     bottom: 0;
+    width: auto;
   }
 }
 
 .product-card__title {
-  float: right;
+  float: left;
   width: 140px;
   margin: 0;
-  padding-top: 25px;
+  padding-top: 10%;
   padding-bottom: 15px;
   font-family: $custom-fonts;
   font-size: 16px;
@@ -82,8 +83,9 @@
 
 .product-card__table {
   box-sizing: border-box;
-  float: right;
+  float: left;
   width: 140px;
+  margin-bottom: 10px;
   font-size: 12px;
   line-height: 1.33;
   color: #444;

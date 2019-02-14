@@ -29,12 +29,15 @@
 
 .extra-products__table {
   display: block;
+  max-width: 500px;
+  margin: 0 auto;
   margin-bottom: 40px;
   font-size: 14px;
   line-height: 1;
   color: $text-color;
 
   @media (min-width: $screen-md) {
+    max-width: 900px;
     margin-bottom: 70px;
     font-size: 16px;
     line-height: 1.25;
@@ -42,6 +45,7 @@
 
   @media (min-width: $screen-lg) {
     display: table;
+    max-width: none;
     width: 900px;
     margin-bottom: 0;
     border-collapse: collapse;
@@ -168,7 +172,7 @@
   @media (min-width: $screen-md) and (max-width: $screen-lg - 1) {
     height: 200px;
     padding-top: 75px;
-    padding-left: 425px;
+    padding-left: 60%;
     padding-right: 125px;
     text-align: left;
     background-image: svg-load('gift.svg'), url('../img/gift-photo--md.jpg');
