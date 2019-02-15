@@ -19,7 +19,7 @@ var sass = require('gulp-sass');
 var postcss = require('gulp-postcss');
 var autoprefixer = require('autoprefixer');
 var sourcemaps = require('gulp-sourcemaps');
-var mqpacker = require("css-mqpacker");
+var mqpacker = require('css-mqpacker');
 var inlineSVG = require('postcss-inline-svg');
 var imageInliner = require('postcss-image-inliner');
 var cssnano = require('cssnano');
@@ -86,7 +86,7 @@ var isDev = !process.env.NODE_ENV || (process.env.NODE_ENV == 'development');
 
 // Плагины postCSS, которыми обрабатываются все стилевые файлы
 var postCssPlugins = [
-  autoprefixer({browsers: ["ie >= 11", "last 2 versions"]}),
+  autoprefixer({browsers: ['ie >= 11', 'last 2 versions']}),
   mqpacker({
     sort: true
   }),
@@ -131,13 +131,13 @@ gulp.task('html:sort',function() {
   .pipe(posthtml([
     posthtmlAttrSort(
       {
-        "order": [
-          "class", "id", "name",
-          "data-.+", "ng-.+", "src",
-          "for", "type", "href",
-          "values", "title", "alt",
-          "role", "aria-.+",
-          "$unknown$"
+        'order': [
+          'class', 'id', 'name',
+          'data-.+', 'ng-.+', 'src',
+          'for', 'type', 'href',
+          'values', 'title', 'alt',
+          'role', 'aria-.+',
+          '$unknown$'
         ]
       }
     )
@@ -161,7 +161,7 @@ gulp.task('style', function() {
       this.emit('end');
     }
   }))
-  // .pipe(debug({title: "Style:"}))
+  // .pipe(debug({title: 'Style:'}))
   .pipe(sass())
   .pipe(gulpIf(isDev, sourcemaps.init()))
   .pipe(postcss(postCssPlugins))
@@ -249,7 +249,7 @@ gulp.task('js:copy', function(done) {
 gulp.task('img:opt', function () {
 
   console.log('---------- Оптимизация картинок');
-  return gulp.src(patch.src.img + "*.{jpg,jpeg,gif,svg,png}")
+  return gulp.src(patch.src.img + '*.{jpg,jpeg,gif,svg,png}')
     .pipe(changed(patch.build.img))
     .pipe(gulpIf(isDev, debug({'title':' image:opt'})))
     .pipe(
@@ -267,22 +267,22 @@ gulp.task('img:opt', function () {
     .pipe(browserSync.reload({stream:true}));
 });
 
-gulp.task("img:webp", function () {
+gulp.task('img:webp', function () {
   //var webp = require('gulp-webp');
   console.log('---------- Создание картинок webp');
-  return gulp.src(patch.src.img+ "*.{jpg,jpeg,gif,png}")
+  return gulp.src(patch.src.img+ '*.{jpg,jpeg,gif,png}')
   .pipe(changed(patch.build.img, {extension: '.webp'}))
   .pipe(imagemin([
     webp({
       quality: 90
     })
   ]))
-  .pipe(rename({extname: ".webp"}))
+  .pipe(rename({extname: '.webp'}))
   .pipe(gulpIf(isDev, debug({'title':' image:webp'})))
   .pipe(gulp.dest(patch.build.img))
   .pipe(browserSync.reload({stream:true}));
 
-  // return gulp.src(source_img + "*.{jpg,jpeg,gif,png}")
+  // return gulp.src(source_img + '*.{jpg,jpeg,gif,png}')
   // .pipe(changed(build_img, {extension: '.webp'}))
   // .pipe(debug({'title':' image:webp'}))
   // .pipe(webp({quality: 90}))
@@ -311,7 +311,7 @@ gulp.task('sprite:svg', function() {
 
   if(patch.src.svg_sprite && patch.src.svg_sprite != '') {
      console.log('---------- Сборка SVG спрайта');
-     return gulp.src(patch.src.svg_sprite + "*.svg")
+     return gulp.src(patch.src.svg_sprite + '*.svg')
        .pipe(svgmin({
          plugins: [
            {minifyStyles: true},
@@ -391,12 +391,12 @@ gulp.task('font', function() {
   .pipe(browserSync.reload({stream:true}));
 });
 
-gulp.task("revreplace", function(done) {
+gulp.task('revreplace', function(done) {
 
-  if(fileExist(patch.build.root + "rev-manifest.json") !== false) {
-    var manifest = gulp.src(patch.build.root + "rev-manifest.json");
+  if(fileExist(patch.build.root + 'rev-manifest.json') !== false) {
+    var manifest = gulp.src(patch.build.root + 'rev-manifest.json');
     console.log('---------- Патчинг html для версионирования файлов');
-    return gulp.src(patch.build.root + "*.html")
+    return gulp.src(patch.build.root + '*.html')
       .pipe(revReplace({manifest: manifest}))
       .pipe(gulp.dest(patch.build.root));
   }
@@ -407,7 +407,7 @@ gulp.task("revreplace", function(done) {
 
 gulp.task('clean', function(done) {
   console.log('---------- Очистка рабочей директории');
-  del.sync(patch.build.root + "*");
+  del.sync(patch.build.root + '*');
   done();
 });
 

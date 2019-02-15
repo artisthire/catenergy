@@ -64,7 +64,7 @@ function initMap() {
   //скрываем картинку для бэкапа если JS не работает
   //показываем блок для дальнейшего размещения в нем карты
   map_backup.style.display = 'none';
-  map_container.style.display = "block";
+  map_container.style.display = 'block';
 
   // задаем координаты маркера
   var lat = 59.938727;
