@@ -69,8 +69,8 @@
   &:focus {
 
     & > svg {
-      color: $icon-background;
-      // fill: $icon-background;
+      // color: $icon-background;
+      fill: $icon-background;
     }
   }
 
@@ -82,7 +82,7 @@
     width: 27px;
     height: 34px;
     margin-left: 20px;
-    color: #666;
-    // fill: #666;
+    // color: #666;
+    fill: #666;
   }
 }

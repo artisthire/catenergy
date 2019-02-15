@@ -21,13 +21,13 @@
 .social-links__link {
   display: block;
   padding: 5px;
-  color: #666;
-  // fill: #666;
+  // color: #666;
+  fill: #666;
 
   &:hover,
   &:focus {
-    color: $icon-background;
-    // fill: $icon-background;
+    // color: $icon-background;
+    fill: $icon-background;
   }
 
   &:active {
@@ -44,7 +44,7 @@
     }
   }
 
-  &--tw svg {
+  &--inst svg {
     width: 23px;
     height: 23px;
 
@@ -54,7 +54,7 @@
     }
   }
 
-  &--fb svg {
+  &--fc svg {
     width: 14px;
     height: 28px;
 

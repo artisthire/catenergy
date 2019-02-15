@@ -34,28 +34,23 @@
   outline: 1px solid #cdcdcd;
   background-color: transparent;
 
-  &[type='email'],
-  &[type='tel'] {
-    padding-right: 45px;
-  }
-
   @media (min-width: $screen-md) {
     padding-top: 12px;
     padding-bottom: 12px;
   }
 
-  &::placeholder {
-    font: inherit;
-    color: inherit;
+  &[type='email'],
+  &[type='tel'] {
+    padding-right: 45px;
   }
 
   &:focus {
     outline-offset: -2px;
     outline: 2px solid #444;
 
-    & ~ .form-input-text__input-icon {
-      color: $icon-background;
-      // fill: $icon-background;
+    & ~ svg {
+      // color: $icon-background;
+      fill: $icon-background;
     }
   }
 
@@ -63,16 +58,23 @@
     outline-offset: -2px;
     outline: 2px solid #ff8282;
 
-    & ~ .form-input-text__input-icon {
-      color: #ff8282;
-      // fill: $icon-background;
+    & ~ svg {
+      // color: #ff8282;
+      fill: #ff8282;
     }
   }
-}
 
-.form-input-text__input-icon {
-  position: absolute;
-  top: 50%;
-  right: 25px;
-  transform: translate(50%, -50%);
+  &::placeholder {
+    font: inherit;
+    color: inherit;
+  }
+
+  & ~ svg {
+    position: absolute;
+    top: 50%;
+    right: 25px;
+    transform: translate(50%, -50%);
+    // color: #666;
+    fill: #666;
+  }
 }
