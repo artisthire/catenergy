@@ -49,17 +49,17 @@ window.addEventListener('resize', function() {
 function initMap() {
   //console.log('Инициализация карты');
 
-  //проверяем доступность ассинхронно загружаемого скрипта leaflet для карты
-  var timerId = null;
-  if (!window.L) {
-    //console.log('Инициализация таймера');
-    timerId = setTimeout(initMap, 500);
-    return false;
-  }
-  else {
-    clearTimeout(timerId);
-    timerId = null;
-  }
+  // //проверяем доступность ассинхронно загружаемого скрипта leaflet для карты
+  // var timerId = null;
+  // if (!window.L) {
+  //   //console.log('Инициализация таймера');
+  //   timerId = setTimeout(initMap, 500);
+  //   return false;
+  // }
+  // else {
+  //   clearTimeout(timerId);
+  //   timerId = null;
+  // }
 
   //скрываем картинку для бэкапа если JS не работает
   //показываем блок для дальнейшего размещения в нем карты

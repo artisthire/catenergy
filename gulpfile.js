@@ -51,7 +51,7 @@ var patch = {
     img: 'source/img/',
     favicon: 'source/img/favicon/*',
     js: 'source/js/*.js',
-    font: 'source/font/*.{woff,woff2}',
+    fonts: 'source/fonts/*.{woff,woff2}',
     copy_css: '',
     copy_js: 'source/libs/js/*.js',
     svg_sprite: 'source/img/sprite-svg/',
@@ -66,7 +66,7 @@ var patch = {
     svg_sprite: 'build/img/sprite-svg/',
     img_sprite: 'build/img/sprite-png/',
     favicon: 'build/favicon/',
-    font: 'build/font/',
+    fonts: 'build/fonts/',
     js: 'build/js/'
   },
   libs: {
@@ -320,7 +320,7 @@ gulp.task('sprite:svg', function() {
            }}
          ]
        }))
-       .pipe(svgstore({ inlineSvg: false}))
+       .pipe(svgstore({ inlineSvg: true}))
        .pipe(cheerio({
          run: function($) {
            // используется при инлайнинге в html, для IE11 только инлайнинг
@@ -385,9 +385,9 @@ gulp.task('sprite:png', function (done) {
 
 gulp.task('font', function() {
   console.log('---------- Копирование шрифтов');
-  return gulp.src(patch.src.font)
-  .pipe(changed(patch.build.font))
-  .pipe(gulp.dest(patch.build.font))
+  return gulp.src(patch.src.fonts)
+  .pipe(changed(patch.build.fonts))
+  .pipe(gulp.dest(patch.build.fonts))
   .pipe(browserSync.reload({stream:true}));
 });
 
@@ -434,7 +434,7 @@ gulp.task('watch', function() {
   gulp.watch(patch.src.img + '*.{jpg,jpeg,gif,png,svg}', gulp.series('img:opt', 'img:webp'));
   gulp.watch(patch.src.favicon, gulp.series('favicon'));
 
-  gulp.watch(patch.src.font, gulp.series('font'));
+  gulp.watch(patch.src.fonts, gulp.series('font'));
 
   gulp.watch(patch.src.img_to_bg + '*', gulp.series('style'));
   gulp.watch(patch.src.svg_inline + '*.svg', gulp.series('style'));
