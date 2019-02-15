@@ -21,11 +21,12 @@
   }
 
   <nav class="site-navigation">
-
+    <!-- При открытии меню к кнопке нужно добавлять класс menu-toggle-btn--open -->
     <button class="main-header__toggle-btn menu-toggle-btn menu-toggle-btn--open js-menu-toggle-btn" name="toggle-menu" type="button" aria-label="Открыть меню" hidden>
       <span class="menu-toggle-btn__line"></span>
     </button>
 
+    <!-- Переключение активного меню выполняется добавлением класса site-navigation__item--current к элементам списка -->
     <ul class="site-navigation__list js-site-menu">
       @@if (current_page === "index_html") {
       <li class="site-navigation__item site-navigation__item--current">
