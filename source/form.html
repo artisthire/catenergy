@@ -10,7 +10,7 @@
   <title>Подбор программы</title>
 </head>
 <body class="inner-page">
-  <!-- @@include("img/sprite-svg/img/sprite-svg.svg") -->
+  @@include("img/sprite-svg/img/sprite-svg.svg")
 
   @@include("html_templates/main-header.html", {
     "current_page": "form_html"
@@ -69,15 +69,15 @@
           <p class="form-input-text program-form__input-wrap">
             <label class="form-input-text__label" for="email">E-mail:*</label>
             <input class="form-input-text__input" id="email" name="email" type="email" placeholder="kuklachev@gmail.com" required>
-            <svg class="form-input-text__input-icon" role="presentation" aria-hidden="true" width="17" height="13">
-              <use xlink:href="img/sprite-svg/sprite-svg.svg#icon-email"></use>
+            <svg role="presentation" aria-hidden="true" width="17" height="13">
+              <use xlink:href="#icon-email"></use>
             </svg>
           </p>
           <p class="form-input-text program-form__input-wrap">
             <label class="form-input-text__label" for="telephone">Телефон:*</label>
             <input class="form-input-text__input" id="telephone" name="telephone" type="tel" placeholder="8 (960) 900-60-90" required>
-            <svg class="form-input-text__input-icon" role="presentation" aria-hidden="true" width="20" height="20">
-              <use xlink:href="img/sprite-svg/sprite-svg.svg#icon-phone"></use>
+            <svg role="presentation" aria-hidden="true" width="20" height="20">
+              <use xlink:href="#icon-phone"></use>
             </svg>
           </p>
         </div>

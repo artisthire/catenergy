@@ -55,7 +55,7 @@ var patch = {
     copy_css: '',
     copy_js: 'source/libs/js/*.js',
     svg_sprite: 'source/img/sprite-svg/',
-    img_sprite: 'source/img/sprite-img/',
+    img_sprite: '',
     img_to_bg: 'source/blocks/img_inline_css/',
     svg_inline: 'source/blocks/svg_inline_css/'
   },
@@ -323,28 +323,28 @@ gulp.task('sprite:svg', function() {
        .pipe(svgstore({ inlineSvg: false}))
        .pipe(cheerio({
          run: function($) {
-           // используется при инлайнинге в html
-           // $('svg').attr('style',  'display:none');
+           // используется при инлайнинге в html, для IE11 только инлайнинг
+           $('svg').attr('style',  'display:none');
            // используется при внешнем спрайте для изменения цвета через color
-           $('symbol').attr('fill',  'currentColor');
+           //$('symbol').attr('fill',  'currentColor');
          },
          parserOptions: {
            xmlMode: true
          }
        }))
        .pipe(rename('sprite-svg.svg'))
-       .pipe(gulpIf(!isDev, rev()))
-       .pipe(gulp.dest(patch.build.svg_sprite))
-       .pipe(gulpIf(!isDev, rev.manifest(
-         patch.build.root + 'rev-manifest.json',
-         { base: patch.build.root,
-         merge: true
-       })))
-       .pipe(gulpIf(!isDev, gulp.dest(patch.build.root)));
+       //.pipe(gulpIf(!isDev, rev()))
+       .pipe(gulp.dest(patch.src.svg_sprite + 'img/'));
+       // .pipe(gulpIf(!isDev, rev.manifest(
+       //   patch.build.root + 'rev-manifest.json',
+       //   { base: patch.build.root,
+       //   merge: true
+       // })))
+       // .pipe(gulpIf(!isDev, gulp.dest(patch.build.root)));
 
    }
    else {
-     console.log('---------- Сборка SVG спрайта: ОТМЕНА, нет папки с картинками');
+     console.log('---------- Сборка SVG спрайта: ОТМЕНА, не используется на проекте');
    }
 });
 
@@ -378,7 +378,7 @@ gulp.task('sprite:png', function (done) {
     return merge(imgStream, cssStream);
   }
   else {
-    console.log('---------- Сборка PNG спрайта: ОТМЕНА, нет папки с картинками');
+    console.log('---------- Сборка PNG спрайта: ОТМЕНА, нет используетя на проекте');
     done();
   }
 });
@@ -422,17 +422,29 @@ gulp.task('serve', function () {
 
 gulp.task('watch', function() {
   gulp.watch([patch.src.html, patch.src.html_templ],gulp.series('html'));
+
   gulp.watch([patch.src.scss, patch.src.blocks], gulp.series('style'));
-  gulp.watch(patch.src.copy_css, gulp.series('style:copy'));
+  if (patch.src.copy_css && patch.src.copy_css != '')
+    gulp.watch(patch.src.copy_css, gulp.series('style:copy'));
+
   gulp.watch(patch.src.js, gulp.series('js'));
-  gulp.watch(patch.src.copy_js, gulp.series('js:copy'));
+  if (patch.src.copy_js && patch.src.copy_js != '')
+    gulp.watch(patch.src.copy_js, gulp.series('js:copy'));
+
   gulp.watch(patch.src.img + '*.{jpg,jpeg,gif,png,svg}', gulp.series('img:opt', 'img:webp'));
   gulp.watch(patch.src.favicon, gulp.series('favicon'));
+
   gulp.watch(patch.src.font, gulp.series('font'));
+
   gulp.watch(patch.src.img_to_bg + '*', gulp.series('style'));
   gulp.watch(patch.src.svg_inline + '*.svg', gulp.series('style'));
-  gulp.watch(patch.src.svg_sprite + '*.svg', gulp.series('sprite:svg'));
-  gulp.watch(patch.src.img_sprite + '*.png', gulp.series('sprite:png', 'style'));
+
+  if(patch.src.svg_sprite && patch.src.svg_sprite != '')
+    gulp.watch(patch.src.svg_sprite + '*.svg', gulp.series('sprite:svg', 'html')); //требуется инклюд итогового спрайта в html
+    //gulp.watch(patch.src.svg_sprite + '*.svg', gulp.series('sprite:svg')); - ватчер при подключении svg#extend
+
+  if(patch.src.img_sprite && patch.src.img_sprite != '')
+    gulp.watch(patch.src.img_sprite + '*.png', gulp.series('sprite:png', 'style'));
 });
 
 //по умолчанию запускаются задачи необходимые для продакшина
