@@ -1,7 +1,8 @@
 .site-navigation {
+  margin-left: auto;
 
-  @media (min-width: $screen-lg) {
-    max-width: 50%;
+  @media (min-width: $screen-md) {
+    width: 50%;
   }
 }
 
